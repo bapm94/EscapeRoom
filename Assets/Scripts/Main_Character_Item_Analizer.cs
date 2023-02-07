@@ -39,14 +39,19 @@ public class Main_Character_Item_Analizer : MonoBehaviour
         targetsOriginalScale = item.transform.localScale;
         item.transform.SetParent(analizingSpot.transform);
         item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        item.transform.localScale = Vector3.one * 0.3f;
+        item.transform.localScale = Vector3.one * 1f;
         /*item.transform.localScale = item.GetComponent<scriptObjeto>().analizingScale;*/ //Cuando se genere el item se le pondrá una escala de anbalizado
     }
 
     public void ReturnItem()
     {
-        targetObject.transform.SetParent(targetsOriginalParent.transform);
-        targetObject.transform.SetPositionAndRotation(targetsOriginalPosition, targetsOriginalRotation);
-        targetObject.transform.localScale = targetsOriginalScale;
+        if (targetsOriginalParent != null)
+        {
+            targetObject.transform.SetParent(targetsOriginalParent.transform);
+            targetObject.transform.SetPositionAndRotation(targetsOriginalPosition, targetsOriginalRotation);
+            targetObject.transform.localScale = targetsOriginalScale;
+        }
+       
+        
     }
 }

@@ -144,9 +144,9 @@ MonoBehaviour:
     m_Bits: 0
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 1.59
-    depthThreshold: 3.5
-    robertsCrossMultiplier: 211
+    outlineScale: 0.59
+    depthThreshold: 10.6
+    robertsCrossMultiplier: 213
     normalThreshold: 0.385
     steepAngleThreshold: 0.17
     steepAngleMultiplier: 27
