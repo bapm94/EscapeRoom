@@ -92,15 +92,14 @@ public class Main_Character_Controller : MonoBehaviour
 
         var newPos = transform.position + move; // The movement done at the end of calculations
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.down * transform.position.y *3/4, (newPos - transform.position), out hit, GetComponent<CapsuleCollider>().radius + 0.4f))
+        if (Physics.Raycast(transform.position + Vector3.down * transform.position.y *3/4, (newPos - transform.position), out hit, GetComponent<CapsuleCollider>().radius + 0.2f))
         {
             
         }
         else
         {
-            transform.position = newPos;
-            //Rigidbody rb = GetComponent<Rigidbody>();
-            //rb.MovePosition(newPos);
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.MovePosition(newPos);
         }
         //Debug.DrawRay(transform.position + Vector3.down * transform.position.y *3/4, (newPos - transform.position), Color.green, 1f);
 
