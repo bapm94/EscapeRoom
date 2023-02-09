@@ -14,8 +14,8 @@ public class In_Game_Tool : MonoBehaviour
 
     public void Start()
     {
-        position = GameobjectData.position;
-        quaternionRotation = GameobjectData.quaternionRotation;
+        position = GameobjectData.initialPosition;
+        quaternionRotation = GameobjectData.initialQuaternionRotation;
         sprite = GameobjectData.sprite;
         isSprite = GameobjectData.isSprite;
     }
