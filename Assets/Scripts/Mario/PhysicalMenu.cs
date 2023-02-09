@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PhysicalMenu : MonoBehaviour
 {
-    public CinemachineVirtualCamera playerCam;
-    public CinemachineVirtualCamera menuCam;
+    //public CinemachineVirtualCamera playerCam;
+    //public CinemachineVirtualCamera menuCam;
+    public CinemachineVirtualCamera[] cams;
+
     private void Start()
     {
         GoBackToPlayerCam();
@@ -23,7 +25,7 @@ public class PhysicalMenu : MonoBehaviour
 
     public void GoBackToPlayerCam()
     {
-        menuCam.Priority = playerCam.Priority - 1;
+        cams[1].Priority = cams[0].Priority - 1;
         Main_Character_Controller.instance.canRotate = true;
         Main_Character_Controller.instance.canMove = true;
     }
@@ -31,8 +33,8 @@ public class PhysicalMenu : MonoBehaviour
     public void ChangeCamera()
     {
         Debug.Log("hola2");
-        if (menuCam.Priority < playerCam.Priority)
-            menuCam.Priority = playerCam.Priority + 1;
+        if (cams[1].Priority < cams[0].Priority)
+            cams[1].Priority = cams[0].Priority + 1;
 
         Main_Character_Controller.instance.canMove = false;
         Main_Character_Controller.instance.canRotate = false;
