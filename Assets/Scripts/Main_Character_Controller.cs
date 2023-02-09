@@ -12,9 +12,10 @@ public class Main_Character_Controller : MonoBehaviour
     float xRotation = 0f;       //Variable that keeps the rotation of the camera.
     private Controlls _controls;    //Acces to the controls through the new input system
     public GameObject mainCamera;
-    
-    
+    public GameObject physicalMenu;
 
+
+    public bool isLookingAtSomething = false;
     public bool canMove = true;
     public bool canRotate = true;
     public bool isAnalizingOject = false;
@@ -29,16 +30,22 @@ public class Main_Character_Controller : MonoBehaviour
     Vector2 analizableObjectRotation = Vector2.zero;
 
     Main_Character_Item_Analizer analizer;
-
+    public static Main_Character_Controller instance;
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+            Main_Character_Controller.instance = this;
+        else
+            Destroy(this);
+
         ResetAll();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (canMove) { Movement(); }
         if (canRotate && Main_Camera_Controller.instance.isFollowingCharacter) { Rotation(); } //Only rotates when the camera is attached to the character
 
@@ -66,6 +73,16 @@ public class Main_Character_Controller : MonoBehaviour
                     defaultColor = analizableObject.GetComponent<MeshRenderer>().material.color; 
                 }
                 analizableObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            }
+
+            if (hit.collider.gameObject.tag == "MenuTable")
+            {
+                Debug.Log("está viendo la mesa");
+                isLookingAtSomething = true;
+            }
+            else if (hit.collider.gameObject.tag != "MenuTable")
+            {
+                isLookingAtSomething = false;
             }
             //Debug.Log("Estas mirando a " + hit.collider.gameObject.name +" y tiene transformada original igual a " + analizableOriginalRotation);
         }
@@ -102,7 +119,7 @@ public class Main_Character_Controller : MonoBehaviour
             //Rigidbody rb = GetComponent<Rigidbody>();
             //rb.MovePosition(newPos);
         }
-        //Debug.DrawRay(transform.position + Vector3.down * transform.position.y *3/4, (newPos - transform.position), Color.green, 1f);
+        Debug.DrawRay(transform.position + Vector3.down * transform.position.y *3/4, (newPos - transform.position), Color.green, 1f);
 
     }
     private void Rotation()
@@ -141,9 +158,9 @@ public class Main_Character_Controller : MonoBehaviour
             
 
         }
-        
-        
-        
+
+        if (isLookingAtSomething)
+            physicalMenu.GetComponent<PhysicalMenu>().ChangeCamera();    
     }
 
 
