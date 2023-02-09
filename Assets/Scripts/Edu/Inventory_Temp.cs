@@ -10,7 +10,8 @@ public class Inventory_Temp : MonoBehaviour
     int[] insight;
 
     GameObject[] prop;
-    //List<Sprite> propSprite;
+    List<GameObject> propsGrabbed = new List<GameObject>();
+
     void Start()
     {
         for(int i = 0 ; i < prop.Length; i++)
