@@ -9,8 +9,8 @@ public class Inventory_Temp : MonoBehaviour
     float[] resolutionTime;
     int[] insight;
 
-    GameObject[] prop;
-    List<GameObject> propsGrabbed = new List<GameObject>();
+    public GameObject[] prop;
+    public List<GameObject> propsGrabbed = new List<GameObject>();
 
     void Start()
     {
