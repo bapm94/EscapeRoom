@@ -5,22 +5,21 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PhysicalMenu : MonoBehaviour
+public class InGame_Menu_Controller : MonoBehaviour
 {
-    //public CinemachineVirtualCamera playerCam;
-    //public CinemachineVirtualCamera menuCam;
-    public CinemachineVirtualCamera[] cams;
-    public Button[] writtenButtons;
-    int currentCamera;
-    bool isInCam;
+    public CinemachineVirtualCamera[] cams; //different cameras to choose from
+    public Button[] writtenButtons; //buttons used in the book
+
+    int currentCamera; //current camera being used
+    bool isInCam; //true if player is currently using any of the menu cameras
 
     private void Start()
     {
+        //disables buttons, sets camera to player
         for (int i = 0; i < writtenButtons.Length; i++)
         {
             writtenButtons[i].interactable = false;
         }
-        currentCamera = 0;
         GoBackToPlayerCam();
     }
 
@@ -41,12 +40,13 @@ public class PhysicalMenu : MonoBehaviour
         NavigateMenu();
     }
 
+    //gets camera back to player view
     public void GoBackToPlayerCam()
     {
         isInCam = false;
         currentCamera = 0;
-        IndexChange(currentCamera);
-        for (int i = 0; i < writtenButtons.Length; i++)
+        IndexChange(currentCamera); //this is what changes the camera
+        for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
         {
             writtenButtons[i].interactable = false;
         }
@@ -58,6 +58,7 @@ public class PhysicalMenu : MonoBehaviour
         }
     }
 
+    //navigates between the cameras only if the player has entered the menu first (isInCam == true)
     public void NavigateMenu()
     {
         if (isInCam)
@@ -89,6 +90,7 @@ public class PhysicalMenu : MonoBehaviour
         }
     }
 
+    //controls which camera is active, value (camera) is given outside (through other functions)
     public void IndexChange(int menuIndexValue)
     {
         for (int i = 0; i < cams.Length; i++)
@@ -106,10 +108,21 @@ public class PhysicalMenu : MonoBehaviour
         writtenButtons[0].Select();
     }
 
+    //gets called in Main_Character_Controller, enters the menu and sets camera to first menu camera
     public void GoIntoMenu()
     {
         isInCam = true;
         currentCamera = 2;
+        IndexChange(currentCamera);
+
+        Main_Character_Controller.instance.canMove = false;
+        Main_Character_Controller.instance.canRotate = false;
+    }
+
+    public void GoIntoLevelMenu()
+    {
+        isInCam = true;
+        currentCamera = 4;
         IndexChange(currentCamera);
 
         Main_Character_Controller.instance.canMove = false;

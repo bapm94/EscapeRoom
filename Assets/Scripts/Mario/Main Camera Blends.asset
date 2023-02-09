@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Main Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: Player_Cam
+  - m_From: '**ANY CAMERA**'
     m_To: MenuCamera
     m_Blend:
       m_Style: 1
@@ -24,11 +24,55 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: MenuCamera
+  - m_From: '**ANY CAMERA**'
     m_To: Player_Cam
     m_Blend:
       m_Style: 1
       m_Time: 1
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: MenuCamera
+    m_To: MenuCamera_Gramophone
+    m_Blend:
+      m_Style: 1
+      m_Time: 1
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: MenuCamera
+    m_To: MenuCamera_Diary
+    m_Blend:
+      m_Style: 1
+      m_Time: 0.8
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: '**ANY CAMERA**'
+    m_To: LevelCamera
+    m_Blend:
+      m_Style: 5
+      m_Time: 0.9
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: LevelCamera
+    m_To: '**ANY CAMERA**'
+    m_Blend:
+      m_Style: 4
+      m_Time: 0.9
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

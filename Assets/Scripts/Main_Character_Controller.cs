@@ -15,7 +15,8 @@ public class Main_Character_Controller : MonoBehaviour
     public GameObject physicalMenu;
 
 
-    public bool isLookingAtSomething = false;
+    public bool isLookingAtChair = false;
+    public bool isLookingAtLibrary = false;
     public bool canMove = true;
     public bool canRotate = true;
     public bool isAnalizingOject = false;
@@ -75,15 +76,20 @@ public class Main_Character_Controller : MonoBehaviour
                 analizableObject.GetComponent<MeshRenderer>().material.color = Color.red;
             }
 
-            if (hit.collider.gameObject.tag == "MenuTable")
-            {
-                Debug.Log("está viendo la mesa");
-                isLookingAtSomething = true;
-            }
-            else if (hit.collider.gameObject.tag != "MenuTable")
-            {
-                isLookingAtSomething = false;
-            }
+            if (hit.collider.gameObject.tag == "MenuChair")
+                isLookingAtChair = true;
+            else if (hit.collider.gameObject.tag != "MenuChair")
+                isLookingAtChair = false;
+
+            if (hit.collider.gameObject.tag == "MenuLibrary")
+                isLookingAtLibrary = true;
+            else if (hit.collider.gameObject.tag != "MenuLibrary")
+                isLookingAtLibrary = false;
+
+            /*bug? como solo se hace false el bool cuando golpea con algo que no tiene el tag, al mirar alrededor de
+            la sala, como las paredes etc no tienen collider, darle al botón de acción en el aire hace que
+            funcione igualmente*/
+
             //Debug.Log("Estas mirando a " + hit.collider.gameObject.name +" y tiene transformada original igual a " + analizableOriginalRotation);
         }
         if (!Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 15f) && defaultColorTaken )
@@ -159,8 +165,10 @@ public class Main_Character_Controller : MonoBehaviour
 
         }
 
-        if (isLookingAtSomething)
-            physicalMenu.GetComponent<PhysicalMenu>().GoIntoMenu();
+        if (isLookingAtChair)
+            physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();
+        if (isLookingAtLibrary)
+            physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu();
     }
 
 
