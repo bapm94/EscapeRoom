@@ -160,7 +160,7 @@ public class Main_Character_Controller : MonoBehaviour
         }
 
         if (isLookingAtSomething)
-            physicalMenu.GetComponent<PhysicalMenu>().ChangeCamera();    
+            physicalMenu.GetComponent<PhysicalMenu>().GoIntoMenu();
     }
 
 
