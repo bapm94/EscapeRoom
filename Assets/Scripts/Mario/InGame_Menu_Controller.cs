@@ -40,7 +40,9 @@ public class InGame_Menu_Controller : MonoBehaviour
         NavigateMenu();
     }
 
-    //gets camera back to player view
+    /// <summary>
+    /// gets camera back to player view
+    /// </summary>
     public void GoBackToPlayerCam()
     {
         isInCam = false;
@@ -58,9 +60,11 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
     }
 
-    //navigates between the cameras only if the player has entered the menu first (isInCam == true)
+    /// <summary>
+    /// navigates between the cameras only if the player has entered the menu first (isInCam == true)
+    /// </summary>
     public void NavigateMenu()
-    {
+    {   
         if (isInCam)
         {
             if (Keyboard.current.dKey.wasPressedThisFrame)
@@ -90,7 +94,10 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
     }
 
-    //controls which camera is active, value (camera) is given outside (through other functions)
+    /// <summary>
+    /// controls which camera is active, value (camera) is given through menuIndexValue (through other functions)
+    /// </summary>
+    /// <param name="menuIndexValue"></param>
     public void IndexChange(int menuIndexValue)
     {
         for (int i = 0; i < cams.Length; i++)
@@ -108,7 +115,9 @@ public class InGame_Menu_Controller : MonoBehaviour
         writtenButtons[0].Select();
     }
 
-    //gets called in Main_Character_Controller, enters the menu and sets camera to first menu camera
+    /// <summary>
+    /// gets called in Main_Character_Controller, enters the menu and sets camera to first menu camera
+    /// </summary>
     public void GoIntoMenu()
     {
         isInCam = true;
@@ -119,6 +128,9 @@ public class InGame_Menu_Controller : MonoBehaviour
         Main_Character_Controller.instance.canRotate = false;
     }
 
+    /// <summary>
+    /// Goes into level camera and leaves player in cam mode (can't move)
+    /// </summary>
     public void GoIntoLevelMenu()
     {
         isInCam = true;
