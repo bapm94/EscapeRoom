@@ -14,14 +14,15 @@ public class Dialogue_System_Controller : MonoBehaviour
     bool dialogueOnGoing;
     [SerializeField] bool isTyping;
     int rangeMaxLocal;
-    [SerializeField] bool hasChangedSentence;
-    [SerializeField] bool coroutineRunning;
+    public string[] names;
+    public TextMeshProUGUI characterName;
+    public GameObject dialogueParent;
+
 
     void Start()
     {
-        coroutineRunning = false;
         timeBetweenDialogues = 2.5f;
-        dialogueSpeed = 0.05f;
+        dialogueSpeed = 0.022f;
     }
 
     // Update is called once per frame
@@ -36,6 +37,11 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             NextSentence(rangeMaxLocal);
         }
+
+        if (!dialogueOnGoing)
+            dialogueParent.SetActive(false);
+        else
+            dialogueParent.SetActive(true);
     }
 
     public void GetDialogueInfo(int rangeMin, int rangeMax)
@@ -68,7 +74,6 @@ public class Dialogue_System_Controller : MonoBehaviour
             {
                 if (Index < sentences.Length)
                 {
-                    hasChangedSentence = true;
                     dialogueText.text = "";
                     StartCoroutine(WriteSentence());
                 }
@@ -78,16 +83,16 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
-                hasChangedSentence = true;
                 dialogueOnGoing = false;
             }
             else
             {
-                if (Index < sentences.Length)
+                dialogueText.text = "";
+                char[] temp = sentences[Index].ToCharArray();
+                isTyping = false;
+                for (int i = 1; i < temp.Length; i++)
                 {
-                    hasChangedSentence = true;
-                    isTyping = false;
-                    dialogueText.text = sentences[Index];
+                    dialogueText.text += temp[i];
                 }
             }
         }
@@ -101,7 +106,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (i == 0)
             {
-
+                characterName.text = names[int.Parse(Characters[0].ToString())];
             }
             else
             {
@@ -109,7 +114,6 @@ public class Dialogue_System_Controller : MonoBehaviour
                 yield return new WaitForSeconds(dialogueSpeed);
                 if (!isTyping)
                 {
-                    hasChangedSentence = true;
                     break;
                 }
             }

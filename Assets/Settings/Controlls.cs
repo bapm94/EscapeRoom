@@ -199,6 +199,17 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dad21279-d540-4127-9fe8-666a3df0e1d5"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cam_Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3de5702c-3a9d-49a0-b268-af8e46054b22"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
