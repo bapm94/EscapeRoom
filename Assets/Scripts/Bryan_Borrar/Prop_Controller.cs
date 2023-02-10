@@ -44,6 +44,7 @@ public class Prop_Controller : MonoBehaviour
         _3DForm.SetActive(false);
         _2DForm.SetActive(true);
         GameObject inventory = Camera.main.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+        inventory.SetActive(true);
         transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one * spriteScale;
