@@ -18,9 +18,16 @@ public class Dialogue_System_Controller : MonoBehaviour
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
 
+    public static Dialogue_System_Controller instance;
+
 
     void Start()
     {
+        if (instance == null)
+            Dialogue_System_Controller.instance = this;
+        else
+            Destroy(this);
+
         timeBetweenDialogues = 2.5f;
         dialogueSpeed = 0.022f;
     }
@@ -28,10 +35,10 @@ public class Dialogue_System_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        /*if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             GetDialogueInfo(0, 3);
-        }
+        }*/
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {

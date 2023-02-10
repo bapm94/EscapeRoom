@@ -77,7 +77,13 @@ public class Main_Character_Controller : MonoBehaviour
             }
 
             if (hit.collider.gameObject.tag == "MenuChair")
+            {
                 isLookingAtChair = true;
+                if (Keyboard.current.fKey.wasPressedThisFrame)
+                {
+                    Dialogue_System_Controller.instance.GetDialogueInfo(0, 3);
+                }
+            }
             else if (hit.collider.gameObject.tag != "MenuChair")
                 isLookingAtChair = false;
 
