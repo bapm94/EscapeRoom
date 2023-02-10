@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 79889400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0392995, y: 0.31604105, z: 0.94697}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992577666}
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0.00012207031, y: 38.11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79889402
@@ -942,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 169.8513, y: 5.529335}
+  m_AnchoredPosition: {x: 169.8513, y: 7.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645583310
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -164.79012, y: -16.478981, z: -166.54324, w: 35.43272}
+  m_margin: {x: -164.79012, y: -16.478981, z: 168.87386, w: 35.43272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2191,12 +2191,19 @@ MonoBehaviour:
   - 1It is indeed, I like to sit here and think a bit before continuing onwards.
   - 0I bet it feels nice. Thank you again for freeing me from my book!
   - 1Oh please, Alice, don't thank me. It's the least I could do!
+  - 0Oh, so here is where you found my book, huh?
+  - 1Yes, I heard your calling for help as I woke up.
+  - 0You're saying you slept here all night?
+  - 1Oh I wish, I'm saying I don't even know how I got here in the first place. That's
+    what I'm trying to figure out...
+  - 0I see... Well, you'll see you'll remember soon enough!
+  - 1Thank you, Alice, I appreciate that.
   dialogueSpeed: 0.05
   timeBetweenDialogues: 0
   isTyping: 0
   names:
-  - 'Alice:'
-  - 'Dr. Jekyll:'
+  - Alice
+  - Dr. Jekyll
   characterName: {fileID: 645583310}
   dialogueParent: {fileID: 1992577665}
 --- !u!1 &1586766085
@@ -3352,7 +3359,7 @@ RectTransform:
   m_GameObject: {fileID: 1992577665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.00001565004}
-  m_LocalScale: {x: 0.9861571, y: 0.88618, z: 1}
+  m_LocalScale: {x: 0.90608114, y: 0.88618, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 79889401}
@@ -3364,7 +3371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -158.80006, y: -129.99998}
+  m_AnchoredPosition: {x: -145.91, y: -129.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1998447166

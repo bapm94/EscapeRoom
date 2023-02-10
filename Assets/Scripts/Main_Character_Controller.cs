@@ -92,7 +92,7 @@ public class Main_Character_Controller : MonoBehaviour
                 isLookingAtLibrary = true;
                 if (Keyboard.current.fKey.wasPressedThisFrame) //for test
                 {
-                    Dialogue_System_Controller.instance.GetDialogueInfo(4, 7);
+                    Dialogue_System_Controller.instance.GetDialogueInfo(4, 9);
                 }
             }
             else if (hit.collider.gameObject.tag != "MenuLibrary")

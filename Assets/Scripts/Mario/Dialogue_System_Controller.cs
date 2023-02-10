@@ -120,7 +120,14 @@ public class Dialogue_System_Controller : MonoBehaviour
             else
             {
                 dialogueText.text += Characters[i];
-                yield return new WaitForSeconds(dialogueSpeed);
+                if (Characters[i].ToString() == ",")
+                    yield return new WaitForSeconds(dialogueSpeed + 0.35f);
+                else if (Characters[i].ToString() == ".")
+                    yield return new WaitForSeconds(dialogueSpeed + 0.5f);
+                else
+                    yield return new WaitForSeconds(dialogueSpeed);
+
+
                 if (!isTyping)
                 {
                     break;

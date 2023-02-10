@@ -45,17 +45,20 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void GoBackToPlayerCam()
     {
-        isInCam = false;
-        currentCamera = 0;
-        IndexChange(currentCamera); //this is what changes the camera
-        for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
+        if (currentCamera != 0)
         {
-            writtenButtons[i].interactable = false;
-        }
+            isInCam = false;
+            currentCamera = 0;
+            IndexChange(currentCamera); //this is what changes the camera
+            for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
+            {
+                writtenButtons[i].interactable = false;
+            }
 
-        if (Main_Character_Controller.instance != null)
-        {
-            Main_Camera_Controller.instance.ChangeFollowStatus(true);
+            if (Main_Character_Controller.instance != null)
+            {
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+            }
         }
     }
 
