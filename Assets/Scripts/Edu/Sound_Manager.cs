@@ -4,41 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Sound_Manager : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
-
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider effectsSlider;
     void Start()
     {
-        if(PlayerPrefs.HasKey("musicVolume"))
-        {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
-        }
-        else
-        {
-            Load();
-        }
+        LoadValues();
     }
 
-    public void ChangeVolume()
+    public void SaveVolume()
     {
-        AudioListener.volume = volumeSlider.value;
-        Save();
+        float musicValue = musicSlider.value;
+        float effectsValue = effectsSlider.value;
+        PlayerPrefs.SetFloat("MusicValue", musicValue);
+        PlayerPrefs.SetFloat("EffectsValue", effectsValue);
+        LoadValues();
     }
     
-    private void Load()
+    private void LoadValues()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        float musicValue = PlayerPrefs.GetFloat("MusicValue");
+        float effectsValue = PlayerPrefs.GetFloat("EffectsValue");
+        musicSlider.value = musicValue;
+        effectsSlider.value = effectsValue;
+        //AudioListener.volume = musicValue;
     }
-
-    private void Save()
+    private void Update()
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
-    }
-
-
-
-    void Update()
-    {
-        
+        //Debug.Log(effectsSlider.value);
     }
 }
