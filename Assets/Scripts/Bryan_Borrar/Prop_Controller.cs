@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Prop_Controller : MonoBehaviour
 {
@@ -16,14 +17,15 @@ public class Prop_Controller : MonoBehaviour
     In_Game_Tool info;
 
     public static Prop_Controller instance;
-    // Start is called before the first frame update
+    
+
     void Start()
     {
         info = GetComponent<In_Game_Tool>();
         _originalParent = transform.parent.gameObject;
         _3DForm = transform.GetChild(0).gameObject;
         _2DForm = transform.GetChild(1).gameObject;
-        _2DForm.GetComponent<SpriteRenderer>().sprite = info.sprite;
+        _2DForm.GetComponent<Image>().sprite = info.sprite;
         _2DForm.SetActive(false);
 
         
@@ -43,11 +45,12 @@ public class Prop_Controller : MonoBehaviour
     {
         _3DForm.SetActive(false);
         _2DForm.SetActive(true);
-        GameObject inventory = Camera.main.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+        GameObject inventory = Camera.main.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
         inventory.SetActive(true);
         transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one * spriteScale;
         info.isSprite = true;
+        _2DForm.GetComponent<Image>().sprite = info.sprite;
     }
 }

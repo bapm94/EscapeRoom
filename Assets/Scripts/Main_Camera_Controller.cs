@@ -34,7 +34,7 @@ public class Main_Camera_Controller : MonoBehaviour
         //transform.rotation = mainCharacter.transform.rotation;
         //transform.rotation = Quaternion.Euler(xRotation, 0, 0);
     }
-    public void FollowCharacter(GameObject character, bool isFollowing)
+    void FollowCharacter(GameObject character, bool isFollowing)
     {
         
         isFollowingCharacter = isFollowing;
@@ -47,6 +47,15 @@ public class Main_Camera_Controller : MonoBehaviour
             transform.parent = null;
         }
 
+    }
+
+    public void ChangeFollowStatus(bool isFollowing)
+    {
+        isFollowingCharacter = isFollowing;
+        GameObject player = Main_Character_Controller.instance.gameObject;
+        if (isFollowingCharacter) { player.GetComponent<MeshRenderer>().enabled =true; }
+        else { player.GetComponent<MeshRenderer>().enabled = false; }
+        
     }
 
 }
