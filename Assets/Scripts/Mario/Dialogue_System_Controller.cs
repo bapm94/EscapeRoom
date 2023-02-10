@@ -54,6 +54,7 @@ public class Dialogue_System_Controller : MonoBehaviour
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
         rangeMaxLocal = rangeMax;
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
 
         if (!dialogueOnGoing)
             StartDialogue(rangeMin);
@@ -76,6 +77,7 @@ public class Dialogue_System_Controller : MonoBehaviour
             if (Index > rangeMax)
             {
                 dialogueOnGoing = false;
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }
             else
             {
@@ -125,21 +127,7 @@ public class Dialogue_System_Controller : MonoBehaviour
                 }
             }
         }
-
-        /*foreach (char Character in Characters)
-        {
-            dialogueText.text += Character;
-            yield return new WaitForSeconds(dialogueSpeed);
-            if (!isTyping)
-            {
-                hasChangedSentence = true;
-                break;
-            }
-        }*/
-
         Index++;
         isTyping = false; 
     }
-
-    //HOLA QUE TAL
 }

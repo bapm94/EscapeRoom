@@ -55,8 +55,7 @@ public class InGame_Menu_Controller : MonoBehaviour
 
         if (Main_Character_Controller.instance != null)
         {
-            Main_Character_Controller.instance.canRotate = true;
-            Main_Character_Controller.instance.canMove = true;
+            Main_Camera_Controller.instance.ChangeFollowStatus(true);
         }
     }
 
@@ -124,8 +123,7 @@ public class InGame_Menu_Controller : MonoBehaviour
         currentCamera = 2;
         IndexChange(currentCamera);
 
-        Main_Character_Controller.instance.canMove = false;
-        Main_Character_Controller.instance.canRotate = false;
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
     }
 
     /// <summary>
@@ -137,7 +135,6 @@ public class InGame_Menu_Controller : MonoBehaviour
         currentCamera = 4;
         IndexChange(currentCamera);
 
-        Main_Character_Controller.instance.canMove = false;
-        Main_Character_Controller.instance.canRotate = false;
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
     }
 }
