@@ -77,12 +77,24 @@ public class Main_Character_Controller : MonoBehaviour
             }
 
             if (hit.collider.gameObject.tag == "MenuChair")
+            {
                 isLookingAtChair = true;
+                if (Keyboard.current.fKey.wasPressedThisFrame) //for test
+                {
+                    Dialogue_System_Controller.instance.GetDialogueInfo(0, 3);
+                }
+            }
             else if (hit.collider.gameObject.tag != "MenuChair")
                 isLookingAtChair = false;
 
             if (hit.collider.gameObject.tag == "MenuLibrary")
+            {
                 isLookingAtLibrary = true;
+                if (Keyboard.current.fKey.wasPressedThisFrame) //for test
+                {
+                    Dialogue_System_Controller.instance.GetDialogueInfo(4, 7);
+                }
+            }
             else if (hit.collider.gameObject.tag != "MenuLibrary")
                 isLookingAtLibrary = false;
 

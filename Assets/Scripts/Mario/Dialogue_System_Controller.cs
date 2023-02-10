@@ -14,33 +14,47 @@ public class Dialogue_System_Controller : MonoBehaviour
     bool dialogueOnGoing;
     [SerializeField] bool isTyping;
     int rangeMaxLocal;
-    [SerializeField] bool hasChangedSentence;
-    [SerializeField] bool coroutineRunning;
+    public string[] names;
+    public TextMeshProUGUI characterName;
+    public GameObject dialogueParent;
+
+    public static Dialogue_System_Controller instance;
+
 
     void Start()
     {
-        coroutineRunning = false;
+        if (instance == null)
+            Dialogue_System_Controller.instance = this;
+        else
+            Destroy(this);
+
         timeBetweenDialogues = 2.5f;
-        dialogueSpeed = 0.05f;
+        dialogueSpeed = 0.022f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        /*if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             GetDialogueInfo(0, 3);
-        }
+        }*/
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             NextSentence(rangeMaxLocal);
         }
+
+        if (!dialogueOnGoing)
+            dialogueParent.SetActive(false);
+        else
+            dialogueParent.SetActive(true);
     }
 
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
         rangeMaxLocal = rangeMax;
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
 
         if (!dialogueOnGoing)
             StartDialogue(rangeMin);
@@ -63,12 +77,12 @@ public class Dialogue_System_Controller : MonoBehaviour
             if (Index > rangeMax)
             {
                 dialogueOnGoing = false;
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }
             else
             {
                 if (Index < sentences.Length)
                 {
-                    hasChangedSentence = true;
                     dialogueText.text = "";
                     StartCoroutine(WriteSentence());
                 }
@@ -78,16 +92,16 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
-                hasChangedSentence = true;
                 dialogueOnGoing = false;
             }
             else
             {
-                if (Index < sentences.Length)
+                dialogueText.text = "";
+                char[] temp = sentences[Index].ToCharArray();
+                isTyping = false;
+                for (int i = 1; i < temp.Length; i++)
                 {
-                    hasChangedSentence = true;
-                    isTyping = false;
-                    dialogueText.text = sentences[Index];
+                    dialogueText.text += temp[i];
                 }
             }
         }
@@ -101,7 +115,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (i == 0)
             {
-
+                characterName.text = names[int.Parse(Characters[0].ToString())];
             }
             else
             {
@@ -109,26 +123,11 @@ public class Dialogue_System_Controller : MonoBehaviour
                 yield return new WaitForSeconds(dialogueSpeed);
                 if (!isTyping)
                 {
-                    hasChangedSentence = true;
                     break;
                 }
             }
         }
-
-        /*foreach (char Character in Characters)
-        {
-            dialogueText.text += Character;
-            yield return new WaitForSeconds(dialogueSpeed);
-            if (!isTyping)
-            {
-                hasChangedSentence = true;
-                break;
-            }
-        }*/
-
         Index++;
         isTyping = false; 
     }
-
-    //HOLA QUE TAL
 }

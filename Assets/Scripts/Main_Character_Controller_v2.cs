@@ -30,6 +30,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         canMove = true; canRotate = true;
         spawn = transform.parent.GetChild(1);
         mainCamera = transform.GetChild(0).gameObject;
+        _controls = new Controlls();    //variable to keep track of the controlls there are used this time
+        _controls.CharacterControl.Enable();
 
         transform.position = spawn.position; transform.rotation = spawn.rotation; 
     }
