@@ -62,6 +62,33 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back_Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e0b9282-dad1-4ecf-b49a-4a0be63bbb16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""X_Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9830a23-1014-442e-b02e-4a0880f90f11"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Y_Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""076f53e3-1d66-400e-8fb0-e654f556bedb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -222,7 +249,7 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""74f2b9a5-e5ca-42b7-aa9c-0b8ef3099bee"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -251,6 +278,61 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                     ""action"": ""Menu_Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87af5050-192c-4e6d-92f5-5300a00f79e8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9666910e-a0ab-4da2-a132-998ddb4593ed"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6752b76-01dd-4478-a02e-92f5d3d24624"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""X_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2717a1d-fc93-4a94-bd89-b1f6d1e06729"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""X_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e58b601a-2228-4225-8a10-18b5266f1a77"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +345,9 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         m_CharacterControl_Cam_Rotation = m_CharacterControl.FindAction("Cam_Rotation", throwIfNotFound: true);
         m_CharacterControl_Action_Button = m_CharacterControl.FindAction("Action_Button", throwIfNotFound: true);
         m_CharacterControl_Menu_Button = m_CharacterControl.FindAction("Menu_Button", throwIfNotFound: true);
+        m_CharacterControl_Back_Button = m_CharacterControl.FindAction("Back_Button", throwIfNotFound: true);
+        m_CharacterControl_X_Button = m_CharacterControl.FindAction("X_Button", throwIfNotFound: true);
+        m_CharacterControl_Y_Button = m_CharacterControl.FindAction("Y_Button", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +411,9 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Cam_Rotation;
     private readonly InputAction m_CharacterControl_Action_Button;
     private readonly InputAction m_CharacterControl_Menu_Button;
+    private readonly InputAction m_CharacterControl_Back_Button;
+    private readonly InputAction m_CharacterControl_X_Button;
+    private readonly InputAction m_CharacterControl_Y_Button;
     public struct CharacterControlActions
     {
         private @Controlls m_Wrapper;
@@ -334,6 +422,9 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         public InputAction @Cam_Rotation => m_Wrapper.m_CharacterControl_Cam_Rotation;
         public InputAction @Action_Button => m_Wrapper.m_CharacterControl_Action_Button;
         public InputAction @Menu_Button => m_Wrapper.m_CharacterControl_Menu_Button;
+        public InputAction @Back_Button => m_Wrapper.m_CharacterControl_Back_Button;
+        public InputAction @X_Button => m_Wrapper.m_CharacterControl_X_Button;
+        public InputAction @Y_Button => m_Wrapper.m_CharacterControl_Y_Button;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +446,15 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 @Menu_Button.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMenu_Button;
                 @Menu_Button.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMenu_Button;
                 @Menu_Button.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMenu_Button;
+                @Back_Button.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBack_Button;
+                @Back_Button.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBack_Button;
+                @Back_Button.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBack_Button;
+                @X_Button.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnX_Button;
+                @X_Button.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnX_Button;
+                @X_Button.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnX_Button;
+                @Y_Button.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
+                @Y_Button.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
+                @Y_Button.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -371,6 +471,15 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 @Menu_Button.started += instance.OnMenu_Button;
                 @Menu_Button.performed += instance.OnMenu_Button;
                 @Menu_Button.canceled += instance.OnMenu_Button;
+                @Back_Button.started += instance.OnBack_Button;
+                @Back_Button.performed += instance.OnBack_Button;
+                @Back_Button.canceled += instance.OnBack_Button;
+                @X_Button.started += instance.OnX_Button;
+                @X_Button.performed += instance.OnX_Button;
+                @X_Button.canceled += instance.OnX_Button;
+                @Y_Button.started += instance.OnY_Button;
+                @Y_Button.performed += instance.OnY_Button;
+                @Y_Button.canceled += instance.OnY_Button;
             }
         }
     }
@@ -381,5 +490,8 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         void OnCam_Rotation(InputAction.CallbackContext context);
         void OnAction_Button(InputAction.CallbackContext context);
         void OnMenu_Button(InputAction.CallbackContext context);
+        void OnBack_Button(InputAction.CallbackContext context);
+        void OnX_Button(InputAction.CallbackContext context);
+        void OnY_Button(InputAction.CallbackContext context);
     }
 }

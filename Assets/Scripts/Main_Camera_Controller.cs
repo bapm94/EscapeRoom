@@ -52,9 +52,10 @@ public class Main_Camera_Controller : MonoBehaviour
     public void ChangeFollowStatus(bool isFollowing)
     {
         isFollowingCharacter = isFollowing;
-        GameObject player = Main_Character_Controller.instance.gameObject;
-        if (isFollowingCharacter) { player.GetComponent<MeshRenderer>().enabled =true; }
-        else { player.GetComponent<MeshRenderer>().enabled = false; }
+        GameObject player = Main_Character_Controller_v2.instance.gameObject;
+        Main_Character_Controller_v2 v2 = player.GetComponent<Main_Character_Controller_v2>();
+        if (isFollowingCharacter) { player.GetComponent<MeshRenderer>().enabled =true; v2.canMove = true;  v2.canRotate = true; }
+        else { player.GetComponent<MeshRenderer>().enabled = false; v2.canMove = false; v2.canRotate = false; }
         
     }
 

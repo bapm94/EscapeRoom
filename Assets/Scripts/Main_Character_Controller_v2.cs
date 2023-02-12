@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Main_Character_Controller_v2 : MonoBehaviour
@@ -13,7 +14,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     [SerializeField] float walkSpeed = 1;
     float xRotation = 0f;       //Variable that keeps the rotation of the camera.
     private Controlls _controls;    //Acces to the controls through the new input system
-    GameObject mainCamera;
+    
     public bool canMove {get; set;}
     public bool canRotate { get; set; }
 
@@ -25,10 +26,44 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     GameObject PerceivedGO { get => perceivedGO;  }
     #endregion
 
+    #region Camera Variables
+
+    GameObject mainCamera;
+    public GameObject physicalMenu;
+
+    #endregion
+
+    #region Analizable Object Variables
+
+    private GameObject analizableObject;
+    private Vector3 analizableOriginalRotation;
+    private Vector3 analizableOriginalPosition;
+    private Vector3 analizableOriginalScale;
+    private Color defaultColor;
+    private bool defaultColorTaken = false;
+    Vector2 analizableObjectRotation = Vector2.zero;
+    Main_Character_Item_Analizer analizer;
+    bool isAnalizingOject;
+
+    #endregion
+
+
     bool isCollidingWithWall;
+
+    public static Main_Character_Controller_v2 instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (Main_Character_Controller_v2.instance == null)
+        {
+            Main_Character_Controller_v2.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        analizer = gameObject.GetComponent<Main_Character_Item_Analizer>();
         canMove = true; canRotate = true;
         spawn = transform.parent.GetChild(1);
         mainCamera = transform.GetChild(0).gameObject;
@@ -46,35 +81,61 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         if (canMove) { Movement(); }
         if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
+        LookFront();
+        if (isAnalizingOject) { Analizing(); }
 
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Wall")
-    //    {
-    //        isCollidingWithWall = true;
-    //    }
-    //}
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Wall")
-    //    {
-    //        isCollidingWithWall = false;
-    //    }
-    //}
 
     public bool LookFront()
     {
         bool isLookingSomething = false;
-
+        if (perceivedGO != null) { perceivedGO.layer = 6; }
         RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f))
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f) )
         {
-            isLookingSomething = true;
-            perceivedGO = hit.collider.gameObject;
+            if (hit.collider.gameObject.layer == 6)
+            {
+                isLookingSomething = true;
+                perceivedGO = hit.collider.gameObject;
+                if (perceivedGO.layer == 6)
+                {
+                    perceivedGO.layer = 8;
+                }
+            }            
         }
+        else { isLookingSomething = false;  perceivedGO = null; }
         return isLookingSomething;
+    }
+
+    private void OnAction_Button()
+    {
+        if (LookFront() && canMove)
+        {
+            if (perceivedGO.tag == "MenuChair")
+            {
+                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
+            }
+            if (perceivedGO.tag == "MenuLibrary")
+            {
+                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+            }
+            if (perceivedGO.tag == "Analizable")
+            {
+                StartAnalizing(perceivedGO);
+            }
+        }
+    }
+
+    private void OnBack_Button()
+    {
+        if (isAnalizingOject) { StopAnalizing(); }
+    }
+
+    private void OnX_Button()
+    {
+        Debug.Log("X");
+        if (isAnalizingOject) { analizableObject.transform.localEulerAngles = (Vector3.zero); }
     }
 
     #region Character Movement
@@ -91,11 +152,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         {
             transform.position = newPos;
         }
-        //if (!Physics.BoxCast(transform.position + Vector3.down * transform.position.y * 3 / 4, Vector3.one * 0.04f, Vector3.Cross((newPos - transform.position).normalized , transform.forward),  Quaternion.identity, GetComponent<CapsuleCollider>().radius + 0.4f))
-        //{
-        //    transform.position = newPos;
-        //}
-
+       
         //Debug.DrawRay(transform.position + Vector3.down * transform.position.y * 3 / 4, (newPos - transform.position), Color.green, 1f);
     }
     private void Rotation()
@@ -110,6 +167,33 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); //In this case what we rotate is the camera and not the whole character
 
         }
+    }
+
+    #endregion
+
+    #region Analizing Functions
+
+    public void StartAnalizing(GameObject GOtoAnalize)
+    {
+        canMove = false; canRotate = false; isAnalizingOject = true;
+        analizableObject = GOtoAnalize;
+        analizer.PositioningItem(GOtoAnalize);
+       
+    }
+    private void Analizing()
+    {
+        Vector2 rotations = (_controls.CharacterControl.Walk.ReadValue<Vector2>() * walkSpeed * Time.deltaTime * 20).normalized;
+        
+        //analizableObject.transform.Rotate(new Vector3(rotations.y , -1 * rotations.x, 0), Space.World);
+        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.up, - Time.deltaTime * rotations.x*100);
+        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.forward, -Time.deltaTime * rotations.y * 100);
+
+    }
+    private void StopAnalizing()
+    {
+        analizer.ReturnItem();
+        canMove = true; canRotate = true; isAnalizingOject = false;
+
     }
 
     #endregion

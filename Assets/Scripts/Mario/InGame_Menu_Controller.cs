@@ -46,7 +46,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     public void GoBackToPlayerCam()
     {
         if (currentCamera != 0)
-        {
+        {            
             isInCam = false;
             currentCamera = 0;
             IndexChange(currentCamera); //this is what changes the camera
@@ -55,7 +55,7 @@ public class InGame_Menu_Controller : MonoBehaviour
                 writtenButtons[i].interactable = false;
             }
 
-            if (Main_Character_Controller.instance != null)
+            if (Main_Camera_Controller.instance != null) 
             {
                 Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }

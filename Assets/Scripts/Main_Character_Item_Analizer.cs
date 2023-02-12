@@ -10,7 +10,7 @@ public class Main_Character_Item_Analizer : MonoBehaviour
     Quaternion targetsOriginalRotation;
     GameObject targetsOriginalParent;
     GameObject player;
-    GameObject analizingSpot;
+    public GameObject analizingSpot { get; set; }
     Main_Character_Controller playerController;
 
 
@@ -19,13 +19,7 @@ public class Main_Character_Item_Analizer : MonoBehaviour
     {
         player = transform.parent.gameObject;
         playerController = player.GetComponent<Main_Character_Controller>();
-        analizingSpot = transform.GetChild(0).transform.GetChild(0).gameObject;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        analizingSpot = transform.GetChild(0).GetChild(0).gameObject;
         
     }
 
@@ -50,8 +44,6 @@ public class Main_Character_Item_Analizer : MonoBehaviour
             targetObject.transform.SetParent(targetsOriginalParent.transform);
             targetObject.transform.SetPositionAndRotation(targetsOriginalPosition, targetsOriginalRotation);
             targetObject.transform.localScale = targetsOriginalScale;
-        }
-       
-        
+        } 
     }
 }

@@ -29,8 +29,8 @@ public class Main_Character_Controller : MonoBehaviour
     private Color defaultColor;
     private bool defaultColorTaken = false;
     Vector2 analizableObjectRotation = Vector2.zero;
-
     Main_Character_Item_Analizer analizer;
+
     public static Main_Character_Controller instance;
     // Start is called before the first frame update
     void Start()
