@@ -58,13 +58,15 @@ public class Main_Character_Controller : MonoBehaviour
             if (hit.collider.gameObject.tag != "Selectable" && defaultColorTaken )
             {
                 analizableObject.GetComponent<MeshRenderer>().material.color = defaultColor;
-                
-               
+                hit.collider.gameObject.layer = 0;
+                analizableObject.layer = 0;
+
                 analizableObject = null;
                 defaultColorTaken = false;
             }
             else if (hit.collider.gameObject.tag == "Selectable")
-            {                
+            {
+                hit.collider.gameObject.layer = 8;
                 analizableObject = hit.collider.gameObject;
                 if (!defaultColorTaken) 
                 {
@@ -107,6 +109,7 @@ public class Main_Character_Controller : MonoBehaviour
         if (!Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 15f) && defaultColorTaken )
         {            
             analizableObject.GetComponent<MeshRenderer>().material.color = defaultColor;
+            analizableObject.layer = 0;
             analizableObject.transform.eulerAngles = analizableOriginalRotation; 
             analizableObject = null;
             defaultColorTaken = false;

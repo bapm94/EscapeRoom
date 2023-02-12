@@ -41,24 +41,28 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        }
+    private void FixedUpdate()
+    {
         if (canMove) { Movement(); }
         if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
+
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            isCollidingWithWall = true;
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            isCollidingWithWall = false;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Wall")
+    //    {
+    //        isCollidingWithWall = true;
+    //    }
+    //}
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Wall")
+    //    {
+    //        isCollidingWithWall = false;
+    //    }
+    //}
 
     public bool LookFront()
     {

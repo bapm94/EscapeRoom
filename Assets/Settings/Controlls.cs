@@ -202,7 +202,7 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                     ""id"": ""dad21279-d540-4127-9fe8-666a3df0e1d5"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=0.44,y=0.44)"",
+                    ""processors"": ""ScaleVector2(x=0,y=0)"",
                     ""groups"": """",
                     ""action"": ""Cam_Rotation"",
                     ""isComposite"": false,

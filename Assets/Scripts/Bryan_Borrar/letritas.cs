@@ -12,31 +12,42 @@ public class letritas : MonoBehaviour
     public TextMeshProUGUI newText;
     char[] jeje;
     bool revelead = false;
-    List<bool> isVisible = new List<bool>();
+    //List<bool> isVisible = new List<bool>();
+    bool[] isVisible;
+    float[] valoresAlfa;
     private int totalLetters;
     float timer;
     bool canShow = true;
     [SerializeField] float timeBetweenLetter = 0.5f;
+    [SerializeField] float velocidad;
+    int letersShown = 0;
     // Start is called before the first frame update
     void Start()
     {
         textHolder = GetComponent<TextMeshProUGUI>();
         textHolder.UpdateVertexData();
         jeje = textHolder.text.ToCharArray();
-        
+        isVisible = new bool[jeje.Length];
+        valoresAlfa = new float[jeje.Length];
         for (int i = 0; i < jeje.Length; i++)
         {
             if (jeje[i].ToString() == " " || jeje[i].ToString() == "," || jeje[i].ToString() == ".")
             {
-                isVisible.Add(true);
-                newText.text += "<alpha=#FF>" + jeje[i].ToString();
+                //isVisible.Add(true);
+                isVisible[i] = true;
+                valoresAlfa[i] = 255;
+                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X")+">" + jeje[i].ToString();
+                letersShown++;
             }
             else
             {
-                isVisible.Add(false);
+                //isVisible.Add(false);
+                isVisible[i] = false;
                 totalLetters ++;
 
-                newText.text += "<alpha=#00>" + jeje[i].ToString();
+                valoresAlfa [i] = 16;
+
+                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
             }
             
         }
@@ -47,16 +58,42 @@ public class letritas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!canShow)
         {
             timer += Time.deltaTime;
-            if (timer >= timeBetweenLetter) { timer = 0; canShow = true; }            
-        }  
+            if (timer >= timeBetweenLetter) { timer = 0; canShow = true; }
+        }
         if (Keyboard.current.lKey.isPressed)
         {
             RevealLetter();
         }
+        if (letersShown != jeje.Length) { ImprimirTexto(); }
+        
+    }
 
+    private void ImprimirTexto()
+    {
+        letersShown = 0;
+        newText.text = "";
+        for (int i = 0; i < jeje.Length; i++)
+        {
+            if (isVisible[i] == false)
+            {
+                newText.text += "<alpha=#00>" + jeje[i].ToString();
+            }
+            else if (isVisible[i] && valoresAlfa[i] >= 255)
+            {
+                newText.text += "<alpha=#FF>" + jeje[i].ToString();
+                letersShown ++;
+            }
+            else if (isVisible[i] && valoresAlfa[i] < 256)
+            {
+                valoresAlfa[i] += Time.deltaTime * velocidad;
+                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
+            }            
+        }
+        Debug.Log("Se reimprimió el texto");
     }
 
     private void RevealLetter()
@@ -71,17 +108,6 @@ public class letritas : MonoBehaviour
             }
             isVisible[random] = true;
             totalLetters -= 1;
-            for (int i = 0; i < jeje.Length; i++)
-            {
-                if (isVisible[i] == false)
-                {
-                    newText.text += "<alpha=#00>" + jeje[i].ToString();
-                }
-                else
-                {
-                    newText.text += "<alpha=#FF>" + jeje[i].ToString();
-                }
-            }
             if (totalLetters == 0) { revelead = true; }
             canShow = false; timer = 0;
         }
