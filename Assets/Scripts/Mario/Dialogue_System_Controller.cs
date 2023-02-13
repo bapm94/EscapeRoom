@@ -11,12 +11,15 @@ public class Dialogue_System_Controller : MonoBehaviour
     [SerializeField] int Index = 0;
     public float dialogueSpeed;
     public float timeBetweenDialogues;
-    [SerializeField] bool dialogueOnGoing;
+    public bool dialogueOnGoing;
     [SerializeField] bool isTyping;
-    int rangeMaxLocal;
+    [SerializeField] int rangeMaxLocal;
     public string[] names;
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
+
+    //public AnimationClip fadeOut;
+    //Animation anim;
     
     Coroutine lastRoutine;
 
@@ -25,29 +28,23 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     void Start()
     {
-        if (instance == null)
-            Dialogue_System_Controller.instance = this;
-        else
-            Destroy(this);
+        /*anim = GetComponent<Animation>();
+        anim.clip = fadeOut;*/
+
+        dialogueParent.SetActive(false);
+
+        if (instance == null) { Dialogue_System_Controller.instance = this; }
+        else { Destroy(this); }
 
         timeBetweenDialogues = 2.5f;
         dialogueSpeed = 0.022f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!dialogueOnGoing)
-            dialogueParent.SetActive(false);
-        else
-            dialogueParent.SetActive(true);
-    }
     private void OnAction_Button()
     {
         if (dialogueOnGoing)
         {
             NextSentence(rangeMaxLocal);
-            dialogueParent.SetActive(true);
         }
     }
     
@@ -57,9 +54,11 @@ public class Dialogue_System_Controller : MonoBehaviour
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
 
         if (!dialogueOnGoing)
+        {
+            dialogueParent.SetActive(true);
             StartDialogue(rangeMin);
-        else
-            NextSentence(rangeMaxLocal);        
+        }
+        else { NextSentence(rangeMaxLocal); }
     }
 
     void StartDialogue(int rangeMin)
@@ -77,10 +76,12 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
+                //anim.Play();
                 dialogueOnGoing = false;
-                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+                dialogueParent.SetActive(false);
+                if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
             }
-            else if (Index < sentences.Length)
+            else
             {
                 dialogueText.text = "";
                 lastRoutine = null;
@@ -89,9 +90,12 @@ public class Dialogue_System_Controller : MonoBehaviour
         }
         else if (dialogueOnGoing && isTyping)
         {
-            if (Index > rangeMax)
+            if (Index > rangeMax) 
             {
-                dialogueOnGoing = false;
+                //anim.Play();
+                dialogueOnGoing = false; 
+                dialogueParent.SetActive(false);
+                if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
             }
             else
             {
@@ -108,6 +112,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         }
     }
 
+
     IEnumerator WriteSentence()
     {
         isTyping = true;
@@ -121,18 +126,12 @@ public class Dialogue_System_Controller : MonoBehaviour
             else
             {
                 dialogueText.text += Characters[i];
-                if (Characters[i].ToString() == ",")
-                    yield return new WaitForSeconds(dialogueSpeed + 0.35f);
-                else if (Characters[i].ToString() == ".")
-                    yield return new WaitForSeconds(dialogueSpeed + 0.5f);
-                else
-                    yield return new WaitForSeconds(dialogueSpeed);
 
-
-                if (!isTyping)
-                {
-                    break;
-                }
+                if (Characters[i].ToString() == ",") { yield return new WaitForSeconds(dialogueSpeed + 0.35f); }
+                else if (Characters[i].ToString() == ".") { yield return new WaitForSeconds(dialogueSpeed + 0.5f); }  
+                else { yield return new WaitForSeconds(dialogueSpeed); }
+                    
+                if (!isTyping) { break; }
             }
         }
         Index++;

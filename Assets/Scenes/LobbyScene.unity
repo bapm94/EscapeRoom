@@ -2620,6 +2620,7 @@ GameObject:
   - component: {fileID: 1575498561}
   - component: {fileID: 1575498562}
   - component: {fileID: 1575498563}
+  - component: {fileID: 1575498564}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2827,6 +2828,7 @@ MonoBehaviour:
   timeBetweenDialogues: 0
   dialogueOnGoing: 0
   isTyping: 0
+  rangeMaxLocal: 0
   names:
   - Alice
   - Dr. Jekyll
@@ -2863,6 +2865,21 @@ MonoBehaviour:
   m_DefaultActionMap: CharacterControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!111 &1575498564
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575498554}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1586766085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3080,7 @@ MonoBehaviour:
   turnSpeed: 1
   walkSpeed: 3
   physicalMenu: {fileID: 1575498554}
+  isAnalizingOject: 0
 --- !u!1 &1654113143
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,6 +4054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992577666}
+  - component: {fileID: 1992577667}
   m_Layer: 5
   m_Name: DialogueParent
   m_TagString: Untagged
@@ -4067,6 +4086,26 @@ RectTransform:
   m_AnchoredPosition: {x: -145.91, y: -129.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1992577667
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992577665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65e42fb12a304c0429ee48c5f6e5f8fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1998447166
 GameObject:
   m_ObjectHideFlags: 0
