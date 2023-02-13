@@ -17,9 +17,6 @@ public class Dialogue_System_Controller : MonoBehaviour
     public string[] names;
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
-
-    //public AnimationClip fadeOut;
-    //Animation anim;
     
     Coroutine lastRoutine;
 
@@ -28,9 +25,6 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     void Start()
     {
-        /*anim = GetComponent<Animation>();
-        anim.clip = fadeOut;*/
-
         dialogueParent.SetActive(false);
 
         if (instance == null) { Dialogue_System_Controller.instance = this; }
@@ -76,10 +70,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
-                //anim.Play();
-                dialogueOnGoing = false;
-                dialogueParent.SetActive(false);
-                if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
+                DissapearDialogueBox();
             }
             else
             {
@@ -92,10 +83,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax) 
             {
-                //anim.Play();
-                dialogueOnGoing = false; 
-                dialogueParent.SetActive(false);
-                if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
+                DissapearDialogueBox();
             }
             else
             {
@@ -112,6 +100,12 @@ public class Dialogue_System_Controller : MonoBehaviour
         }
     }
 
+    void DissapearDialogueBox()
+    {
+        dialogueOnGoing = false;
+        dialogueParent.SetActive(false);
+        if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
+    }
 
     IEnumerator WriteSentence()
     {
