@@ -43,7 +43,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private bool defaultColorTaken = false;
     Vector2 analizableObjectRotation = Vector2.zero;
     Main_Character_Item_Analizer analizer;
-    bool isAnalizingOject;
+    public bool isAnalizingOject;
 
     #endregion
 
@@ -144,7 +144,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnBack_Button()
     {
-        if (isAnalizingOject) { StopAnalizing(); }
+        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
     }
 
     private void OnX_Button()
@@ -207,7 +207,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void StopAnalizing()
     {
         analizer.ReturnItem();
-        canMove = true; canRotate = true; isAnalizingOject = false;
+        //canMove = true; canRotate = true;
+        Main_Camera_Controller.instance.ChangeFollowStatus(true);
+        isAnalizingOject = false;
 
     }
 
