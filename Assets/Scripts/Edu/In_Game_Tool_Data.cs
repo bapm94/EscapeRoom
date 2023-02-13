@@ -9,4 +9,7 @@ public class In_Game_Tool_Data : ScriptableObject
     public Vector4 initialQuaternionRotation;
     public Sprite sprite;
     public bool isSprite;
+    public bool hasDialog;
+    public int dialogBeginning;
+    public int dialogEnd;
 }
