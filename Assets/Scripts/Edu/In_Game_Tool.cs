@@ -11,9 +11,9 @@ public class In_Game_Tool : MonoBehaviour
     Vector4 quaternionRotation;
     public Sprite sprite { get; set; }
     public bool isSprite { get; set; }
-    public bool hasDialog { get; set; }
-    public int dialogBeginning { get; set; }
-    public int dialogEnd { get; set; }
+    public bool hasDialogue { get; set; }
+    public int dialogueBeginning { get; set; }
+    public int dialogueEnd { get; set; }
 
     public void Start()
     {
@@ -21,5 +21,8 @@ public class In_Game_Tool : MonoBehaviour
         quaternionRotation = GameobjectData.initialQuaternionRotation;
         sprite = GameobjectData.sprite;
         isSprite = GameobjectData.isSprite;
+        hasDialogue = GameobjectData.hasDialog;
+        dialogueBeginning = GameobjectData.dialogBeginning;
+        dialogueEnd = GameobjectData.dialogEnd;
     }
 }

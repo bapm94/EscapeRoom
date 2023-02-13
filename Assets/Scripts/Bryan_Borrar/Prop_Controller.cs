@@ -16,7 +16,7 @@ public class Prop_Controller : MonoBehaviour
 
     In_Game_Tool info;
 
-    public static Prop_Controller instance;
+    //public static Prop_Controller instance;
     
 
     void Start()
@@ -34,23 +34,26 @@ public class Prop_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            PutInTempInventory();
-        }
-        
+
     }
 
     public void PutInTempInventory()
     {
-        _3DForm.SetActive(false);
-        _2DForm.SetActive(true);
         GameObject inventory = Camera.main.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
-        inventory.SetActive(true);
-        transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
-        transform.localPosition = Vector3.zero;
-        transform.localScale = Vector3.one * spriteScale;
-        info.isSprite = true;
-        _2DForm.GetComponent<Image>().sprite = info.sprite;
+        if (inventory.transform.childCount > inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count)
+        {
+            _3DForm.SetActive(false);
+            _2DForm.SetActive(true);
+
+            inventory.SetActive(true);
+            transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
+            inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
+            transform.localPosition = Vector3.zero;
+            transform.localScale = Vector3.one * spriteScale;
+            info.isSprite = true;
+            _2DForm.GetComponent<Image>().sprite = info.sprite;
+        }
+        else { Debug.Log("Invenario lleno"); }
+       
     }
 }
