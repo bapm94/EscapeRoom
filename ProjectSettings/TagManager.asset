@@ -9,6 +9,7 @@ TagManager:
   - MenuLibrary
   - Wall
   - Analizable
+  - TypeWriter
   layers:
   - Default
   - TransparentFX

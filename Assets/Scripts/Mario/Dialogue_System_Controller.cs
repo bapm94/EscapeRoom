@@ -8,7 +8,7 @@ public class Dialogue_System_Controller : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public string[] sentences;
-    int Index = 0;
+    [SerializeField] int Index = 0;
     public float dialogueSpeed;
     public float timeBetweenDialogues;
     [SerializeField] bool dialogueOnGoing;
@@ -52,8 +52,9 @@ public class Dialogue_System_Controller : MonoBehaviour
     }
     private void OnAction_Button()
     {
-        NextSentence(rangeMaxLocal);
+        if (dialogueOnGoing) { NextSentence(rangeMaxLocal); }
     }
+    
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
         rangeMaxLocal = rangeMax;
