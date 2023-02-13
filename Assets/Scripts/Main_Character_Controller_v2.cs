@@ -22,8 +22,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     #endregion
 
     #region Looking At X Variables
-    GameObject perceivedGO;
-    GameObject PerceivedGO { get => perceivedGO;  }
+    GameObject percievedGO;
+    GameObject PerceivedGO { get => percievedGO;  }
     #endregion
 
     #region Camera Variables
@@ -90,21 +90,21 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     public bool LookFront()
     {
         bool isLookingSomething = false;
-        if (perceivedGO != null) { perceivedGO.layer = 6; }
+        if (percievedGO != null) { percievedGO.layer = 6; }
         RaycastHit hit;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f) )
         {
             if (hit.collider.gameObject.layer == 6)
             {
                 isLookingSomething = true;
-                perceivedGO = hit.collider.gameObject;
-                if (perceivedGO.layer == 6)
+                percievedGO = hit.collider.gameObject;
+                if (percievedGO.layer == 6)
                 {
-                    perceivedGO.layer = 8;
+                    percievedGO.layer = 8;
                 }
             }            
         }
-        else { isLookingSomething = false;  perceivedGO = null; }
+        else { isLookingSomething = false;  percievedGO = null; }
         return isLookingSomething;
     }
 
@@ -112,23 +112,33 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         if (LookFront() && canMove)
         {
-            if (perceivedGO.tag == "MenuChair")
+            if (percievedGO.GetComponent<In_Game_Tool>() != null)
+            {
+                In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
+                Debug.Log(range.hasDialogue);
+                if (range.hasDialogue == true) 
+                {
+                    range.hasDialogue = false;
+                    Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
+                }
+            }
+            if (percievedGO.tag == "MenuChair")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
             }
-            if (perceivedGO.tag == "MenuLibrary")
+            if (percievedGO.tag == "MenuLibrary")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
             }
-            if (perceivedGO.tag == "Analizable")
+            if (percievedGO.tag == "Analizable")
             {
-                StartAnalizing(perceivedGO);
+                StartAnalizing(percievedGO);
             }
-            if (perceivedGO.tag == "TypeWriter")
+            if (percievedGO.tag == "TypeWriter")
             {
                 Dialogue_System_Controller.instance.GetDialogueInfo(4, 9);
-                perceivedGO.layer = 0;
-                perceivedGO.tag = "Untagged";
+                percievedGO.layer = 0;
+                percievedGO.tag = "Untagged";
 
             }
         }

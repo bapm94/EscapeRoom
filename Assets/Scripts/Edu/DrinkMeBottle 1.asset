@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2180e675cb44a614582c0acf81a2a51e, type: 3}
-  m_Name: DrinkMeBottle
+  m_Name: DrinkMeBottle 1
   m_EditorClassIdentifier: 
   initialPosition: {x: 0, y: 0, z: 0}
   initialQuaternionRotation: {x: 0, y: 0, z: 0, w: 0}
   sprite: {fileID: 0}
   isSprite: 0
-  hasDialog: 0
+  hasDialog: 1
   dialogBeginning: 0
-  dialogEnd: 0
+  dialogEnd: 3

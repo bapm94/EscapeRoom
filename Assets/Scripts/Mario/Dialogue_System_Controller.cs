@@ -37,16 +37,6 @@ public class Dialogue_System_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            GetDialogueInfo(0, 3);
-        }*/
-
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            
-        }
-
         if (!dialogueOnGoing)
             dialogueParent.SetActive(false);
         else
@@ -54,7 +44,11 @@ public class Dialogue_System_Controller : MonoBehaviour
     }
     private void OnAction_Button()
     {
-        if (dialogueOnGoing) { NextSentence(rangeMaxLocal); }
+        if (dialogueOnGoing)
+        {
+            NextSentence(rangeMaxLocal);
+            dialogueParent.SetActive(true);
+        }
     }
     
     public void GetDialogueInfo(int rangeMin, int rangeMax)
