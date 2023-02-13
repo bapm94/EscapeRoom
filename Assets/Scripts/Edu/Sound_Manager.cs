@@ -27,6 +27,7 @@ public class Sound_Manager : MonoBehaviour
         musicSlider.value = musicValue;
         effectsSlider.value = effectsValue;
         //AudioListener.volume = musicValue;
+        //AudioListener.volume = effectsValue;
     }
     private void Update()
     {
