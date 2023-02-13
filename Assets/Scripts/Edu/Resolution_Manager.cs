@@ -12,6 +12,8 @@ public class Resolution_Manager : MonoBehaviour
 
     private float currentRefreshRate;
     private int currentResolutionIndex = 0;
+
+    public TextMeshProUGUI resolutionText;
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -51,6 +53,7 @@ public class Resolution_Manager : MonoBehaviour
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, true);
+        resolutionText.text = Screen.width + " x " + Screen.height;
     }
     //[System.Serializable]
     //public class ResolutionItem
