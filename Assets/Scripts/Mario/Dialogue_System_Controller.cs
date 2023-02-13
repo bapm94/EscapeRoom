@@ -17,9 +17,6 @@ public class Dialogue_System_Controller : MonoBehaviour
     public string[] names;
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
-
-    public AnimationClip fadeOut;
-    Animation anim;
     
     Coroutine lastRoutine;
 
@@ -28,9 +25,6 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animation>();
-        anim.clip = fadeOut;
-
         dialogueParent.SetActive(false);
 
         if (instance == null) { Dialogue_System_Controller.instance = this; }
@@ -76,8 +70,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
-                anim.Play();
-                Invoke("DissapearDialogueBox", 0.8f);
+                DissapearDialogueBox();
             }
             else
             {
@@ -90,8 +83,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax) 
             {
-                anim.Play();
-                Invoke("DissapearDialogueBox", 0.8f);
+                DissapearDialogueBox();
             }
             else
             {
