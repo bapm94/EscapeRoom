@@ -13,7 +13,7 @@ public class Resolution_Manager : MonoBehaviour
     private float currentRefreshRate;
     private int currentResolutionIndex = 0;
 
-    public TextMeshProUGUI resolutionText;
+    //public TextMeshProUGUI resolutionText;
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -54,7 +54,7 @@ public class Resolution_Manager : MonoBehaviour
     {
 
         int resolutionIndex = resolutionDropdown.value;
-        resolutionText.text = Screen.width + " x " + Screen.height;
+        //resolutionText.text = Screen.width + " x " + Screen.height;
         Resolution resolution = filteredResolutions[resolutionIndex];
         // (resolutionIndex < filteredResolutions.Count)Screen.fullScreen = false;
         bool screenIsFull = false;

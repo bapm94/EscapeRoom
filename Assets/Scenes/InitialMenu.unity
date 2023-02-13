@@ -1876,7 +1876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &718965696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5772,7 +5772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 2012898774}
-  resolutionText: {fileID: 718965696}
 --- !u!224 &1816102323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6808,8 +6807,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1816102322}
         m_TargetAssemblyTypeName: Resolution_Manager, Assembly-CSharp
-        m_MethodName: SetResolution
-        m_Mode: 0
+        m_MethodName: AssignResolution
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
