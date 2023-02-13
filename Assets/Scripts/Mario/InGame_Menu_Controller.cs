@@ -9,6 +9,9 @@ public class InGame_Menu_Controller : MonoBehaviour
 {
     public CinemachineVirtualCamera[] cams; //different cameras to choose from
     public Button[] writtenButtons; //buttons used in the book
+    public GameObject[] levels;
+    [SerializeField] int currentLevel;
+    [SerializeField] Animator animator;
 
     int currentCamera; //current camera being used
     bool isInCam; //true if player is currently using any of the menu cameras
@@ -32,12 +35,10 @@ public class InGame_Menu_Controller : MonoBehaviour
                 writtenButtons[i].interactable = true;
             }
         }
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            GoBackToPlayerCam();
-        }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) { GoBackToPlayerCam(); }
 
-        NavigateMenu();
+        NavigateLevelMenu();
+        NavigateMenu();      
     }
 
     /// <summary>
@@ -55,9 +56,38 @@ public class InGame_Menu_Controller : MonoBehaviour
                 writtenButtons[i].interactable = false;
             }
 
-            if (Main_Camera_Controller.instance != null) 
+            if (Main_Camera_Controller.instance != null) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
+        }
+    }
+
+    public void NavigateLevelMenu()
+    {
+        if (isInCam && currentCamera == 4)
+        {
+            if (Keyboard.current.aKey.wasPressedThisFrame)
             {
-                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+                if (currentLevel < 3) { currentLevel++; }
+                else { currentLevel = 0; }
+                BookCheck();
+            }
+            if (Keyboard.current.dKey.wasPressedThisFrame)
+            {
+                if (currentLevel > 0) { currentLevel--; }
+                else { currentLevel = 3; }
+                BookCheck();
+            }
+        }
+    }
+
+    public void BookCheck()
+    {
+        animator.SetTrigger("Book" + (currentLevel+1).ToString());
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].GetComponent<Chosen_Level>().DeactivateBook();
+            if (i == currentLevel)
+            {
+                levels[i].GetComponent<Chosen_Level>().ActivateBook();
             }
         }
     }
@@ -76,8 +106,7 @@ public class InGame_Menu_Controller : MonoBehaviour
                     currentCamera = 3;
                     IndexChange(currentCamera);
                 }
-                else if (currentCamera == 1)
-                    currentCamera = 2;
+                else if (currentCamera == 1) { currentCamera = 2; }
                 IndexChange(currentCamera);
             }
             if (Keyboard.current.aKey.wasPressedThisFrame)
@@ -109,10 +138,8 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
         for (int i = 0; i < writtenButtons.Length; i++)
         {
-            if (menuIndexValue == 1)
-                writtenButtons[i].interactable = true;
-            else
-                writtenButtons[i].interactable = false;
+            if (menuIndexValue == 1) { writtenButtons[i].interactable = true; }
+            else { writtenButtons[i].interactable = false; }
         }
         writtenButtons[0].Select();
     }
@@ -134,8 +161,10 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void GoIntoLevelMenu()
     {
+        currentLevel = 0;
         isInCam = true;
         currentCamera = 4;
+        BookCheck();
         IndexChange(currentCamera);
 
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
