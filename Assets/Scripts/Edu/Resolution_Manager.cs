@@ -42,6 +42,7 @@ public class Resolution_Manager : MonoBehaviour
             {
                 currentResolutionIndex = i;
             }
+            options.Add(resolutionOption);
         }
 
         resolutionDropdown.AddOptions(options);
@@ -49,11 +50,18 @@ public class Resolution_Manager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
     
-    public void SetResolution(int resolutionIndex)
+    public void AssignResolution() //int resolutionIndex
     {
-        Resolution resolution = filteredResolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, true);
+
+        int resolutionIndex = resolutionDropdown.value;
         resolutionText.text = Screen.width + " x " + Screen.height;
+        Resolution resolution = filteredResolutions[resolutionIndex];
+        // (resolutionIndex < filteredResolutions.Count)Screen.fullScreen = false;
+        bool screenIsFull = false;
+        if (resolutionIndex == filteredResolutions.Count - 1) screenIsFull = true;
+        Screen.SetResolution(resolution.width, resolution.height, screenIsFull);
+
+        
     }
     //[System.Serializable]
     //public class ResolutionItem

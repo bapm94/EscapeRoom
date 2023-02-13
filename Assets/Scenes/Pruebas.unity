@@ -1398,6 +1398,7 @@ MonoBehaviour:
   turnSpeed: 1
   walkSpeed: 10
   physicalMenu: {fileID: 0}
+  isAnalizingOject: 0
 --- !u!1 &752480666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,7 +1414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &752480667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1519,6 +1520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd0c8c446ea10b488cda7078664ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openByPlayer: 0
+  timeToClose: 3
   prop:
   - {fileID: 2047335116}
   propsGrabbed: []
