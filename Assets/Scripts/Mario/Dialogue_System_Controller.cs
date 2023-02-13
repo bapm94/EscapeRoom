@@ -17,6 +17,8 @@ public class Dialogue_System_Controller : MonoBehaviour
     public string[] names;
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
+    
+    Coroutine lastRoutine;
 
     public static Dialogue_System_Controller instance;
 
@@ -70,7 +72,8 @@ public class Dialogue_System_Controller : MonoBehaviour
     {
         Index = rangeMin;
         dialogueText.text = "";
-        StartCoroutine(WriteSentence());
+        lastRoutine = null;
+        lastRoutine = StartCoroutine(WriteSentence());
         dialogueOnGoing = true;
     }
 
@@ -83,13 +86,11 @@ public class Dialogue_System_Controller : MonoBehaviour
                 dialogueOnGoing = false;
                 Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }
-            else
+            else if (Index < sentences.Length)
             {
-                if (Index < sentences.Length)
-                {
-                    dialogueText.text = "";
-                    StartCoroutine(WriteSentence());
-                }
+                dialogueText.text = "";
+                lastRoutine = null;
+                lastRoutine = StartCoroutine(WriteSentence());
             }
         }
         else if (dialogueOnGoing && isTyping)
@@ -100,6 +101,7 @@ public class Dialogue_System_Controller : MonoBehaviour
             }
             else
             {
+                StopCoroutine(lastRoutine);
                 dialogueText.text = "";
                 char[] temp = sentences[Index].ToCharArray();
                 isTyping = false;
@@ -107,6 +109,7 @@ public class Dialogue_System_Controller : MonoBehaviour
                 {
                     dialogueText.text += temp[i];
                 }
+                Index++;
             }
         }
     }
