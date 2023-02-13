@@ -134,11 +134,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             {
                 StartAnalizing(percievedGO);
             }
-            if (percievedGO.tag == "TypeWriter")
+            if (percievedGO.tag == "Tool")
             {
-                Dialogue_System_Controller.instance.GetDialogueInfo(4, 9);
-                percievedGO.layer = 0;
-                percievedGO.tag = "Untagged";
+                percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
 
             }
         }
