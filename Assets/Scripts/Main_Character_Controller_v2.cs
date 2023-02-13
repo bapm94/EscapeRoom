@@ -124,6 +124,13 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             {
                 StartAnalizing(perceivedGO);
             }
+            if (perceivedGO.tag == "TypeWriter")
+            {
+                Dialogue_System_Controller.instance.GetDialogueInfo(4, 9);
+                perceivedGO.layer = 0;
+                perceivedGO.tag = "Untagged";
+
+            }
         }
     }
 

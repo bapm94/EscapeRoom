@@ -11,7 +11,7 @@ public class Dialogue_System_Controller : MonoBehaviour
     int Index = 0;
     public float dialogueSpeed;
     public float timeBetweenDialogues;
-    bool dialogueOnGoing;
+    [SerializeField] bool dialogueOnGoing;
     [SerializeField] bool isTyping;
     int rangeMaxLocal;
     public string[] names;
@@ -42,7 +42,7 @@ public class Dialogue_System_Controller : MonoBehaviour
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            NextSentence(rangeMaxLocal);
+            
         }
 
         if (!dialogueOnGoing)
@@ -50,7 +50,10 @@ public class Dialogue_System_Controller : MonoBehaviour
         else
             dialogueParent.SetActive(true);
     }
-
+    private void OnAction_Button()
+    {
+        NextSentence(rangeMaxLocal);
+    }
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
         rangeMaxLocal = rangeMax;
