@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 public class Main_Character_Controller_v2 : MonoBehaviour
 {
     #region Original State Variables
@@ -47,6 +48,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     #endregion
 
+
+    
     #region Temporal Inventory
     [SerializeField] Inventory_Temp inventoryTemp;
     #endregion
@@ -159,8 +162,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnY_Button()
     {
-        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)
+        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)  //If not already open, opens te inventory
         {
+            Camera.main.GetComponent<Volume>().enabled = true;
             Main_Camera_Controller.instance.ChangeFollowStatus(false);
             inventoryTemp.openByPlayer = true;
             inventoryTemp.gameObject.SetActive(true);
@@ -168,6 +172,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         }
         else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
         {
+            Camera.main.GetComponent<Volume>().enabled = false;
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
             inventoryTemp.CloseInventory();
         }
@@ -185,7 +190,12 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         var newPos = transform.position + move; // The movement done at the end of calculations
         var wallDetection = (newPos - transform.position).normalized;
         RaycastHit hit;
-        if (!Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f, 3) && !isCollidingWithWall)
+        if (Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f, 8) /*&& isCollidingWithWall*/)
+        {
+            Debug.Log("wall");
+            
+        }
+        else
         {
             transform.position = newPos;
         }
