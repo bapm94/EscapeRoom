@@ -17,8 +17,13 @@ public class InGame_Menu_Controller : MonoBehaviour
     int currentCamera; //current camera being used
     bool isInCam; //true if player is currently using any of the menu cameras
 
+    public static InGame_Menu_Controller instance;
+
     private void Start()
     {
+        if (instance == null) { InGame_Menu_Controller.instance = this; }
+        else { Destroy(this); }
+
         //disables buttons, sets camera to player
         for (int i = 0; i < writtenButtons.Length; i++)
         {
@@ -36,12 +41,29 @@ public class InGame_Menu_Controller : MonoBehaviour
                 writtenButtons[i].interactable = true;
             }
         }
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) { GoBackToPlayerCam(); }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) 
+        { 
+            if (currentCamera == 5)
+            {
+                animator.SetTrigger("Book1Back");
+                StartCoroutine(BackToLevelMenu());
+            }
+            else { GoBackToPlayerCam(); }
+        }
 
         NavigateLevelMenu();
         NavigateMenu();
 
         canPress += Time.deltaTime; //timer from NavigateLevelMenu()
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen")) 
+        { 
+            canPress = -1.0f;
+            animator.ResetTrigger("Book1Play");
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen -1"))
+        {
+            animator.ResetTrigger("Book1Back");
+        }
     }
 
     /// <summary>
@@ -54,6 +76,8 @@ public class InGame_Menu_Controller : MonoBehaviour
             isInCam = false;
             currentCamera = 0;
             IndexChange(currentCamera); //this is what changes the camera
+            currentLevel = 0;
+            animator.Play("BookIdle");
             for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
             {
                 writtenButtons[i].interactable = false;
@@ -102,11 +126,15 @@ public class InGame_Menu_Controller : MonoBehaviour
         animator.SetTrigger("Book" + (currentLevel+1).ToString());
         for (int i = 0; i < levels.Length; i++)
         {
-            levels[i].GetComponent<Chosen_Level>().DeactivateBook();
-            if (i == currentLevel)
-            {
-                levels[i].GetComponent<Chosen_Level>().ActivateBook();
+            if (i == currentLevel) { levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = true; }
+            if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive == true) { levels[i].GetComponent<Chosen_Level>().Invoke("TextSlide", 0.8f); }
+
+            if (i != currentLevel) 
+            { 
+                levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false; 
+                levels[i].GetComponent<Chosen_Level>().ActiveCheck(); 
             }
+
         }
     }
 
@@ -139,6 +167,32 @@ public class InGame_Menu_Controller : MonoBehaviour
                     currentCamera = 1;
                     IndexChange(currentCamera);
                 }
+            }
+        }
+    }
+
+    IEnumerator BackToLevelMenu()
+    {
+        yield return new WaitForSeconds(1.0f);
+        currentCamera = 4;
+        IndexChange(currentCamera);
+        StartCoroutine(ReturnText());
+
+    }
+
+    IEnumerator ReturnText()
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive && currentCamera == 4)
+            {
+                yield return new WaitForSeconds(0.5f);
+                levels[i].GetComponent<Chosen_Level>().TextSlide();
+            }
+            else if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive && currentCamera == 5)
+            {
+                levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false;
+                levels[i].GetComponent<Chosen_Level>().ActiveCheck();
             }
         }
     }
@@ -187,5 +241,26 @@ public class InGame_Menu_Controller : MonoBehaviour
         IndexChange(currentCamera);
 
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
+    }
+
+    public void OnAction_Button()
+    {
+        if (isInCam && currentCamera == 4 && canPress > 2.0f)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive)
+                {
+                    levels[i].GetComponent<Chosen_Level>().BookSelected();
+                }
+                Invoke("LiterallyWait", 0.75f);
+            }
+        }
+    }
+
+    void LiterallyWait()
+    {
+        currentCamera = 5;
+        IndexChange(currentCamera);
     }
 }

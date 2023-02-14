@@ -69,10 +69,32 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: LevelCamera
+    m_To: ChosenLevelCamera
+    m_Blend:
+      m_Style: 5
+      m_Time: 1
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: ChosenLevelCamera
+    m_To: LevelCamera
+    m_Blend:
+      m_Style: 5
+      m_Time: 1
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: LevelCamera
     m_To: '**ANY CAMERA**'
     m_Blend:
-      m_Style: 4
-      m_Time: 0.9
+      m_Style: 5
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
