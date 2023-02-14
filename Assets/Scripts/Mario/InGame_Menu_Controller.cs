@@ -12,6 +12,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     public GameObject[] levels;
     [SerializeField] int currentLevel;
     [SerializeField] Animator animator;
+    float canPress;
 
     int currentCamera; //current camera being used
     bool isInCam; //true if player is currently using any of the menu cameras
@@ -38,7 +39,9 @@ public class InGame_Menu_Controller : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame) { GoBackToPlayerCam(); }
 
         NavigateLevelMenu();
-        NavigateMenu();      
+        NavigateMenu();
+
+        canPress += Time.deltaTime; //timer from NavigateLevelMenu()
     }
 
     /// <summary>
@@ -60,27 +63,42 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// navigation throughout the level menu and delay between inputs to avoid bugging
+    /// </summary>
     public void NavigateLevelMenu()
     {
         if (isInCam && currentCamera == 4)
         {
-            if (Keyboard.current.aKey.wasPressedThisFrame)
+            if (canPress > 1.5f)
             {
-                if (currentLevel < 3) { currentLevel++; }
-                else { currentLevel = 0; }
-                BookCheck();
-            }
-            if (Keyboard.current.dKey.wasPressedThisFrame)
-            {
-                if (currentLevel > 0) { currentLevel--; }
-                else { currentLevel = 3; }
-                BookCheck();
+                if (Keyboard.current.aKey.wasPressedThisFrame)
+                {
+                    if (currentLevel < 3) { currentLevel++; }
+                    else { currentLevel = 0; }
+                    BookCheck();
+                    canPress = 0.0f;
+                }
+                if (Keyboard.current.dKey.wasPressedThisFrame)
+                {
+                    if (currentLevel > 0) { currentLevel--; }
+                    else { currentLevel = 3; }
+                    BookCheck();
+                    canPress = 0.0f;
+                }
             }
         }
     }
 
+    /// <summary>
+    /// checks which book should be displayed next
+    /// </summary>
     public void BookCheck()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            animator.ResetTrigger("Book" + (i+1));
+        }
         animator.SetTrigger("Book" + (currentLevel+1).ToString());
         for (int i = 0; i < levels.Length; i++)
         {
@@ -165,6 +183,7 @@ public class InGame_Menu_Controller : MonoBehaviour
         isInCam = true;
         currentCamera = 4;
         BookCheck();
+        canPress = 0.0f;
         IndexChange(currentCamera);
 
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
