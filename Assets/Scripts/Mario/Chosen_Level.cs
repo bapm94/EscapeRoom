@@ -8,11 +8,9 @@ public class Chosen_Level : MonoBehaviour
     public void ActivateBook()
     {
         if (!isCurrentlyActive) { isCurrentlyActive = true; }
-        Debug.Log(this.gameObject + " is active.");
     }
     public void DeactivateBook()
     {
         if (isCurrentlyActive) { isCurrentlyActive = false; }
-        Debug.Log(this.gameObject + " is NOT active.");
     }
 }
