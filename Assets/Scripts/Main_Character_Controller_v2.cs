@@ -200,8 +200,11 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         Vector2 rotations = (_controls.CharacterControl.Walk.ReadValue<Vector2>() * walkSpeed * Time.deltaTime * 20).normalized;
         
         //analizableObject.transform.Rotate(new Vector3(rotations.y , -1 * rotations.x, 0), Space.World);
-        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.up, - Time.deltaTime * rotations.x*100);
-        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.forward, -Time.deltaTime * rotations.y * 100);
+        var upAxis = analizer.analizingSpot.transform.TransformDirection(Vector3.up);
+        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, upAxis, - Time.deltaTime * rotations.x*100);
+        var rigthAxis = analizer.analizingSpot.transform.TransformDirection(Vector3.right);
+        //analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.forward, -Time.deltaTime * rotations.y * 100);
+        analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, rigthAxis, Time.deltaTime * rotations.y * 100);
 
     }
     private void StopAnalizing()
