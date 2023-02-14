@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory_Temp : MonoBehaviour
 {
@@ -67,7 +68,10 @@ public class Inventory_Temp : MonoBehaviour
     public void CloseInventory()
     {
         openByPlayer = false;
+        GetComponent<Button>().Select();
         LeanTween.moveLocalX(gameObject, -280, (animationTime / 10));
         LeanTween.delayedCall(0.6f, () => gameObject.SetActive(false));
+        
+        
     }
 }

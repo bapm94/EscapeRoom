@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Main_Character_Controller_v2 : MonoBehaviour
 {
     #region Original State Variables
@@ -164,6 +164,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             Main_Camera_Controller.instance.ChangeFollowStatus(false);
             inventoryTemp.openByPlayer = true;
             inventoryTemp.gameObject.SetActive(true);
+            inventoryTemp.gameObject.transform.GetChild(0).GetComponent<Button>().Select();
         }
         else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
         {

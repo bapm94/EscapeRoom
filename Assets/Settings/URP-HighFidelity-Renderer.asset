@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
   m_Name: SSAO
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
   m_Settings:
     Downsample: 0
@@ -75,10 +75,10 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
       type: 3}
   m_RendererFeatures:
+  - {fileID: 3920365493072567069}
   - {fileID: -2173359373936333495}
   - {fileID: -1878332245247344467}
-  - {fileID: 3920365493072567069}
-  m_RendererFeatureMap: 496d42132aadd6e1adc0de57c6d2eee51d1b4a1ca5ef6736
+  m_RendererFeatureMap: 1d1b4a1ca5ef6736496d42132aadd6e1adc0de57c6d2eee5
   m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: ScreenSpaceOutlines
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderPassEvent: 450
+  renderPassEvent: 550
   outlinesLayerMask:
     serializedVersion: 2
     m_Bits: 256
