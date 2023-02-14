@@ -350,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142234376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.53856, z: 0}
+  m_LocalPosition: {x: 0, y: 2.172, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 517094493}
   - component: {fileID: 517094492}
   - component: {fileID: 517094491}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -824,7 +824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517094489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.02, y: -3.46, z: 0.33}
+  m_LocalPosition: {x: -6.02, y: 0.4, z: 0.33}
   m_LocalScale: {x: 24.64, y: 8.02, z: 0.43}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 704998950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 1.54, z: -0}
-  m_LocalScale: {x: 1, y: 1.58, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 811257541}
@@ -1399,6 +1399,7 @@ MonoBehaviour:
   walkSpeed: 10
   physicalMenu: {fileID: 0}
   isAnalizingOject: 0
+  inventoryTemp: {fileID: 983426156}
 --- !u!1 &752480666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &752480667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1496,7 +1497,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1010928260}
   - {fileID: 1695386836}
@@ -1505,7 +1506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -280, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983426156
@@ -1522,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openByPlayer: 0
   timeToClose: 3
+  animationTime: 5
   prop:
   - {fileID: 2047335116}
   propsGrabbed: []
@@ -2479,7 +2481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456832629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.53856, z: 0}
+  m_LocalPosition: {x: 0, y: 2.172, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -47,6 +47,10 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     #endregion
 
+    #region Temporal Inventory
+    [SerializeField] Inventory_Temp inventoryTemp;
+    #endregion
+
 
     bool isCollidingWithWall;
 
@@ -73,10 +77,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         transform.position = spawn.position; transform.rotation = spawn.rotation; 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        }
+
     private void FixedUpdate()
     {
         if (canMove) { Movement(); }
@@ -85,7 +86,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         if (isAnalizingOject) { Analizing(); }
 
     }
-
 
     public bool LookFront()
     {
@@ -108,6 +108,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         return isLookingSomething;
     }
 
+    #region Player Actions
+
     private void OnAction_Button()
     {
         if (LookFront() && canMove)
@@ -115,13 +117,15 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             if (percievedGO.GetComponent<In_Game_Tool>() != null)
             {
                 In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
-                Debug.Log(range.hasDialogue);
+                //Debug.Log(range.hasDialogue);
                 if (range.hasDialogue == true) 
                 {
                     range.hasDialogue = false;
                     Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
                 }
             }
+
+
             if (percievedGO.tag == "MenuChair")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
@@ -153,6 +157,23 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         if (isAnalizingOject) { analizableObject.transform.localEulerAngles = (Vector3.zero); }
     }
 
+    private void OnY_Button()
+    {
+        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)
+        {
+            Main_Camera_Controller.instance.ChangeFollowStatus(false);
+            inventoryTemp.openByPlayer = true;
+            inventoryTemp.gameObject.SetActive(true);
+        }
+        else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
+        {
+            Main_Camera_Controller.instance.ChangeFollowStatus(true);
+            inventoryTemp.CloseInventory();
+        }
+    }
+
+    #endregion
+
     #region Character Movement
 
     private void Movement()
@@ -163,12 +184,10 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         var newPos = transform.position + move; // The movement done at the end of calculations
         var wallDetection = (newPos - transform.position).normalized;
         RaycastHit hit;
-        if (!Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f) && !isCollidingWithWall)
+        if (!Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f, 3) && !isCollidingWithWall)
         {
             transform.position = newPos;
         }
-       
-        //Debug.DrawRay(transform.position + Vector3.down * transform.position.y * 3 / 4, (newPos - transform.position), Color.green, 1f);
     }
     private void Rotation()
     {
@@ -192,28 +211,21 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         canMove = false; canRotate = false; isAnalizingOject = true;
         analizableObject = GOtoAnalize;
-        analizer.PositioningItem(GOtoAnalize);
-       
+        analizer.PositioningItem(GOtoAnalize);       
     }
     private void Analizing()
     {
         Vector2 rotations = (_controls.CharacterControl.Walk.ReadValue<Vector2>() * walkSpeed * Time.deltaTime * 20).normalized;
-        
-        //analizableObject.transform.Rotate(new Vector3(rotations.y , -1 * rotations.x, 0), Space.World);
         var upAxis = analizer.analizingSpot.transform.TransformDirection(Vector3.up);
         analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, upAxis, - Time.deltaTime * rotations.x*100);
         var rigthAxis = analizer.analizingSpot.transform.TransformDirection(Vector3.right);
-        //analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, Vector3.forward, -Time.deltaTime * rotations.y * 100);
         analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, rigthAxis, Time.deltaTime * rotations.y * 100);
-
     }
     private void StopAnalizing()
     {
-        analizer.ReturnItem();
-        //canMove = true; canRotate = true;
+        analizer.ReturnItem();        
         Main_Camera_Controller.instance.ChangeFollowStatus(true);
         isAnalizingOject = false;
-
     }
 
     #endregion
