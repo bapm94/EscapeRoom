@@ -20,20 +20,21 @@ public class Inventory_Temp : MonoBehaviour
     public GameObject[] prop;
     public List<GameObject> propsGrabbed = new List<GameObject>();
 
-    //public static Inventory_Temp instance;
+    public static Inventory_Temp instance;
+    
 
     void Start()
     {
         #region Singleton
 
-        //if (Inventory_Temp.instance == null)
-        //{
-        //    Inventory_Temp.instance = this;
-        //}
-        //else
-        //{
-        //    Destroy(this);
-        //}
+        if (Inventory_Temp.instance == null)
+        {
+            Inventory_Temp.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         #endregion
         for (int i = 0 ; i < prop.Length; i++)
         {
@@ -46,9 +47,12 @@ public class Inventory_Temp : MonoBehaviour
         InitialAnimation();
     }
 
-    private void InitialAnimation()
+    public void InitialAnimation()
     {
+        LeanTween.cancel(gameObject);
+        
         LeanTween.moveLocalX(gameObject, 0, animationTime / 10);
+        timer = 0;
     }
 
     private void Update()
@@ -62,16 +66,15 @@ public class Inventory_Temp : MonoBehaviour
                 CloseInventory();
             }
         }
-
-        
     }
     public void CloseInventory()
     {
+        LeanTween.cancel(gameObject);
         openByPlayer = false;
         GetComponent<Button>().Select();
-        LeanTween.moveLocalX(gameObject, -280, (animationTime / 10));
-        LeanTween.delayedCall(0.6f, () => gameObject.SetActive(false));
-        
-        
+        //var closingInventory = LeanTween.sequence();
+        //closingInventory.append( LeanTween.moveLocalX(gameObject, -280, (animationTime / 10)));
+        //closingInventory.append( LeanTween.delayedCall(animationTime, () => gameObject.SetActive(false)));
+        LeanTween.moveLocalX(gameObject, -280, (animationTime / 10)).setOnComplete(() => LeanTween.delayedCall(0.02f, () => gameObject.SetActive(false)));
     }
 }

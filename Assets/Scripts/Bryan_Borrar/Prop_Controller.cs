@@ -26,9 +26,7 @@ public class Prop_Controller : MonoBehaviour
         _3DForm = transform.GetChild(0).gameObject;
         _2DForm = transform.GetChild(1).gameObject;
         _2DForm.GetComponent<Image>().sprite = info.sprite;
-        _2DForm.SetActive(false);
-
-        
+        _2DForm.SetActive(false);        
     }
 
     // Update is called once per frame
@@ -39,13 +37,20 @@ public class Prop_Controller : MonoBehaviour
 
     public void PutInTempInventory()
     {
-        GameObject inventory = Camera.main.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        GameObject inventory = Inventory_Temp.instance.gameObject;
+        
         if (inventory.transform.childCount > inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count)
         {
             _3DForm.SetActive(false);
             _2DForm.SetActive(true);
-
-            inventory.SetActive(true);
+            if (!inventory.activeSelf)
+            {
+                inventory.SetActive(true);
+            }
+            else
+            {
+                inventory.GetComponent<Inventory_Temp>().InitialAnimation();
+            }
             transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
             inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
             transform.localPosition = Vector3.zero;
@@ -53,7 +58,6 @@ public class Prop_Controller : MonoBehaviour
             info.isSprite = true;
             _2DForm.GetComponent<Image>().sprite = info.sprite;
         }
-        else { Debug.Log("Invenario lleno"); }
-       
+        else { Debug.Log("Invenario lleno"); }       
     }
 }

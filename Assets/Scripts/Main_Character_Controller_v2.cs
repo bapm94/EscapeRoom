@@ -192,7 +192,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f, 8) /*&& isCollidingWithWall*/)
         {
-            Debug.Log("wall");
             
         }
         else
