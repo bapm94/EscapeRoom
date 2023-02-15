@@ -1060,7 +1060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318289934}
   m_LocalRotation: {x: -0.29116693, y: -0.22080097, z: -0.069258325, w: 0.92826295}
-  m_LocalPosition: {x: -5.497, y: 1.257, z: 4.916}
+  m_LocalPosition: {x: -5.42, y: 1.13, z: 4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4623,7 +4623,7 @@ MonoBehaviour:
   rangeMaxLocal: 0
   names:
   - Alice
-  - Dr. Jekyll
+  - Doctor
   characterName: {fileID: 645583310}
   dialogueParent: {fileID: 1992577665}
 --- !u!114 &1575498563
