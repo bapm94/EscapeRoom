@@ -93,7 +93,7 @@ public class letritas : MonoBehaviour
                 newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
             }            
         }
-        Debug.Log("Se reimprimió el texto");
+        
     }
 
     private void RevealLetter()

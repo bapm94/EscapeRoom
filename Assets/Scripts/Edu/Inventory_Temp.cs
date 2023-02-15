@@ -45,6 +45,7 @@ public class Inventory_Temp : MonoBehaviour
     private void OnEnable()
     {
         InitialAnimation();
+        if (!openByPlayer) { LeanTween.delayedCall(timeToClose, () => CloseInventory()); }
     }
 
     public void InitialAnimation()
@@ -55,26 +56,11 @@ public class Inventory_Temp : MonoBehaviour
         timer = 0;
     }
 
-    private void Update()
-    {
-        if (!openByPlayer)
-        {
-            timer += Time.deltaTime;
-            if (timer >= timeToClose)
-            {
-                timer = 0;
-                CloseInventory();
-            }
-        }
-    }
     public void CloseInventory()
     {
         LeanTween.cancel(gameObject);
         openByPlayer = false;
         GetComponent<Button>().Select();
-        //var closingInventory = LeanTween.sequence();
-        //closingInventory.append( LeanTween.moveLocalX(gameObject, -280, (animationTime / 10)));
-        //closingInventory.append( LeanTween.delayedCall(animationTime, () => gameObject.SetActive(false)));
         LeanTween.moveLocalX(gameObject, -280, (animationTime / 10)).setOnComplete(() => LeanTween.delayedCall(0.02f, () => gameObject.SetActive(false)));
     }
 }

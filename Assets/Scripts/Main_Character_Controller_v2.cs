@@ -87,7 +87,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
         LookFront();
         if (isAnalizingOject) { Analizing(); }
-
     }
 
     public bool LookFront()
@@ -120,15 +119,12 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             if (percievedGO.GetComponent<In_Game_Tool>() != null)
             {
                 In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
-                //Debug.Log(range.hasDialogue);
                 if (range.hasDialogue == true) 
                 {
                     range.hasDialogue = false;
                     Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
                 }
             }
-
-
             if (percievedGO.tag == "MenuChair")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
@@ -144,14 +140,13 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             if (percievedGO.tag == "Tool")
             {
                 percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
-
             }
         }
     }
 
     private void OnBack_Button()
     {
-        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
+        if (isAnalizingOject /*&& !Dialogue_System_Controller.instance.dialogueOnGoing*/) { StopAnalizing(); }
     }
 
     private void OnX_Button()
