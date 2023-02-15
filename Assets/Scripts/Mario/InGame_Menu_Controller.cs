@@ -48,7 +48,7 @@ public class InGame_Menu_Controller : MonoBehaviour
                 animator.SetTrigger("Book1Back");
                 StartCoroutine(BackToLevelMenu());
             }
-            else { GoBackToPlayerCam(); }
+            else { GoBackToPlayerCam(); BackWithBooks(); }
         }
 
         NavigateLevelMenu();
@@ -66,6 +66,14 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
     }
 
+    public void BackWithBooks()
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false;
+            levels[i].GetComponent<Chosen_Level>().ActiveCheck();
+        }
+    }
     /// <summary>
     /// gets camera back to player view
     /// </summary>
@@ -253,14 +261,9 @@ public class InGame_Menu_Controller : MonoBehaviour
                 {
                     levels[i].GetComponent<Chosen_Level>().BookSelected();
                 }
-                Invoke("LiterallyWait", 0.75f);
+                currentCamera = 5;
+                LeanTween.delayedCall(0.8f, () => IndexChange(currentCamera));
             }
         }
-    }
-
-    void LiterallyWait()
-    {
-        currentCamera = 5;
-        IndexChange(currentCamera);
     }
 }
