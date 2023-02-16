@@ -17,6 +17,7 @@ public class InGame_Menu_Controller : MonoBehaviour
 
     int currentCamera; //current camera being used
     bool isInCam; //true if player is currently using any of the menu cameras
+    bool canMove;
 
     public static InGame_Menu_Controller instance;
     private void Awake()
@@ -28,7 +29,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     }
     private void Start()
     {
-
+        canMove = true;
         if (instance == null) { InGame_Menu_Controller.instance = this; }
         else { Destroy(this); }
 
@@ -159,7 +160,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void NavigateMenu()
     {   
-        if (isInCam)
+        if (isInCam && canMove == true)
         {
             if (Keyboard.current.dKey.wasPressedThisFrame)
             {
@@ -273,5 +274,15 @@ public class InGame_Menu_Controller : MonoBehaviour
                 LeanTween.delayedCall(0.8f, () => IndexChange(currentCamera));
             }
         }
+    }
+
+    public void CanMove()
+    {
+        canMove = true;
+    }
+
+    public void CantMove()
+    {
+        canMove = false;
     }
 }
