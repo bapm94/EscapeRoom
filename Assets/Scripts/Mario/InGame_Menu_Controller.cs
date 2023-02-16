@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InGame_Menu_Controller : MonoBehaviour
 {
@@ -18,9 +19,16 @@ public class InGame_Menu_Controller : MonoBehaviour
     bool isInCam; //true if player is currently using any of the menu cameras
 
     public static InGame_Menu_Controller instance;
-
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name != "LobbyScene")
+        {
+            this.enabled = false;
+        }
+    }
     private void Start()
     {
+
         if (instance == null) { InGame_Menu_Controller.instance = this; }
         else { Destroy(this); }
 

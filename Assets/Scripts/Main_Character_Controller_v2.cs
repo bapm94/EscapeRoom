@@ -92,21 +92,25 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     public bool LookFront()
     {
         bool isLookingSomething = false;
-        if (percievedGO != null) { percievedGO.layer = 6; }
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f) )
-        {
-            if (hit.collider.gameObject.layer == 6)
+        if (canMove)
+        {            
+            if (percievedGO != null) { percievedGO.layer = 6; }
+            RaycastHit hit;
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f))
             {
-                isLookingSomething = true;
-                percievedGO = hit.collider.gameObject;
-                if (percievedGO.layer == 6)
+                if (hit.collider.gameObject.layer == 6)
                 {
-                    percievedGO.layer = 8;
+                    isLookingSomething = true;
+                    percievedGO = hit.collider.gameObject;
+                    if (percievedGO.layer == 6)
+                    {
+                        percievedGO.layer = 8;
+                    }
                 }
-            }            
+            }
+            else { isLookingSomething = false; percievedGO = null; }
         }
-        else { isLookingSomething = false;  percievedGO = null; }
+     
         return isLookingSomething;
     }
 
@@ -141,6 +145,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             {
                 percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
             }
+            percievedGO.layer = 6;
         }
     }
 
@@ -152,17 +157,28 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void OnX_Button()
     {
         Debug.Log("X");
-        if (isAnalizingOject) { analizableObject.transform.localEulerAngles = (Vector3.zero); }
+        if (isAnalizingOject)
+        {
+            analizableObject.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
+            if (controller != null)
+            {
+                analizableObject.transform.localEulerAngles = controller.AnalyzingRotation;
+            }
+            else
+            {
+                analizableObject.transform.localEulerAngles = (Vector3.zero);
+            }
+        }
     }
 
     private void OnY_Button()
     {
-        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)  //If not already open, opens te inventory
+        if (inventoryTemp != null && !inventoryTemp._parentRoot.activeSelf)  //If not already open, opens te inventory
         {
             Camera.main.GetComponent<Volume>().enabled = true;
             Main_Camera_Controller.instance.ChangeFollowStatus(false);
             inventoryTemp.openByPlayer = true;
-            inventoryTemp.gameObject.SetActive(true);
+            inventoryTemp._parentRoot.SetActive(true);
             inventoryTemp.gameObject.transform.GetChild(0).GetComponent<Button>().Select();
         }
         else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
@@ -216,7 +232,14 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         canMove = false; canRotate = false; isAnalizingOject = true;
         analizableObject = GOtoAnalize;
-        analizer.PositioningItem(GOtoAnalize);       
+        analizer.PositioningItem(GOtoAnalize);
+        GOtoAnalize.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
+        if (controller != null)
+        {
+            GOtoAnalize.transform.localScale = Vector3.one * controller.AnalyzingScale;
+            GOtoAnalize.transform.localEulerAngles = controller.AnalyzingRotation;
+        }
+        
     }
     private void Analizing()
     {
@@ -231,6 +254,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         analizer.ReturnItem();        
         Main_Camera_Controller.instance.ChangeFollowStatus(true);
         isAnalizingOject = false;
+        
     }
 
     #endregion

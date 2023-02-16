@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class Prop_Controller : MonoBehaviour
 {
     [SerializeField] float spriteScale = 0.5f;
+    [SerializeField] float analyzingScale = 1f;
+    [SerializeField] Vector3 analyzingRotation;
 
-
+    public float AnalyzingScale { get => analyzingScale; }
+    public Vector3 AnalyzingRotation { get => analyzingRotation; }
     private GameObject _originalParent;
     private GameObject _3DForm;
     private GameObject _2DForm;
@@ -23,10 +26,15 @@ public class Prop_Controller : MonoBehaviour
     {
         info = GetComponent<In_Game_Tool>();
         _originalParent = transform.parent.gameObject;
-        _3DForm = transform.GetChild(0).gameObject;
-        _2DForm = transform.GetChild(1).gameObject;
-        _2DForm.GetComponent<Image>().sprite = info.sprite;
-        _2DForm.SetActive(false);        
+        if (transform.childCount > 1)
+        {
+            _3DForm = transform.GetChild(0).gameObject;
+            _2DForm = transform.GetChild(1).gameObject;
+            _2DForm.GetComponent<Image>().sprite = info.sprite;
+            _2DForm.SetActive(false);
+        }
+        
+            
     }
 
     // Update is called once per frame

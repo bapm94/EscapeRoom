@@ -27,6 +27,7 @@ public class Main_Character_Item_Analizer : MonoBehaviour
     public void PositioningItem(GameObject item)
     {
         targetObject = item;
+        targetObject.layer = 9;
         targetsOriginalPosition = item.transform.position;      //The original transform is set
         targetsOriginalRotation = item.transform.rotation;
         targetsOriginalParent = item.transform.parent.gameObject;
@@ -41,6 +42,7 @@ public class Main_Character_Item_Analizer : MonoBehaviour
     {
         if (targetsOriginalParent != null)
         {
+            targetObject.layer = 6;
             targetObject.transform.SetParent(targetsOriginalParent.transform);
             targetObject.transform.SetPositionAndRotation(targetsOriginalPosition, targetsOriginalRotation);
             targetObject.transform.localScale = targetsOriginalScale;

@@ -11,11 +11,12 @@ public class Inventory_Temp : MonoBehaviour
     int[] insight;
 
 
-
-    public bool openByPlayer;
+    public GameObject _parentRoot;
+    public bool openByPlayer { get; set; }
     float timer;
     [SerializeField] float timeToClose = 3;
     [SerializeField] float animationTime = 5f;
+
 
     public GameObject[] prop;
     public List<GameObject> propsGrabbed = new List<GameObject>();
@@ -50,17 +51,17 @@ public class Inventory_Temp : MonoBehaviour
 
     public void InitialAnimation()
     {
-        LeanTween.cancel(gameObject);
+        LeanTween.cancel(_parentRoot);
         
-        LeanTween.moveLocalX(gameObject, 0, animationTime / 10);
+        LeanTween.moveLocalX(_parentRoot, 0, animationTime / 10);
         timer = 0;
     }
 
     public void CloseInventory()
     {
-        LeanTween.cancel(gameObject);
+        LeanTween.cancel(_parentRoot);
         openByPlayer = false;
         GetComponent<Button>().Select();
-        LeanTween.moveLocalX(gameObject, -280, (animationTime / 10)).setOnComplete(() => LeanTween.delayedCall(0.02f, () => gameObject.SetActive(false)));
+        LeanTween.moveLocalX(_parentRoot, -280, (animationTime / 10)).setOnComplete(() => LeanTween.delayedCall(0.02f, () => _parentRoot.SetActive(false)));
     }
 }
