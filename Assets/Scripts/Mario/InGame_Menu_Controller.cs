@@ -88,7 +88,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void GoBackToPlayerCam()
     {
-        if (currentCamera != 0)
+        if (currentCamera != 0 && canMove)
         {            
             isInCam = false;
             currentCamera = 0;
