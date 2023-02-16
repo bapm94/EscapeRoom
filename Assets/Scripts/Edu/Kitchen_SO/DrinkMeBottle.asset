@@ -16,6 +16,6 @@ MonoBehaviour:
   initialQuaternionRotation: {x: 0, y: 0, z: 0, w: 0}
   sprite: {fileID: 0}
   isSprite: 0
-  hasDialog: 1
+  hasDialog: 0
   dialogBeginning: 0
   dialogEnd: 3

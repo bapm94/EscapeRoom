@@ -94,7 +94,13 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         bool isLookingSomething = false;
         if (canMove)
         {            
-            if (percievedGO != null) { percievedGO.layer = 6; }
+            if (percievedGO != null)
+            {
+                percievedGO.layer = 6;
+
+                ChangeSubmeshesLayer(percievedGO, 6);
+
+            }
             RaycastHit hit;
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f))
             {
@@ -105,13 +111,42 @@ public class Main_Character_Controller_v2 : MonoBehaviour
                     if (percievedGO.layer == 6)
                     {
                         percievedGO.layer = 8;
+                        ChangeSubmeshesLayer(percievedGO, 8);
                     }
                 }
+
+
             }
             else { isLookingSomething = false; percievedGO = null; }
         }
      
         return isLookingSomething;
+    }
+
+    public void ChangeSubmeshesLayer(GameObject percievedGO, int LayerTo)
+    {
+        if (percievedGO.transform.childCount > 0)
+        {
+            if (percievedGO.transform.GetChild(0).childCount > 1)
+            {
+                for (int child = 0; child < percievedGO.transform.GetChild(0).childCount; child++)
+                {
+                    MeshRenderer mesh = percievedGO.transform.GetChild(0).GetChild(child).GetComponent<MeshRenderer>();
+                    if (mesh != null)
+                    {
+                        percievedGO.transform.GetChild(0).GetChild(child).gameObject.layer = LayerTo;
+                    }
+                }
+            }
+            else if (percievedGO.transform.GetChild(0).childCount == 1)
+            {
+                MeshRenderer mesh = percievedGO.transform.GetChild(0).GetComponentInChildren<MeshRenderer>();
+                if (mesh != null)
+                {
+                    mesh.gameObject.layer = LayerTo;
+                }
+            }
+        }
     }
 
     #region Player Actions
@@ -132,10 +167,12 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             if (percievedGO.tag == "MenuChair")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
+                percievedGO.layer = 6;
             }
             if (percievedGO.tag == "MenuLibrary")
             {
                 if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+                percievedGO.layer = 6;
             }
             if (percievedGO.tag == "Analizable")
             {
@@ -143,9 +180,19 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             }
             if (percievedGO.tag == "Tool")
             {
-                percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
+                percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller propController);
+                if (propController != null)
+                {
+                    percievedGO.transform.GetComponent<Prop_Controller>().PutInTempInventory();
+                }
+                else
+                {
+                    percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
+                }
+                
+                percievedGO.layer = 6;
             }
-            percievedGO.layer = 6;
+            
         }
     }
 
@@ -173,13 +220,13 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnY_Button()
     {
-        if (inventoryTemp != null && !inventoryTemp._parentRoot.activeSelf)  //If not already open, opens te inventory
+        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)  //If not already open, opens te inventory
         {
             Camera.main.GetComponent<Volume>().enabled = true;
             Main_Camera_Controller.instance.ChangeFollowStatus(false);
             inventoryTemp.openByPlayer = true;
             inventoryTemp._parentRoot.SetActive(true);
-            inventoryTemp.gameObject.transform.GetChild(0).GetComponent<Button>().Select();
+            //inventoryTemp.gameObject.transform.GetChild(0).GetComponent<Button>().Select();
         }
         else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
         {

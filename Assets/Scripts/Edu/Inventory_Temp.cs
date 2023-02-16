@@ -16,6 +16,7 @@ public class Inventory_Temp : MonoBehaviour
     float timer;
     [SerializeField] float timeToClose = 3;
     [SerializeField] float animationTime = 5f;
+    [SerializeField] GameObject firstSelect;
 
 
     public GameObject[] prop;
@@ -47,6 +48,7 @@ public class Inventory_Temp : MonoBehaviour
     {
         InitialAnimation();
         if (!openByPlayer) { LeanTween.delayedCall(timeToClose, () => CloseInventory()); }
+        else        { firstSelect.transform.GetComponent<Button>().Select();      }
     }
 
     public void InitialAnimation()
