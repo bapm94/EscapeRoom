@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public In_Game_Tool_Data GameobjectData;
+    public Collectable_Data GameobjectData;
     public int element_Local_Index { get; set; }
 
     Vector3 position;
