@@ -11,6 +11,7 @@ TagManager:
   - Analizable
   - TypeWriter
   - Tool
+  - Lock
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,8 @@ public class Prop_Controller : MonoBehaviour
     In_Game_Tool info;
 
     //public static Prop_Controller instance;
+    [SerializeField] GameObject lockScreen;
+    //[SerializeField] GameObject digitPrefab;
 
 
     
@@ -48,6 +50,7 @@ public class Prop_Controller : MonoBehaviour
     {
         if (gameObject.tag == "Tool") { PutInTempInventory(); }
         if (gameObject.tag == "Analizable") { Main_Character_Controller_v2.instance.StartAnalizing(gameObject); };
+        if (gameObject.tag == "Lock") { ActivateLockScreen(); }
     }
     // Update is called once per frame
     void Update()
@@ -63,14 +66,7 @@ public class Prop_Controller : MonoBehaviour
         _2DForm.SetActive(true);
         inventory.SetActive(true);
         inventory.GetComponent<Inventory_Temp>().InitialAnimation();
-        //if (!inventory.activeSelf)
-        //{
-            
-        //}
-        //else
-        //{
-            
-        //}
+
         transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
         transform.localPosition = Vector3.zero;
@@ -81,12 +77,13 @@ public class Prop_Controller : MonoBehaviour
         }
 
         info.GrabIt();
+   
+    }
 
-        //if (inventoryPlaces.transform.childCount > Inventory_Temp.instance.propsGrabbed.Count)
-        //{
-            
-                
-        //}
-        //else { Debug.Log("Invenario lleno"); }       
+    public void ActivateLockScreen()
+    {
+        lockScreen.SetActive(true);
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
+        lockScreen.GetComponent<Lock_Canvas_Controller>()._3dLock = gameObject;
     }
 }

@@ -42,6 +42,7 @@ public class Inventory_Temp : MonoBehaviour
         {
             prop[i].GetComponent<In_Game_Tool>().element_Local_Index = i;
         }
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
