@@ -54,7 +54,6 @@ public class InGame_Menu_Controller : MonoBehaviour
         { 
             if (currentCamera == 5)
             {
-                animator.SetTrigger("Book1Back");
                 StartCoroutine(BackToLevelMenu());
             }
             else { GoBackToPlayerCam(); BackWithBooks(); }
@@ -64,7 +63,7 @@ public class InGame_Menu_Controller : MonoBehaviour
         NavigateMenu();
 
         canPress += Time.deltaTime; //timer from NavigateLevelMenu()
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen")) 
+        /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen")) 
         { 
             canPress = -1.0f;
             animator.ResetTrigger("Book1Play");
@@ -72,7 +71,7 @@ public class InGame_Menu_Controller : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen -1"))
         {
             animator.ResetTrigger("Book1Back");
-        }
+        }*/
     }
 
     public void BackWithBooks()
@@ -136,22 +135,19 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void BookCheck()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            animator.ResetTrigger("Book" + (i+1));
-        }
-        animator.SetTrigger("Book" + (currentLevel+1).ToString());
         for (int i = 0; i < levels.Length; i++)
         {
-            if (i == currentLevel) { levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = true; }
-            if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive == true) { levels[i].GetComponent<Chosen_Level>().Invoke("TextSlide", 0.8f); }
-
-            if (i != currentLevel) 
-            { 
-                levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false; 
-                levels[i].GetComponent<Chosen_Level>().ActiveCheck(); 
-            }
-
+            levels[i].GetComponent<Level_Controller>().ResetAllTriggers();
+        }
+        //levels[currentLevel].GetComponent<Level_Controller>().BookSelected();
+        //animator.SetTrigger("Book" + (currentLevel+1).ToString());
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (i == currentLevel) { levels[i].GetComponent<Level_Controller>().BookSelected(); }
+            //if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive == true) { levels[i].GetComponent<Chosen_Level>().Invoke("TextSlide", 0.8f); }
+            if (i != currentLevel) { levels[i].GetComponent<Level_Controller>().BookUnselected(); }
+            /*levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false; 
+            levels[i].GetComponent<Chosen_Level>().ActiveCheck();*/ 
         }
     }
 
@@ -190,14 +186,17 @@ public class InGame_Menu_Controller : MonoBehaviour
 
     IEnumerator BackToLevelMenu()
     {
-        yield return new WaitForSeconds(1.0f);
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (levels[i].GetComponent<Level_Controller>().active) { StartCoroutine(levels[i].GetComponent<Level_Controller>().BookReturn()); }
+        }
+        yield return new WaitForSeconds(2.0f);
         currentCamera = 4;
         IndexChange(currentCamera);
-        StartCoroutine(ReturnText());
-
+        //StartCoroutine(ReturnText());
     }
 
-    IEnumerator ReturnText()
+    /*IEnumerator ReturnText()
     {
         for (int i = 0; i < levels.Length; i++)
         {
@@ -212,7 +211,7 @@ public class InGame_Menu_Controller : MonoBehaviour
                 levels[i].GetComponent<Chosen_Level>().ActiveCheck();
             }
         }
-    }
+    }*/
 
     /// <summary>
     /// controls which camera is active, value (camera) is given through menuIndexValue (through other functions)
@@ -266,12 +265,12 @@ public class InGame_Menu_Controller : MonoBehaviour
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i].GetComponent<Chosen_Level>().isCurrentlyActive)
+                if (i == currentLevel)
                 {
-                    levels[i].GetComponent<Chosen_Level>().BookSelected();
+                    StartCoroutine(levels[i].GetComponent<Level_Controller>().BookDisplay());
                 }
                 currentCamera = 5;
-                LeanTween.delayedCall(0.8f, () => IndexChange(currentCamera));
+                LeanTween.delayedCall(2.0f, () => IndexChange(currentCamera));
             }
         }
     }
