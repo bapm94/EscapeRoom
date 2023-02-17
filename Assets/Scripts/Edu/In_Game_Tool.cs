@@ -25,4 +25,10 @@ public class In_Game_Tool : MonoBehaviour
         dialogueBeginning = GameobjectData.dialogBeginning;
         dialogueEnd = GameobjectData.dialogEnd;
     }
+
+    public void GrabIt()
+    {
+        isSprite = true;
+
+    }
 }

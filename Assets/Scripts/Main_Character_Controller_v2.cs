@@ -164,35 +164,52 @@ public class Main_Character_Controller_v2 : MonoBehaviour
                     Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
                 }
             }
-            if (percievedGO.tag == "MenuChair")
-            {
-                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
-                percievedGO.layer = 6;
-            }
-            if (percievedGO.tag == "MenuLibrary")
-            {
-                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
-                percievedGO.layer = 6;
-            }
-            if (percievedGO.tag == "Analizable")
-            {
-                StartAnalizing(percievedGO);
-            }
-            if (percievedGO.tag == "Tool")
-            {
-                percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller propController);
-                if (propController != null)
-                {
-                    percievedGO.transform.GetComponent<Prop_Controller>().PutInTempInventory();
-                }
-                else
-                {
-                    percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
-                }
-                
-                percievedGO.layer = 6;
-            }
+
+            percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
+            if (controller != null) { controller.ActionButtonOnIt(); } 
             
+            percievedGO.TryGetComponent<Restoring_Puzzle>(out Restoring_Puzzle controller2);
+            if (controller2 != null) { controller2.ActionButtonOnIt(); }
+            
+
+
+
+
+
+
+
+
+            #region Old TagSystem
+            //if (percievedGO.tag == "MenuChair")
+            //{
+            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
+            //    percievedGO.layer = 6;
+            //}
+            //if (percievedGO.tag == "MenuLibrary")
+            //{
+            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+            //    percievedGO.layer = 6;
+            //}
+            //if (percievedGO.tag == "Analizable")
+            //{
+            //    StartAnalizing(percievedGO);
+            //}
+            //if (percievedGO.tag == "Tool")
+            //{
+            //    percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller propController);
+            //    if (propController != null)
+            //    {
+            //        percievedGO.transform.GetComponent<Prop_Controller>().PutInTempInventory();
+            //    }
+            //    else
+            //    {
+            //        percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
+            //    }
+
+            //    percievedGO.layer = 6;
+            //}
+            #endregion
+
         }
     }
 
