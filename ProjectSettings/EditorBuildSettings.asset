@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: e48e753999fa04347acd3692aa523e5e
+  - enabled: 1
+    path: Assets/Scenes/Alice_Kitchen_Scene.unity
+    guid: 4841fcae0da7c564b92c40db177c6e86
   m_configObjects: {}
