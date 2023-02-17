@@ -46,8 +46,9 @@ public class Prop_Controller : MonoBehaviour
     public void PutInTempInventory()
     {
         GameObject inventory = Inventory_Temp.instance.gameObject;
-        
-        if (inventory.transform.childCount > inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count)
+        GameObject inventoryPlaces = inventory.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        if (inventoryPlaces.transform.childCount > Inventory_Temp.instance.propsGrabbed.Count)
         {
             _3DForm.SetActive(false);
             _2DForm.SetActive(true);
@@ -59,12 +60,16 @@ public class Prop_Controller : MonoBehaviour
             {
                 inventory.GetComponent<Inventory_Temp>().InitialAnimation();
             }
-            transform.SetParent(inventory.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
+            transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
             inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
             transform.localPosition = Vector3.zero;
             transform.localScale = Vector3.one * spriteScale;
             info.isSprite = true;
-            _2DForm.GetComponent<Image>().sprite = info.sprite;
+            if (transform.childCount > 1)
+            {
+                _2DForm.GetComponent<Image>().sprite = info.sprite;
+            }
+                
         }
         else { Debug.Log("Invenario lleno"); }       
     }
