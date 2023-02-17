@@ -22,7 +22,7 @@ public class Prop_Controller : MonoBehaviour
 
     //public static Prop_Controller instance;
     [SerializeField] GameObject lockScreen;
-    //[SerializeField] GameObject digitPrefab;
+    
 
 
     

@@ -9,10 +9,17 @@ public class Lock_Canvas_Controller : MonoBehaviour
     TMP_Dropdown[] codeNumbers;
     int[] code;
     public GameObject _3dLock { get; set; }
+
+    [SerializeField] bool desapearingLock;
+    [SerializeField] bool moveParts;
+    [SerializeField] GameObject[] partsToMove;
+    [SerializeField] GameObject[] newPartsPosition;
+    bool[] partMoved;
     //int[] Code;
     // Start is called before the first frame update
     void Start()
     {
+        partMoved = new bool[partsToMove.Length];
         codeNumbers = new TMP_Dropdown[transform.childCount];
         code = new int[codeNumbers.Length];
         for (int i = 0; i < codeNumbers.Length; i++)
@@ -46,12 +53,28 @@ public class Lock_Canvas_Controller : MonoBehaviour
             gameObject.SetActive(false);
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
             Debug.Log("Solved");
-            Destroy(_3dLock);
+            if (desapearingLock) { Destroy(_3dLock); }
+            else if (moveParts) { MoveAll(); }
+            Main_Character_Controller_v2.instance.PerceivedGO.layer = 0;
+            Main_Character_Controller_v2.instance.PerceivedGO.tag = "Untagged";
         }
         else
         {
             Debug.Log("Wrong");
         }
     }
-    
+
+    public void MovePart(int x)
+    {
+        LeanTween.move(partsToMove[x], newPartsPosition[x].transform.position, 2f);
+        LeanTween.rotate(partsToMove[x], newPartsPosition[x].transform.eulerAngles, 2f);
+        partMoved[x] = true;
+    }
+    public void MoveAll()
+    {
+        for (int i = 0; i < partsToMove.Length; i++)
+        {
+            MovePart(i);
+        }
+    }
 }

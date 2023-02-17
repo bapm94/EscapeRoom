@@ -24,7 +24,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     #region Looking At X Variables
     GameObject percievedGO;
-    GameObject PerceivedGO { get => percievedGO;  }
+    public GameObject PerceivedGO { get => percievedGO;  }
     #endregion
 
     #region Camera Variables
@@ -83,9 +83,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove) { Movement(); }
+        if (canMove) { Movement(); LookFront(); }
         if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
-        LookFront();
+        
         if (isAnalizingOject) { Analizing(); }
     }
 
@@ -166,11 +166,11 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             }
 
             percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
-            if (controller != null) { controller.ActionButtonOnIt(); } 
+            if (controller != null) { controller.ActionButtonOnIt(); percievedGO.layer = 9; } 
             
             percievedGO.TryGetComponent<Restoring_Puzzle>(out Restoring_Puzzle controller2);
-            if (controller2 != null) { controller2.ActionButtonOnIt(); }
-            
+            if (controller2 != null) { controller2.ActionButtonOnIt(); percievedGO.layer = 6; }
+
 
 
 
@@ -180,16 +180,16 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
 
             #region Old TagSystem
-            //if (percievedGO.tag == "MenuChair")
-            //{
-            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
-            //    percievedGO.layer = 6;
-            //}
-            //if (percievedGO.tag == "MenuLibrary")
-            //{
-            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
-            //    percievedGO.layer = 6;
-            //}
+            if (percievedGO.tag == "MenuChair")
+            {
+                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
+                percievedGO.layer = 6;
+            }
+            if (percievedGO.tag == "MenuLibrary")
+            {
+                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+                percievedGO.layer = 6;
+            }
             //if (percievedGO.tag == "Analizable")
             //{
             //    StartAnalizing(percievedGO);
