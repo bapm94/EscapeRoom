@@ -14,7 +14,7 @@ public class Level_Controller : MonoBehaviour
     Vector3 initialPos;
     [SerializeField] bool textIsOut;
 
-    bool animCheck;
+    public bool animCheck;
     public GameObject textCanvas;
 
     // Start is called before the first frame update
@@ -85,8 +85,6 @@ public class Level_Controller : MonoBehaviour
     {
         if (!active) { p_animator.enabled = false; }
         else { p_animator.enabled = true; }
-        /*if (!active) { b_animator.enabled = false; }
-        else { b_animator.enabled = true; }*/
 
         if (!animCheck)
         {
