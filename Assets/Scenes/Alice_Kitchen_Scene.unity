@@ -4271,9 +4271,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482602312}
-  - component: {fileID: 482602315}
   - component: {fileID: 482602314}
   - component: {fileID: 482602313}
+  - component: {fileID: 482602315}
   m_Layer: 6
   m_Name: FaucetKey
   m_TagString: Tool
@@ -4333,13 +4333,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 482602311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74acfc153c82d694b81236a49416a36e, type: 3}
+  m_Script: {fileID: 11500000, guid: 182af76318415c04d8cf5f8fab2135c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasDialogue: 1
+  isInteractable: 1
+  dialogueBeggining: 12
+  dialogueEnd: 12
+  dialogueOnlyOnce: 1
+  deactivateAfterDialogue: 0
+  localAnalizingScale: {x: 275, y: 275, z: 275}
+  localAnalizingEulerAngles: {x: 310.60748, y: 9.474477, z: 304.2269}
   spriteScale: 0.5
-  analyzingScale: 266
-  analyzingRotation: {x: 0, y: 0, z: 0}
-  lockScreen: {fileID: 0}
 --- !u!1 &487484428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,8 +4573,6 @@ MonoBehaviour:
   movementSlider: {fileID: 1319881559}
   cameraSlider: {fileID: 636417062}
   settingsMenu: {fileID: 436440473}
-  movementSpeed: 0
-  cameraSpeed: 0
 --- !u!1 &571756835
 GameObject:
   m_ObjectHideFlags: 0
@@ -12925,6 +12928,7 @@ MonoBehaviour:
   - ' you, Alice, it means a lot.a lot.'
   - 1Oh Alice, it looks like the faucet is missing the handle.
   - 0Yes. I think i may take a look around, Doc.
+  - 0Oh look!! Just what I was looking for.
   Index: 0
   dialogueSpeed: 0.05
   timeBetweenDialogues: 0
@@ -27778,8 +27782,6 @@ GameObject:
   - component: {fileID: 3501770187876322598}
   - component: {fileID: 3501770187876322597}
   - component: {fileID: 3501770187876322600}
-  - component: {fileID: 3501770187876322601}
-  - component: {fileID: 3501770187876322602}
   m_Layer: 0
   m_Name: Faucet
   m_TagString: Untagged
@@ -27833,42 +27835,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501770187876322596}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f3f06477b05494aa3bdc4e684aeaf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VictoryConditions:
-  - {fileID: 482602311}
-  FinalPositionOfItem:
-  - {fileID: 2060143290}
-  conditionAchived: 
---- !u!114 &3501770187876322601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501770187876322596}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74acfc153c82d694b81236a49416a36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteScale: 0.5
-  analyzingScale: 1
-  analyzingRotation: {x: 0, y: 0, z: 0}
-  lockScreen: {fileID: 0}
---- !u!114 &3501770187876322602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501770187876322596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85af2f0264162124d89b048d451ecc90, type: 3}
+  m_Script: {fileID: 11500000, guid: de02343599da03a4f9ce994befc8959c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hasDialogue: 1
@@ -27877,6 +27846,11 @@ MonoBehaviour:
   dialogueEnd: 11
   dialogueOnlyOnce: 0
   deactivateAfterDialogue: 0
+  VictoryConditions:
+  - {fileID: 482602311}
+  FinalPositionOfItem:
+  - {fileID: 2060143290}
+  conditionAchived: 
 --- !u!23 &3521551517936039600
 MeshRenderer:
   m_ObjectHideFlags: 0

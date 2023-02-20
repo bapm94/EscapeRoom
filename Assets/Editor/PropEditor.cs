@@ -35,10 +35,14 @@ public class PropEditor : Editor
         if (hasDialogue.boolValue)
         {
             dialogueOptionsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(dialogueOptionsGroup, "Dialogue Options");
-            EditorGUILayout.PropertyField(dialogueOnlyOnce);
-            EditorGUILayout.PropertyField(deactivateAfterDialogue);
-            EditorGUILayout.PropertyField(dialogueBeggining);
-            EditorGUILayout.PropertyField(dialogueEnd);
+            if (dialogueOptionsGroup)
+            {
+                EditorGUILayout.PropertyField(dialogueOnlyOnce);
+                EditorGUILayout.PropertyField(deactivateAfterDialogue);
+                EditorGUILayout.PropertyField(dialogueBeggining);
+                EditorGUILayout.PropertyField(dialogueEnd);
+            }
+            
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
         

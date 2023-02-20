@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PropRestorePuzzleParent : Prop
 {
+    [Tooltip("List of pieces/parts that complete the puzzle once restored.")]
     public List<GameObject> VictoryConditions;
+    [Tooltip("The final position those parts would have.")]
     public List<GameObject> FinalPositionOfItem;
     public bool[] conditionAchived;
 
@@ -21,6 +23,17 @@ public class PropRestorePuzzleParent : Prop
     {
         
     }
+
+    protected override void OnActionButton()
+    {
+        TryToRestore();
+        if (!CheckForVictory())
+        {
+            base.OnActionButton();
+        }
+    }
+
+
     public void TryToRestore()
     {
         for (int i = 0; i < VictoryConditions.Count; i++)

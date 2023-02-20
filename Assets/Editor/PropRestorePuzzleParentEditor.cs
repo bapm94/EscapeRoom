@@ -11,8 +11,10 @@ public class PropRestorePuzzleParentEditor : Editor
     protected SerializedProperty deactivateAfterDialogue;
 
     protected SerializedProperty dialogueOnlyOnce;
-
+    protected SerializedProperty VictoryConditions;
+    protected SerializedProperty FinalPositionOfItem;
     bool dialogueOptionsGroup = true;
+
 
     private void OnEnable()
     {
@@ -24,6 +26,8 @@ public class PropRestorePuzzleParentEditor : Editor
         deactivateAfterDialogue = serializedObject.FindProperty("deactivateAfterDialogue");
 
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
+        VictoryConditions = serializedObject.FindProperty("VictoryConditions");
+        FinalPositionOfItem = serializedObject.FindProperty("FinalPositionOfItem");
     }
     public override void OnInspectorGUI()
     {
@@ -35,13 +39,19 @@ public class PropRestorePuzzleParentEditor : Editor
         if (hasDialogue.boolValue)
         {
             dialogueOptionsGroup = EditorGUILayout.BeginFoldoutHeaderGroup(dialogueOptionsGroup, "Dialogue Options");
-            EditorGUILayout.PropertyField(dialogueOnlyOnce);
-            EditorGUILayout.PropertyField(deactivateAfterDialogue);
-            EditorGUILayout.PropertyField(dialogueBeggining);
-            EditorGUILayout.PropertyField(dialogueEnd);
+            if (dialogueOptionsGroup)
+            {
+                EditorGUILayout.PropertyField(dialogueOnlyOnce);
+                EditorGUILayout.PropertyField(deactivateAfterDialogue);
+                EditorGUILayout.PropertyField(dialogueBeggining);
+                EditorGUILayout.PropertyField(dialogueEnd);
+            }
+            
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
 
+        EditorGUILayout.PropertyField(VictoryConditions);
+        EditorGUILayout.PropertyField(FinalPositionOfItem);
 
         serializedObject.ApplyModifiedProperties();
     }

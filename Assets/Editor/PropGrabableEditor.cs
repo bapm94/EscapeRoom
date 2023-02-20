@@ -4,14 +4,14 @@ using UnityEditor;
 public class PropGrabableEditor : Editor
 {
     protected   SerializedProperty spriteScale;
-    new protected SerializedProperty localAnalizingScale;
-    new protected SerializedProperty localAnalizingEulerAngles;
+    protected SerializedProperty localAnalizingScale;
+    protected SerializedProperty localAnalizingEulerAngles;
 
-    new public SerializedProperty hasDialogue;
-    new protected SerializedProperty isInteracatable;
-    new protected SerializedProperty dialogueBeggining;
-    new protected SerializedProperty dialogueEnd;
-    new protected SerializedProperty deactivateAfterDialogue;
+    public SerializedProperty hasDialogue;
+    protected SerializedProperty isInteracatable;
+    protected SerializedProperty dialogueBeggining;
+    protected SerializedProperty dialogueEnd;
+    protected SerializedProperty deactivateAfterDialogue;
 
     SerializedProperty dialogueOnlyOnce;
 
