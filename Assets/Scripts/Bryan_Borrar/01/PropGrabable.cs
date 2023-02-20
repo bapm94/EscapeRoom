@@ -66,12 +66,16 @@ public class PropGrabable : PropAnalizable
     }
     protected override void OnInventoryButton()
     {
-        if (Main_Character_Controller_v2.instance.isAnalizingOject)
+        if (gameObject.layer == 9)
         {
-            Main_Character_Controller_v2.instance.isAnalizingOject = false;
-            PutInTempInventory();
-            Main_Camera_Controller.instance.ChangeFollowStatus(true);
-            //Main_Character_Controller_v2.instance.PerceivedGO = null;
+            if (Main_Character_Controller_v2.instance.isAnalizingOject)
+            {
+                Main_Character_Controller_v2.instance.isAnalizingOject = false;
+                PutInTempInventory();
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+                //Main_Character_Controller_v2.instance.PerceivedGO = null;
+            }
         }
+
     }
 }

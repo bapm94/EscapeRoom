@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Sensibility : MonoBehaviour
 {
     [SerializeField] Slider movementSlider;
@@ -12,13 +13,13 @@ public class Sensibility : MonoBehaviour
 
     void Update()
     {
-        if (settingsMenu.activeSelf == true)
+        if (settingsMenu.activeSelf == true && SceneManager.GetActiveScene().name != "InitialMenu")
         {
             //movementSpeed = movementSlider.value;
             //cameraSpeed = cameraSlider.value;
 
-            Main_Character_Controller_v2.instance.walkSpeed = movementSlider.value * 5;
-            Main_Character_Controller_v2.instance.turnSpeed = cameraSlider.value * 5;
+            Main_Character_Controller_v2.instance.walkSpeed = movementSlider.value * 20 + 10;
+            Main_Character_Controller_v2.instance.turnSpeed = cameraSlider.value * 20 +10;
         }
     }
 }

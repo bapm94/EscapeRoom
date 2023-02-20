@@ -24,7 +24,11 @@ public class InGameMenu : MonoBehaviour
     public void ChangeBaseMenuStatus(bool x)
     {
         baseMenu.SetActive(x);
-        if(!Main_Character_Controller_v2.instance.isAnalizingOject)
+        if ( x == true)
+        {
+            Main_Camera_Controller.instance.ChangeFollowStatus(!x);
+        }
+        if (!Main_Character_Controller_v2.instance.isAnalizingOject && x == false)
         {
             Main_Camera_Controller.instance.ChangeFollowStatus(!x);
         }
