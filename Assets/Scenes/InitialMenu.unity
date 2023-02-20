@@ -795,6 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMenu: {fileID: 1106088749}
+  settingsMenu: {fileID: 0}
 --- !u!114 &33582047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3017,8 +3018,6 @@ MonoBehaviour:
   movementSlider: {fileID: 309493893}
   cameraSlider: {fileID: 883496249}
   settingsMenu: {fileID: 1873159574}
-  movementSpeed: 0
-  cameraSpeed: 0
 --- !u!1 &363415510
 GameObject:
   m_ObjectHideFlags: 0
@@ -7679,8 +7678,6 @@ MonoBehaviour:
   movementSlider: {fileID: 506107160}
   cameraSlider: {fileID: 1964273987}
   settingsMenu: {fileID: 752967864}
-  movementSpeed: 0
-  cameraSpeed: 0
 --- !u!1 &979932628
 GameObject:
   m_ObjectHideFlags: 0
@@ -9189,6 +9186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
 --- !u!114 &1134433525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14097,7 +14095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2103265706
 RectTransform:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     #endregion
 
     #region Movement Variables
-    [SerializeField] float turnSpeed = 1;
-    [SerializeField] float walkSpeed = 1;
+    [SerializeField] public float turnSpeed = 1;
+    [SerializeField] public float walkSpeed = 1;
     float xRotation = 0f;       //Variable that keeps the rotation of the camera.
     private Controlls _controls;    //Acces to the controls through the new input system
     
