@@ -7765,6 +7765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMenu: {fileID: 572591315}
+  settingsMenu: {fileID: 436440473}
 --- !u!114 &934319884
 MonoBehaviour:
   m_ObjectHideFlags: 0

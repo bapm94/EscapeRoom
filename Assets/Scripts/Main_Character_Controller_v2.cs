@@ -223,7 +223,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             {
                 InGameMenu.instance.ChangeBaseMenuStatus(false);
             }
-            if (!InGameMenu.instance.baseMenu.activeSelf)
+            if (!InGameMenu.instance.baseMenu.activeSelf && !InGameMenu.instance.settingsMenu.activeSelf)
             {
                 InGameMenu.instance.ChangeBaseMenuStatus(true);
             }
