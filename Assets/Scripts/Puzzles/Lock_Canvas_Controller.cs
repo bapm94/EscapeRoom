@@ -54,7 +54,7 @@ public class Lock_Canvas_Controller : MonoBehaviour
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
             Debug.Log("Solved");
             if (desapearingLock) { Destroy(_3dLock); }
-            else if (moveParts) { MoveAll(); }
+            if (moveParts) { MoveAll(); }
             Main_Character_Controller_v2.instance.PerceivedGO.layer = 0;
             Main_Character_Controller_v2.instance.PerceivedGO.tag = "Untagged";
         }

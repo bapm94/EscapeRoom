@@ -77,7 +77,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         _controls = new Controlls();    //variable to keep track of the controlls there are used this time
         _controls.CharacterControl.Enable();
 
-        transform.position = spawn.position; transform.rotation = spawn.rotation; 
+        transform.position = spawn.position; transform.rotation = spawn.rotation;
+
+        
     }
 
 
@@ -104,7 +106,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 5f))
             {
-                if (hit.collider.gameObject.layer == 6)
+                if (hit.collider.gameObject.layer == 6 && hit.collider.tag == "000")
                 {
                     isLookingSomething = true;
                     percievedGO = hit.collider.gameObject;
@@ -150,46 +152,43 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     }
 
     #region Player Actions
-
+    //private void newOnActionButton()
+    //{
+    //    Debug.Log(percievedGO.name);
+    //}
     private void OnAction_Button()
     {
         if (LookFront() && canMove)
         {
-            if (percievedGO.GetComponent<In_Game_Tool>() != null)
-            {
-                In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
-                if (range.hasDialogue == true) 
-                {
-                    range.hasDialogue = false;
-                    Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
-                }
-            }
+            Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
 
-            percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
-            if (controller != null) { controller.ActionButtonOnIt(); percievedGO.layer = 9; } 
+            //if (percievedGO.GetComponent<In_Game_Tool>() != null)
+            //{
+            //    In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
+            //    if (range.hasDialogue == true) 
+            //    {
+            //        range.hasDialogue = false;
+            //        Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
+            //    }
+            //}
+
+            //percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
+            //if (controller != null) { controller.ActionButtonOnIt(); percievedGO.layer = 9; } 
             
-            percievedGO.TryGetComponent<Restoring_Puzzle>(out Restoring_Puzzle controller2);
-            if (controller2 != null) { controller2.ActionButtonOnIt(); percievedGO.layer = 6; }
-
-
-
-
-
-
-
-
+            //percievedGO.TryGetComponent<Restoring_Puzzle>(out Restoring_Puzzle controller2);
+            //if (controller2 != null) { controller2.ActionButtonOnIt(); percievedGO.layer = 6; }
 
             #region Old TagSystem
-            if (percievedGO.tag == "MenuChair")
-            {
-                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
-                percievedGO.layer = 6;
-            }
-            if (percievedGO.tag == "MenuLibrary")
-            {
-                if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
-                percievedGO.layer = 6;
-            }
+            //if (percievedGO.tag == "MenuChair")
+            //{
+            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
+            //    percievedGO.layer = 6;
+            //}
+            //if (percievedGO.tag == "MenuLibrary")
+            //{
+            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+            //    percievedGO.layer = 6;
+            //}
             //if (percievedGO.tag == "Analizable")
             //{
             //    StartAnalizing(percievedGO);
@@ -215,7 +214,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnBack_Button()
     {
-        if (isAnalizingOject /*&& !Dialogue_System_Controller.instance.dialogueOnGoing*/) { StopAnalizing(); }
+        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
     }
 
     private void OnX_Button()
@@ -278,10 +277,11 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         if (Main_Camera_Controller.instance.isFollowingCharacter)
         {
-            Vector2 rotation = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>() * turnSpeed * Time.deltaTime * 10; //Same sht but with rotation
-            transform.Rotate(Vector3.up * rotation.x * Time.deltaTime * 400);
+            Vector2 rotation1 = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>() ; //Same sht but with rotation
+            Vector2 rotation = rotation1.normalized * turnSpeed * Time.deltaTime * 10;
+            transform.Rotate(Vector3.up * rotation.x );
 
-            xRotation -= rotation.y * Time.deltaTime * 400;
+            xRotation -= rotation.y ;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f); //Limit to the rotation so the player can`t "break" his own neck and see backwards
             mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); //In this case what we rotate is the camera and not the whole character
 
@@ -297,14 +297,27 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         canMove = false; canRotate = false; isAnalizingOject = true;
         analizableObject = GOtoAnalize;
         analizer.PositioningItem(GOtoAnalize);
-        GOtoAnalize.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
-        if (controller != null)
-        {
-            GOtoAnalize.transform.localScale = Vector3.one * controller.AnalyzingScale;
-            GOtoAnalize.transform.localEulerAngles = controller.AnalyzingRotation;
-        }
-        
+        GOtoAnalize.transform.localScale = Vector3.one;
+        GOtoAnalize.transform.localEulerAngles = Vector3.zero;
     }
+
+    public void StartAnalizing(GameObject GOtoAnalize, Vector3 localScale, Vector3 localEulerAngle)
+    {
+        canMove = false; canRotate = false; isAnalizingOject = true;
+        analizableObject = GOtoAnalize;
+        analizer.PositioningItem(GOtoAnalize);
+        GOtoAnalize.transform.localScale = localScale;
+        GOtoAnalize.transform.localEulerAngles = localEulerAngle;
+
+        //GOtoAnalize.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
+        //if (controller != null)
+        //{
+        //    GOtoAnalize.transform.localScale = Vector3.one * controller.AnalyzingScale;
+        //    GOtoAnalize.transform.localEulerAngles = controller.AnalyzingRotation;
+        //}        
+    }
+
+
     private void Analizing()
     {
         Vector2 rotations = (_controls.CharacterControl.Walk.ReadValue<Vector2>() * walkSpeed * Time.deltaTime * 20).normalized;
@@ -317,8 +330,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     {
         analizer.ReturnItem();        
         Main_Camera_Controller.instance.ChangeFollowStatus(true);
-        isAnalizingOject = false;
-        
+        isAnalizingOject = false;        
     }
 
     #endregion

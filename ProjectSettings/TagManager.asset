@@ -12,6 +12,8 @@ TagManager:
   - TypeWriter
   - Tool
   - Lock
+  - 000
+  - 111
   layers:
   - Default
   - TransparentFX

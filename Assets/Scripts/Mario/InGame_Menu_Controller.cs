@@ -56,7 +56,7 @@ public class InGame_Menu_Controller : MonoBehaviour
             {
                 StartCoroutine(BackToLevelMenu());
             }
-            else { GoBackToPlayerCam(); BackWithBooks(); }
+            else { GoBackToPlayerCam(); /*BackWithBooks();*/ }
         }
 
         NavigateLevelMenu();
@@ -218,6 +218,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void GoIntoMenu()
     {
+        Debug.Log("Into Menu.");
         isInCam = true;
         currentCamera = 2;
         IndexChange(currentCamera);
@@ -230,6 +231,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// </summary>
     public void GoIntoLevelMenu()
     {
+        Debug.Log("Into Level Menu.");
         currentLevel = 0;
         isInCam = true;
         currentCamera = 4;
