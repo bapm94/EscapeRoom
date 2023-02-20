@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+
 public class Main_Character_Controller_v2 : MonoBehaviour
 {
     #region Original State Variables
@@ -158,6 +160,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     //}
     private void OnAction_Button()
     {
+        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
         if (LookFront() && canMove)
         {
             Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
@@ -214,7 +217,17 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnBack_Button()
     {
-        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
+        if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene")
+        {
+            if(InGameMenu.instance.baseMenu.activeSelf)
+            {
+                InGameMenu.instance.ChangeBaseMenuStatus(false);
+            }
+            if (!InGameMenu.instance.baseMenu.activeSelf)
+            {
+                InGameMenu.instance.ChangeBaseMenuStatus(true);
+            }
+        }
     }
 
     private void OnX_Button()
