@@ -244,7 +244,7 @@ public class InGame_Menu_Controller : MonoBehaviour
 
     public void OnAction_Button()
     {
-        if (isInCam && currentCamera == 4 && canPress > 2.0f)
+        if (isInCam && currentCamera == 4 && canPress > 1.0f)
         {
             for (int i = 0; i < levels.Length; i++)
             {
