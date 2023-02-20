@@ -3,21 +3,64 @@ using UnityEditor;
 [CustomEditor(typeof(PropGrabable), true), CanEditMultipleObjects]
 public class PropGrabableEditor : Editor
 {
-    SerializedProperty pepe;
+    protected   SerializedProperty spriteScale;
+    new protected SerializedProperty localAnalizingScale;
+    new protected SerializedProperty localAnalizingEulerAngles;
+
+    new public SerializedProperty hasDialogue;
+    new protected SerializedProperty isInteracatable;
+    new protected SerializedProperty dialogueBeggining;
+    new protected SerializedProperty dialogueEnd;
+    new protected SerializedProperty deactivateAfterDialogue;
+
+    SerializedProperty dialogueOnlyOnce;
+
+    bool dialogueOptionsGroup1, analizingOptions = true;
 
     private void OnEnable()
     {
-        pepe = serializedObject.FindProperty("pepe");
+        spriteScale = serializedObject.FindProperty("spriteScale");
+        hasDialogue = serializedObject.FindProperty("hasDialogue");
+        isInteracatable = serializedObject.FindProperty("isInteractable");
+        dialogueBeggining = serializedObject.FindProperty("dialogueBeggining");
+        dialogueEnd = serializedObject.FindProperty("dialogueEnd");
+        deactivateAfterDialogue = serializedObject.FindProperty("deactivateAfterDialogue");
+
+
+        localAnalizingScale = serializedObject.FindProperty("localAnalizingScale");
+        localAnalizingEulerAngles = serializedObject.FindProperty("localAnalizingEulerAngles");
+
+        dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
+
     }
     public override void OnInspectorGUI()
     {
 
+
         serializedObject.Update();
 
-       
+        EditorGUILayout.PropertyField(hasDialogue);
+        if (hasDialogue.boolValue)
+        {
+            dialogueOptionsGroup1 = EditorGUILayout.BeginFoldoutHeaderGroup(dialogueOptionsGroup1, "Dialogue Options");
+            if (dialogueOptionsGroup1)
+            {
+                EditorGUILayout.PropertyField(dialogueOnlyOnce);
+                EditorGUILayout.PropertyField(deactivateAfterDialogue);
+                EditorGUILayout.PropertyField(dialogueBeggining);
+                EditorGUILayout.PropertyField(dialogueEnd);
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
+        }
 
-        EditorGUILayout.PropertyField(pepe);
-
+        analizingOptions = EditorGUILayout.BeginFoldoutHeaderGroup(analizingOptions, "Analizing Transform");
+        if (analizingOptions)
+        {
+            EditorGUILayout.PropertyField(localAnalizingScale);
+            EditorGUILayout.PropertyField(localAnalizingEulerAngles);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+        EditorGUILayout.PropertyField(spriteScale);
         serializedObject.ApplyModifiedProperties();
     }
 }

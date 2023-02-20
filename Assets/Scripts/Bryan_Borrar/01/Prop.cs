@@ -48,6 +48,14 @@ public class Prop : MonoBehaviour
             
         }
     }
+    protected virtual void OnBackButton()
+    {
+
+    }
+    protected virtual void OnInventoryButton()
+    {
+
+    }
 
     protected virtual void SwitchInteractability(bool newState)
     {
@@ -77,9 +85,13 @@ public class Prop : MonoBehaviour
     protected void AddToObserversList()
     {
         Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
+        Main_Interacction_Controller.instance.onBackButton += OnBackButton;
+        Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
     }
     protected void SubstractFromObserversList()
     {
         Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
+        Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
+        Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
     }
 }

@@ -217,6 +217,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnBack_Button()
     {
+        Main_Interacction_Controller.instance.BackButton();
         if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene")
         {
             if(InGameMenu.instance.baseMenu.activeSelf)
@@ -249,15 +250,16 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnY_Button()
     {
-        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf)  //If not already open, opens te inventory
+        Main_Interacction_Controller.instance.YButton();
+        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf && canMove)  //If not already open, opens te inventory
         {
             Camera.main.GetComponent<Volume>().enabled = true;
             Main_Camera_Controller.instance.ChangeFollowStatus(false);
             inventoryTemp.openByPlayer = true;
             inventoryTemp._parentRoot.SetActive(true);
-            //inventoryTemp.gameObject.transform.GetChild(0).GetComponent<Button>().Select();
+            inventoryTemp.firstSelect.GetComponent<Button>().Select();
         }
-        else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf)
+        else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf && inventoryTemp.openByPlayer)
         {
             Camera.main.GetComponent<Volume>().enabled = false;
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
@@ -339,7 +341,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         var rigthAxis = analizer.analizingSpot.transform.TransformDirection(Vector3.right);
         analizableObject.transform.RotateAround(analizer.analizingSpot.transform.position, rigthAxis, Time.deltaTime * rotations.y * 100);
     }
-    private void StopAnalizing()
+    public void StopAnalizing()
     {
         analizer.ReturnItem();        
         Main_Camera_Controller.instance.ChangeFollowStatus(true);

@@ -16848,8 +16848,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2117623969}
   - component: {fileID: 2117623968}
-  - component: {fileID: 2117623967}
   - component: {fileID: 2117623966}
+  - component: {fileID: 2117623970}
   m_Layer: 6
   m_Name: DrinkMeBottle
   m_TagString: 000
@@ -16871,22 +16871,6 @@ CapsuleCollider:
   m_Height: 0.041973118
   m_Direction: 2
   m_Center: {x: -1.3420592e-17, y: 3.6535228e-17, z: 0.0044374033}
---- !u!114 &2117623967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117623965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74acfc153c82d694b81236a49416a36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteScale: 0.5
-  analyzingScale: 38
-  analyzingRotation: {x: 275.07388, y: 199.31795, z: 41.52438}
-  lockScreen: {fileID: 0}
 --- !u!114 &2117623968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16917,6 +16901,27 @@ Transform:
   m_Father: {fileID: 1190850313}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2117623970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117623965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182af76318415c04d8cf5f8fab2135c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDialogue: 0
+  isInteractable: 1
+  dialogueBeggining: 0
+  dialogueEnd: 0
+  dialogueOnlyOnce: 0
+  deactivateAfterDialogue: 0
+  localAnalizingScale: {x: 36, y: 36, z: 36}
+  localAnalizingEulerAngles: {x: 0, y: 0, z: 0}
+  spriteScale: 0.5
 --- !u!1 &2123980776
 GameObject:
   m_ObjectHideFlags: 0

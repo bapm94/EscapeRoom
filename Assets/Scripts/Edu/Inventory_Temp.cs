@@ -16,7 +16,7 @@ public class Inventory_Temp : MonoBehaviour
     float timer;
     [SerializeField] float timeToClose = 3;
     [SerializeField] float animationTime = 5f;
-    [SerializeField] GameObject firstSelect;
+    [SerializeField] public GameObject firstSelect;
 
 
     public GameObject[] prop;

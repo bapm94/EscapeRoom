@@ -15,6 +15,8 @@ public class Main_Interacction_Controller : MonoBehaviour
     }
 
     public event Action onActionButton;
+    public event Action onInventoryButton;
+    public event Action onBackButton;
     public void ActionButton()
     {
         
@@ -23,5 +25,21 @@ public class Main_Interacction_Controller : MonoBehaviour
             onActionButton();            
         }
         
+    }
+
+    public void YButton()
+    {
+        if (onInventoryButton != null)
+        {
+            onInventoryButton();
+        }
+    }
+
+    public void BackButton()
+    {
+        if (onBackButton != null)
+        {
+            onBackButton();
+        }
     }
 }
