@@ -5622,9 +5622,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 33582046}
-        m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: Salir
+      - m_Target: {fileID: 1724001006504669088, guid: 0a40affb66e34d54caf31bf36040dd60,
+          type: 3}
+        m_TargetAssemblyTypeName: Main_Game_Manager, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

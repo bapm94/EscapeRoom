@@ -23,7 +23,11 @@ public class InGameMenu : MonoBehaviour
     public void ChangeBaseMenuStatus(bool x)
     {
         baseMenu.SetActive(x);
-        Main_Camera_Controller.instance.ChangeFollowStatus(!x);
+        if(!Main_Character_Controller_v2.instance.isAnalizingOject)
+        {
+            Main_Camera_Controller.instance.ChangeFollowStatus(!x);
+        }
+        
     }
 
     public void ExitToLobby()
