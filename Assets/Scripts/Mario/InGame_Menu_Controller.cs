@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//using UnityEngine.UIElements;
 
 public class InGame_Menu_Controller : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class InGame_Menu_Controller : MonoBehaviour
     [SerializeField] Animator animator;
     float canPress;
 
-    int currentCamera; //current camera being used
-    bool isInCam; //true if player is currently using any of the menu cameras
-    bool canMove;
+    public int currentCamera; //current camera being used
+    public bool isInCam; //true if player is currently using any of the menu cameras
+    public bool canMove;
 
     public static InGame_Menu_Controller instance;
     private void Awake()
@@ -50,17 +51,17 @@ public class InGame_Menu_Controller : MonoBehaviour
                 writtenButtons[i].interactable = true;
             }
         }
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) 
-        { 
-            if (currentCamera == 5)
-            {
-                StartCoroutine(BackToLevelMenu());
-            }
-            else { GoBackToPlayerCam(); /*BackWithBooks();*/ }
-        }
+        //if (Keyboard.current.escapeKey.wasPressedThisFrame) 
+        //{ 
+        //    if (currentCamera == 5)
+        //    {
+        //        StartCoroutine(BackToLevelMenu());
+        //    }
+        //    else { GoBackToPlayerCam(); /*BackWithBooks();*/ }
+        //}
 
-        NavigateLevelMenu();
-        NavigateMenu();
+        //NavigateLevelMenu();
+        //NavigateMenu();
 
         canPress += Time.deltaTime; //timer from NavigateLevelMenu()
         /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level1BookChosen")) 
@@ -106,82 +107,130 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// <summary>
     /// navigation throughout the level menu and delay between inputs to avoid bugging
     /// </summary>
-    public void NavigateLevelMenu()
+    //public void NavigateLevelMenu()           ***************************************************** Mario's Original********************************************************
+    //{
+    //    if (isInCam && currentCamera == 4)
+    //    {
+    //        if (canPress > 1.33f)
+    //        {
+    //            if (Keyboard.current.aKey.wasPressedThisFrame)
+    //            {
+    //                /*if (currentLevel < 1) { currentLevel++; }
+    //                else { currentLevel = 0; }*/
+    //                if (currentLevel == 1) { currentLevel = 0; }
+    //                else { currentLevel = 1; }
+    //                BookCheck();
+    //                canPress = 0.0f;
+    //            }
+    //            if (Keyboard.current.dKey.wasPressedThisFrame)
+    //            {
+    //                /*if (currentLevel > 0) { currentLevel--; }
+    //                else { currentLevel = 1; }*/
+    //                if (currentLevel == 1) { currentLevel = 0; }
+    //                else { currentLevel = 1; }
+    //                BookCheck();
+    //                canPress = 0.0f;
+    //            }
+    //        }
+    //    }
+    //}
+
+    /// <summary>
+    /// navigates between the cameras only if the player has entered the menu first (isInCam == true)
+    /// </summary>
+    //public void NavigateMenu()        ***************************************************** Mario's Original********************************************************
+    //{   
+    //    if (isInCam && canMove == true)
+    //    {
+    //        if (Keyboard.current.dKey.wasPressedThisFrame)
+    //        {
+    //            if (currentCamera == 2)
+    //            {
+    //                currentCamera = 3;
+    //                IndexChange(currentCamera);
+    //            }
+    //            else if (currentCamera == 1) { currentCamera = 2; }
+    //            IndexChange(currentCamera);
+    //        }
+    //        if (Keyboard.current.aKey.wasPressedThisFrame)
+    //        {
+    //            if (currentCamera == 3)
+    //            {
+    //                currentCamera = 2;
+    //                IndexChange(currentCamera);
+    //            }
+    //            else if (currentCamera == 2)
+    //            {
+    //                currentCamera = 1;
+    //                IndexChange(currentCamera);
+    //            }
+    //        }
+    //    }
+    //}
+
+
+    #region Bryan Changes
+    public void NavigateMenuLeft()
+    {
+        if (isInCam && canMove == true)
+        {
+            if (currentCamera == 3)
+            {
+                currentCamera = 2;
+                IndexChange(currentCamera);
+            }
+            else if (currentCamera == 2)
+            {
+                currentCamera = 1;
+                IndexChange(currentCamera);
+            }
+        }
+    }
+    public void NavigateMenuRight()
+    {
+        if (isInCam && canMove == true)
+        {
+            if (currentCamera == 2)
+            {
+                currentCamera = 3;
+                IndexChange(currentCamera);
+            }
+            else if (currentCamera == 1) { currentCamera = 2; }
+            IndexChange(currentCamera);
+        }
+    }
+    public void NavigateLevelMenuRight()
     {
         if (isInCam && currentCamera == 4)
         {
             if (canPress > 1.33f)
             {
-                if (Keyboard.current.aKey.wasPressedThisFrame)
-                {
-                    /*if (currentLevel < 1) { currentLevel++; }
-                    else { currentLevel = 0; }*/
-                    if (currentLevel == 1) { currentLevel = 0; }
-                    else { currentLevel = 1; }
-                    BookCheck();
-                    canPress = 0.0f;
-                }
-                if (Keyboard.current.dKey.wasPressedThisFrame)
-                {
-                    /*if (currentLevel > 0) { currentLevel--; }
+                /*if (currentLevel > 0) { currentLevel--; }
                     else { currentLevel = 1; }*/
-                    if (currentLevel == 1) { currentLevel = 0; }
-                    else { currentLevel = 1; }
-                    BookCheck();
-                    canPress = 0.0f;
-                }
+                if (currentLevel == 1) { currentLevel = 0; }
+                else { currentLevel = 1; }
+                BookCheck();
+                canPress = 0.0f;
             }
         }
     }
-
-    /// <summary>
-    /// checks which book should be displayed next
-    /// </summary>
-    public void BookCheck()
+    public void NavigateLevelMenuLeft()
     {
-        for (int i = 0; i < levels.Length; i++)
+        if (isInCam && currentCamera == 4)
         {
-            levels[i].GetComponent<Level_Controller>().ResetAllTriggers();
-        }
-        for (int i = 0; i < levels.Length; i++)
-        {
-            if (i != currentLevel) { levels[i].GetComponent<Level_Controller>().BookUnselected(); }
-            if (i == currentLevel) { levels[i].GetComponent<Level_Controller>().BookSelected(); }
+            if (canPress > 1.33f)
+            {
+                /*if (currentLevel < 1) { currentLevel++; }
+                    else { currentLevel = 0; }*/
+                if (currentLevel == 1) { currentLevel = 0; }
+                else { currentLevel = 1; }
+                BookCheck();
+                canPress = 0.0f;               
+            }
         }
     }
 
-    /// <summary>
-    /// navigates between the cameras only if the player has entered the menu first (isInCam == true)
-    /// </summary>
-    public void NavigateMenu()
-    {   
-        if (isInCam && canMove == true)
-        {
-            if (Keyboard.current.dKey.wasPressedThisFrame)
-            {
-                if (currentCamera == 2)
-                {
-                    currentCamera = 3;
-                    IndexChange(currentCamera);
-                }
-                else if (currentCamera == 1) { currentCamera = 2; }
-                IndexChange(currentCamera);
-            }
-            if (Keyboard.current.aKey.wasPressedThisFrame)
-            {
-                if (currentCamera == 3)
-                {
-                    currentCamera = 2;
-                    IndexChange(currentCamera);
-                }
-                else if (currentCamera == 2)
-                {
-                    currentCamera = 1;
-                    IndexChange(currentCamera);
-                }
-            }
-        }
-    }
+    #endregion
 
     IEnumerator BackToLevelMenu()
     {
@@ -214,6 +263,22 @@ public class InGame_Menu_Controller : MonoBehaviour
     }
 
     /// <summary>
+    /// checks which book should be displayed next
+    /// </summary>
+    public void BookCheck()
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].GetComponent<Level_Controller>().ResetAllTriggers();
+        }
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (i != currentLevel) { levels[i].GetComponent<Level_Controller>().BookUnselected(); }
+            if (i == currentLevel) { levels[i].GetComponent<Level_Controller>().BookSelected(); }
+        }
+    }
+
+    /// <summary>
     /// gets called in Main_Character_Controller, enters the menu and sets camera to first menu camera
     /// </summary>
     public void GoIntoMenu()
@@ -241,9 +306,25 @@ public class InGame_Menu_Controller : MonoBehaviour
 
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
     }
-
+    #region Player Actions
+    private void OnBack_Button()
+    {
+        if (currentCamera == 5)
+        {
+            StartCoroutine(BackToLevelMenu());
+        }
+        else { GoBackToPlayerCam(); /*BackWithBooks();*/ }
+    }
     public void OnAction_Button()
     {
+        if (Main_Character_Controller_v2.instance.PerceivedGO != null )
+        {
+            if (Main_Character_Controller_v2.instance.PerceivedGO.name == "Armchair1")
+            {
+                GoIntoMenu();
+            }
+            
+        }
         if (isInCam && currentCamera == 4 && canPress > 1.0f)
         {
             for (int i = 0; i < levels.Length; i++)
@@ -257,7 +338,23 @@ public class InGame_Menu_Controller : MonoBehaviour
             }
         }
     }
-
+    private void OnNav_Right()
+    {
+        if (isInCam)
+        {
+            NavigateMenuRight();
+            NavigateLevelMenuRight();
+        }   
+    }
+    private void OnNav_Left()
+    {
+        if (isInCam)
+        {
+            NavigateLevelMenuLeft();
+            NavigateMenuLeft();
+        }
+    }
+    #endregion
     public void CanMove()
     {
         canMove = true;

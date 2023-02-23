@@ -22,19 +22,19 @@ MonoBehaviour:
     m_Bits: 258
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 1.46
-    depthThreshold: 23.4
+    outlineScale: 0.5
+    depthThreshold: 10.2
     robertsCrossMultiplier: 156
-    normalThreshold: 0.211
-    steepAngleThreshold: 0.482
-    steepAngleMultiplier: 82
+    normalThreshold: 0.223
+    steepAngleThreshold: 0.819
+    steepAngleMultiplier: 81
   viewSpaceNormalsTextureSettings:
-    colorFormat: 0
-    depthBufferBits: 16
-    filterMode: 1
+    colorFormat: 9
+    depthBufferBits: 10
+    filterMode: 2
     backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    perObjectData: 0
-    enableDynamicBatching: 0
+    perObjectData: -1
+    enableDynamicBatching: 1
     enableInstancing: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_ShadowTransparentReceive: 1
   m_RenderingMode: 0
   m_DepthPrimingMode: 2
-  m_CopyDepthMode: 2
-  m_AccurateGbufferNormals: 0
+  m_CopyDepthMode: 0
+  m_AccurateGbufferNormals: 1
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
@@ -111,14 +111,14 @@ MonoBehaviour:
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
   m_Settings:
-    Downsample: 0
+    Downsample: 1
     AfterOpaque: 1
-    Source: 1
-    NormalSamples: 1
-    Intensity: 1.35
+    Source: 0
+    NormalSamples: 2
+    Intensity: 7.17
     DirectLightingStrength: 0
-    Radius: 0.15
-    SampleCount: 20
+    Radius: 0.2
+    SampleCount: 10
 --- !u!114 &3920365493072567069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,26 +132,26 @@ MonoBehaviour:
   m_Name: ScreenSpaceOutlines
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderPassEvent: 450
+  renderPassEvent: 550
   outlinesLayerMask:
     serializedVersion: 2
     m_Bits: 256
   outlinesOccluderLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   outlineSettings:
     outlineColor: {r: 1, g: 0.43509582, b: 0.0141509175, a: 1}
-    outlineScale: 1.27
-    depthThreshold: 8
-    robertsCrossMultiplier: 148
-    normalThreshold: 0.255
-    steepAngleThreshold: 0
-    steepAngleMultiplier: 0
+    outlineScale: 0.15
+    depthThreshold: 2.4
+    robertsCrossMultiplier: 212
+    normalThreshold: 0.353
+    steepAngleThreshold: 0.301
+    steepAngleMultiplier: 70
   viewSpaceNormalsTextureSettings:
-    colorFormat: 0
+    colorFormat: 9
     depthBufferBits: 16
-    filterMode: 0
+    filterMode: 2
     backgroundColor: {r: 0, g: 0, b: 0, a: 0}
     perObjectData: 0
-    enableDynamicBatching: 1
-    enableInstancing: 1
+    enableDynamicBatching: 0
+    enableInstancing: 0

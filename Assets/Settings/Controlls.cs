@@ -89,6 +89,24 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Nav_Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dd0d536-b81e-4657-a6f6-02791a8ba9fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Nav_Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""06c712cc-00a2-4ca0-a04a-b79e0a311f93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -344,6 +362,50 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                     ""action"": ""Y_Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61a1a95e-b2cd-40cc-9d94-45ad250b56bc"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nav_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7e1c8f1-9280-4dda-aad7-2136539e3463"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nav_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1d48355-2931-494e-869c-9d3bf7a35a98"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nav_Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7db639cc-721c-4870-9a23-28be744156f3"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nav_Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -359,6 +421,8 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         m_CharacterControl_Back_Button = m_CharacterControl.FindAction("Back_Button", throwIfNotFound: true);
         m_CharacterControl_X_Button = m_CharacterControl.FindAction("X_Button", throwIfNotFound: true);
         m_CharacterControl_Y_Button = m_CharacterControl.FindAction("Y_Button", throwIfNotFound: true);
+        m_CharacterControl_Nav_Left = m_CharacterControl.FindAction("Nav_Left", throwIfNotFound: true);
+        m_CharacterControl_Nav_Right = m_CharacterControl.FindAction("Nav_Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -425,6 +489,8 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Back_Button;
     private readonly InputAction m_CharacterControl_X_Button;
     private readonly InputAction m_CharacterControl_Y_Button;
+    private readonly InputAction m_CharacterControl_Nav_Left;
+    private readonly InputAction m_CharacterControl_Nav_Right;
     public struct CharacterControlActions
     {
         private @Controlls m_Wrapper;
@@ -436,6 +502,8 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         public InputAction @Back_Button => m_Wrapper.m_CharacterControl_Back_Button;
         public InputAction @X_Button => m_Wrapper.m_CharacterControl_X_Button;
         public InputAction @Y_Button => m_Wrapper.m_CharacterControl_Y_Button;
+        public InputAction @Nav_Left => m_Wrapper.m_CharacterControl_Nav_Left;
+        public InputAction @Nav_Right => m_Wrapper.m_CharacterControl_Nav_Right;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +534,12 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 @Y_Button.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
                 @Y_Button.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
                 @Y_Button.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnY_Button;
+                @Nav_Left.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Left;
+                @Nav_Left.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Left;
+                @Nav_Left.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Left;
+                @Nav_Right.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Right;
+                @Nav_Right.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Right;
+                @Nav_Right.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNav_Right;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -491,6 +565,12 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 @Y_Button.started += instance.OnY_Button;
                 @Y_Button.performed += instance.OnY_Button;
                 @Y_Button.canceled += instance.OnY_Button;
+                @Nav_Left.started += instance.OnNav_Left;
+                @Nav_Left.performed += instance.OnNav_Left;
+                @Nav_Left.canceled += instance.OnNav_Left;
+                @Nav_Right.started += instance.OnNav_Right;
+                @Nav_Right.performed += instance.OnNav_Right;
+                @Nav_Right.canceled += instance.OnNav_Right;
             }
         }
     }
@@ -504,5 +584,7 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
         void OnBack_Button(InputAction.CallbackContext context);
         void OnX_Button(InputAction.CallbackContext context);
         void OnY_Button(InputAction.CallbackContext context);
+        void OnNav_Left(InputAction.CallbackContext context);
+        void OnNav_Right(InputAction.CallbackContext context);
     }
 }

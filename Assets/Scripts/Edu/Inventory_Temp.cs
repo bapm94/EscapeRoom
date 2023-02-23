@@ -12,7 +12,7 @@ public class Inventory_Temp : MonoBehaviour
 
 
     public GameObject _parentRoot;
-    public bool openByPlayer { get; set; }
+    public bool openByPlayer; /*{ get; set; }*/
     float timer;
     [SerializeField] float timeToClose = 3;
     [SerializeField] float animationTime = 5f;
@@ -47,9 +47,9 @@ public class Inventory_Temp : MonoBehaviour
 
     private void OnEnable()
     {
-        InitialAnimation();
-        if (!openByPlayer) { LeanTween.delayedCall(timeToClose, () => CloseInventory()); }
-        else        { firstSelect.transform.GetComponent<Button>().Select();      }
+        ////InitialAnimation();
+        if (openByPlayer) { firstSelect.transform.GetComponent<Button>().Select();   }
+        //else        { LeanTween.delayedCall(timeToClose, () => CloseInventory()); }
     }
 
     public void InitialAnimation()
@@ -63,8 +63,13 @@ public class Inventory_Temp : MonoBehaviour
     public void CloseInventory()
     {
         LeanTween.cancel(_parentRoot);
-        openByPlayer = false;
+        //openByPlayer = false;
         GetComponent<Button>().Select();
         LeanTween.moveLocalX(_parentRoot, -280, (animationTime / 10)).setOnComplete(() => LeanTween.delayedCall(0.02f, () => _parentRoot.SetActive(false)));
+    }
+    public void OpenedByPicking()
+    {
+        InitialAnimation();
+        LeanTween.delayedCall(timeToClose, () => CloseInventory());
     }
 }

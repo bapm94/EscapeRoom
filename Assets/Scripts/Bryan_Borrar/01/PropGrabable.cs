@@ -44,7 +44,7 @@ public class PropGrabable : PropAnalizable
         _2DForm.SetActive(true);
         inventory.SetActive(true);
         //inventory.GetComponent<Inventory_Temp>().InitialAnimation();
-
+        inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
         transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
         transform.localPosition = Vector3.zero;
@@ -66,7 +66,7 @@ public class PropGrabable : PropAnalizable
     }
     protected override void OnInventoryButton()
     {
-        if (gameObject.layer == 9)
+        if (gameObject.layer == 9 && !Dialogue_System_Controller.instance.dialogueOnGoing)
         {
             if (Main_Character_Controller_v2.instance.isAnalizingOject)
             {

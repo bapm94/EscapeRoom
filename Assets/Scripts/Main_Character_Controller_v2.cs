@@ -218,9 +218,14 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void OnBack_Button()
     {
         Main_Interacction_Controller.instance.BackButton();
+
+    }
+
+    private void OnMenu_Button()
+    {
         if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene")
         {
-            if(InGameMenu.instance.baseMenu.activeSelf)
+            if (InGameMenu.instance.baseMenu.activeSelf)
             {
                 InGameMenu.instance.ChangeBaseMenuStatus(false);
             }
@@ -230,7 +235,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             }
         }
     }
-
     private void OnX_Button()
     {
         Debug.Log("X");
@@ -251,20 +255,27 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void OnY_Button()
     {
         Main_Interacction_Controller.instance.YButton();
-        if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf && canMove)  //If not already open, opens te inventory
+        if (!Dialogue_System_Controller.instance.dialogueOnGoing && SceneManager.GetActiveScene().name != "LobbyScene")
         {
-            Camera.main.GetComponent<Volume>().enabled = true;
-            Main_Camera_Controller.instance.ChangeFollowStatus(false);
-            inventoryTemp.openByPlayer = true;
-            inventoryTemp._parentRoot.SetActive(true);
-            inventoryTemp.firstSelect.GetComponent<Button>().Select();
+
+            if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf && canMove)  //If not already open, opens te inventory
+            {
+                Camera.main.GetComponent<Volume>().enabled = true;
+                Main_Camera_Controller.instance.ChangeFollowStatus(false);
+                inventoryTemp._parentRoot.SetActive(true);
+                inventoryTemp.openByPlayer = true;                
+                inventoryTemp.firstSelect.GetComponent<Button>().Select();
+                inventoryTemp.InitialAnimation();
+            }
+            else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf && inventoryTemp.openByPlayer && !canMove)
+            {
+                inventoryTemp.openByPlayer = false;
+                Camera.main.GetComponent<Volume>().enabled = false;
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+                inventoryTemp.CloseInventory();
+            }
         }
-        else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf && inventoryTemp.openByPlayer)
-        {
-            Camera.main.GetComponent<Volume>().enabled = false;
-            Main_Camera_Controller.instance.ChangeFollowStatus(true);
-            inventoryTemp.CloseInventory();
-        }
+        
     }
 
     #endregion
