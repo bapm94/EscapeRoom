@@ -26,7 +26,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     #region Looking At X Variables
     GameObject percievedGO;
-    public GameObject PerceivedGO { get => percievedGO;  }
+    public GameObject PerceivedGO { get; set; }
     #endregion
 
     #region Camera Variables

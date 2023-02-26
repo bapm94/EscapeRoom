@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(PropGrabable), true), CanEditMultipleObjects]
 public class PropGrabableEditor : Editor
@@ -38,6 +39,12 @@ public class PropGrabableEditor : Editor
 
 
         serializedObject.Update();
+
+        GUI.enabled = false;
+        SerializedProperty prop = serializedObject.FindProperty("m_Script");
+        EditorGUILayout.PropertyField(prop, true, new GUILayoutOption[0]);
+        GUI.enabled = true;
+
 
         EditorGUILayout.PropertyField(hasDialogue);
         if (hasDialogue.boolValue)

@@ -11,11 +11,15 @@ public class PropRestorePuzzleParent : Prop
     public bool[] conditionAchived;
 
 
+    //[SerializeField] ExtraActionsTemplate extraActionScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         base.AddToObserversList();
         conditionAchived = new bool[VictoryConditions.Count];
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
+        //extraActionScript = extra;
     }
 
     // Update is called once per frame
@@ -31,6 +35,20 @@ public class PropRestorePuzzleParent : Prop
         {
             base.OnActionButton();
         }
+        else if (CheckForVictory())
+        {
+            if (gameObject.tag == "000")
+            {
+                gameObject.layer = 0;
+                gameObject.tag = "111";
+                Main_Character_Controller_v2.instance.PerceivedGO = null;
+            }
+            //else if (extraActionScript != null)
+            //{
+            //    extraActionScript.ExtraAction();
+            //}
+            
+        }
     }
 
 
@@ -44,11 +62,17 @@ public class PropRestorePuzzleParent : Prop
                 {
                     conditionAchived[i] = true;
                     GameObject part = Inventory_Temp.instance.propsGrabbed[x];
-                    part.transform.SetParent(FinalPositionOfItem[i].transform);
-                    part.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                    part.transform.localScale = Vector3.one;
-                    part.transform.GetChild(0).gameObject.SetActive(true);
-                    part.transform.GetChild(1).gameObject.SetActive(false);
+                    PropGrabable script = part.GetComponent<PropGrabable>();
+                    if (!script.restored)
+                    {
+                        part.transform.SetParent(FinalPositionOfItem[i].transform);
+                        part.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                        part.transform.localScale = Vector3.one;
+                        part.transform.GetChild(0).gameObject.SetActive(true);
+                        part.transform.GetChild(1).gameObject.SetActive(false);
+                        script.restored = true;
+                    }
+                    
                     break;
                 }
             }

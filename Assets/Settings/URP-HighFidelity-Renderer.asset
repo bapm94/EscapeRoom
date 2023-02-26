@@ -22,14 +22,14 @@ MonoBehaviour:
     m_Bits: 258
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 0.5
-    depthThreshold: 10.2
-    robertsCrossMultiplier: 156
-    normalThreshold: 0.223
-    steepAngleThreshold: 0.819
-    steepAngleMultiplier: 81
+    outlineScale: 0.98
+    depthThreshold: 14.9
+    robertsCrossMultiplier: 137
+    normalThreshold: 0.152
+    steepAngleThreshold: 0.76
+    steepAngleMultiplier: 119
   viewSpaceNormalsTextureSettings:
-    colorFormat: 9
+    colorFormat: 10
     depthBufferBits: 10
     filterMode: 2
     backgroundColor: {r: 0, g: 0, b: 0, a: 0}
@@ -54,9 +54,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -2173359373936333495}
   - {fileID: 913053304564225582}
-  - {fileID: 3920365493072567069}
-  m_RendererFeatureMap: 496d42132aadd6e12e168c9724d1ab0c1d1b4a1ca5ef6736
-  m_UseNativeRenderPass: 1
+  - {fileID: 223220026761806986}
+  m_RendererFeatureMap: 496d42132aadd6e12e168c9724d1ab0c8a04e4816e091903
+  m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -77,10 +77,10 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
     passOperation: 2
     failOperation: 0
     zFailOperation: 0
-  m_ShadowTransparentReceive: 1
+  m_ShadowTransparentReceive: 0
   m_RenderingMode: 0
   m_DepthPrimingMode: 2
   m_CopyDepthMode: 0
@@ -96,6 +96,42 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
+--- !u!114 &223220026761806986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e74ab29c92ff584bb35a18a9d566a0f, type: 3}
+  m_Name: ScreenSpaceOutlines
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 450
+  outlinesLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  outlinesOccluderLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  outlineSettings:
+    outlineColor: {r: 1, g: 0.54987025, b: 0, a: 1}
+    outlineScale: 1.98
+    depthThreshold: 2.5
+    robertsCrossMultiplier: 100
+    normalThreshold: 0.4
+    steepAngleThreshold: 0.2
+    steepAngleMultiplier: 25
+  viewSpaceNormalsTextureSettings:
+    colorFormat: 27
+    depthBufferBits: 16
+    filterMode: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    perObjectData: 0
+    enableDynamicBatching: 0
+    enableInstancing: 0
 --- !u!114 &913053304564225582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,43 +151,7 @@ MonoBehaviour:
     AfterOpaque: 1
     Source: 0
     NormalSamples: 2
-    Intensity: 7.17
-    DirectLightingStrength: 0
-    Radius: 0.2
-    SampleCount: 10
---- !u!114 &3920365493072567069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e74ab29c92ff584bb35a18a9d566a0f, type: 3}
-  m_Name: ScreenSpaceOutlines
-  m_EditorClassIdentifier: 
-  m_Active: 1
-  renderPassEvent: 550
-  outlinesLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  outlinesOccluderLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  outlineSettings:
-    outlineColor: {r: 1, g: 0.43509582, b: 0.0141509175, a: 1}
-    outlineScale: 0.15
-    depthThreshold: 2.4
-    robertsCrossMultiplier: 212
-    normalThreshold: 0.353
-    steepAngleThreshold: 0.301
-    steepAngleMultiplier: 70
-  viewSpaceNormalsTextureSettings:
-    colorFormat: 9
-    depthBufferBits: 16
-    filterMode: 2
-    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    perObjectData: 0
-    enableDynamicBatching: 0
-    enableInstancing: 0
+    Intensity: 0.3
+    DirectLightingStrength: 0.049
+    Radius: 0.82
+    SampleCount: 6

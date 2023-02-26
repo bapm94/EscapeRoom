@@ -7,12 +7,8 @@ public class PropGrabable : PropAnalizable
 {
     
     [SerializeField] protected float spriteScale = 0.5f;
-    //[SerializeField] float analyzingScale = 1f;
-    //[SerializeField] Vector3 analyzingRotation;
-    //[SerializeField] bool isTool;
+    public bool restored = false;
 
-    //public float AnalyzingScale { get => analyzingScale; }
-    //public Vector3 AnalyzingRotation { get => analyzingRotation; }
     private GameObject _originalParent;
     private GameObject _3DForm;
     private GameObject _2DForm;
@@ -20,10 +16,13 @@ public class PropGrabable : PropAnalizable
 
     In_Game_Tool info;
 
-    //public static Prop_Controller instance;
-    //[SerializeField] GameObject lockScreen;
+    [SerializeField] ExtraActionsTemplate extraActionScript;
+
     private void Start()
     {
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
+        extraActionScript = extra;
+
         base.AddToObserversList();
         info = GetComponent<In_Game_Tool>();
         if (transform.childCount > 1)
@@ -55,14 +54,28 @@ public class PropGrabable : PropAnalizable
         }
 
         info.GrabIt();
+        
 
     }
 
     protected override void OnActionButton()
     {
-        base.OnActionButton();
+        if (gameObject.layer == 8)
+        {
+            if (!restored)
+            {
+                Debug.Log("000000" + gameObject);
+                base.OnActionButton();
+            }
+            else if (restored)
+            {
+                Debug.Log("·" + extraActionScript);
+                extraActionScript.ExtraAction();
+            }
+        }
+       
 
-        
+
     }
     protected override void OnInventoryButton()
     {

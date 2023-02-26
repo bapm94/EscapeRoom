@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(PropRestorePuzzleParent), true)]
 public class PropRestorePuzzleParentEditor : Editor
@@ -15,9 +16,10 @@ public class PropRestorePuzzleParentEditor : Editor
     protected SerializedProperty FinalPositionOfItem;
     bool dialogueOptionsGroup = true;
 
-
+    MonoScript script = null;
     private void OnEnable()
     {
+        //script = MonoScript.FromMonoBehaviour((MyScript)target);
         instance = this;
         hasDialogue = serializedObject.FindProperty("hasDialogue");
         isInteracatable = serializedObject.FindProperty("isInteractable");
@@ -32,6 +34,11 @@ public class PropRestorePuzzleParentEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+
+        GUI.enabled = false;
+        SerializedProperty prop = serializedObject.FindProperty("m_Script");
+        EditorGUILayout.PropertyField(prop, true, new GUILayoutOption[0]);
+        GUI.enabled = true;
 
         EditorGUILayout.PropertyField(hasDialogue);
 
