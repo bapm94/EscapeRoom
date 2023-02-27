@@ -9,6 +9,7 @@ public class PropRestorePuzzleParent : Prop
     [Tooltip("The final position those parts would have.")]
     public List<GameObject> FinalPositionOfItem;
     public bool[] conditionAchived;
+    [SerializeField] GameObject subMision;
 
 
     //[SerializeField] ExtraActionsTemplate extraActionScript;
@@ -16,39 +17,22 @@ public class PropRestorePuzzleParent : Prop
     // Start is called before the first frame update
     void Start()
     {
-        base.AddToObserversList();
+        AddToObserversList();
         conditionAchived = new bool[VictoryConditions.Count];
-        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
-        //extraActionScript = extra;
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     protected override void OnActionButton()
     {
-        TryToRestore();
-        if (!CheckForVictory())
+        if (gameObject.layer == 8)
         {
-            base.OnActionButton();
-        }
-        else if (CheckForVictory())
-        {
-            if (gameObject.tag == "000")
+            TryToRestore();
+            if (!CheckForVictory())
             {
-                gameObject.layer = 0;
-                gameObject.tag = "111";
-                Main_Character_Controller_v2.instance.PerceivedGO = null;
+                base.OnActionButton();
             }
-            //else if (extraActionScript != null)
-            //{
-            //    extraActionScript.ExtraAction();
-            //}
-            
-        }
+        }   
     }
 
 
@@ -63,6 +47,7 @@ public class PropRestorePuzzleParent : Prop
                     conditionAchived[i] = true;
                     GameObject part = Inventory_Temp.instance.propsGrabbed[x];
                     PropGrabable script = part.GetComponent<PropGrabable>();
+                    part.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
                     if (!script.restored)
                     {
                         part.transform.SetParent(FinalPositionOfItem[i].transform);
@@ -72,9 +57,9 @@ public class PropRestorePuzzleParent : Prop
                         part.transform.GetChild(1).gameObject.SetActive(false);
                         script.restored = true;
                     }
-                    
-                    break;
+                    extra.ExtraAction();
                 }
+                //else break;
             }
         }
     }
@@ -93,8 +78,22 @@ public class PropRestorePuzzleParent : Prop
         if (count == VictoryConditions.Count)
         {
             victory = true;
+            if (subMision != null) { subMision.SetActive(true); }
+            if (gameObject.tag == "000")
+            {
+                gameObject.layer = 0;
+                gameObject.tag = "111";
+                Main_Character_Controller_v2.instance.PerceivedGO = null;
+
+            }
+            this.enabled = false;
         }
         return victory;
 
+    }
+
+    private void OnDisable()
+    {
+        SubstractFromObserversList();
     }
 }

@@ -12,7 +12,9 @@ public class PropGrabable : PropAnalizable
     private GameObject _originalParent;
     private GameObject _3DForm;
     private GameObject _2DForm;
+    bool asingConditions = false;
 
+    [SerializeField] bool canBeCollectedAgain = false;
 
     In_Game_Tool info;
 
@@ -23,7 +25,8 @@ public class PropGrabable : PropAnalizable
         gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
         extraActionScript = extra;
 
-        base.AddToObserversList();
+        AddToObserversList();
+        //base.AddToObserversList();
         info = GetComponent<In_Game_Tool>();
         if (transform.childCount > 1)
         {
@@ -52,7 +55,7 @@ public class PropGrabable : PropAnalizable
         {
             _2DForm.GetComponent<Image>().sprite = info.sprite;
         }
-
+        isBeingAnalized = false;
         info.GrabIt();
         
 
@@ -60,17 +63,30 @@ public class PropGrabable : PropAnalizable
 
     protected override void OnActionButton()
     {
-        if (gameObject.layer == 8)
+        if (gameObject.layer == 8  )
         {
+            Debug.Log("hey");
             if (!restored)
             {
-                Debug.Log("000000" + gameObject);
+                Debug.Log("hey im not restored");
+                
                 base.OnActionButton();
             }
-            else if (restored)
+            else if (restored && !canBeCollectedAgain)
             {
-                Debug.Log("·" + extraActionScript);
+                Debug.Log("hey im restored but cant be collected");
+                if (!asingConditions)
+                {
+                    extraActionScript.SetDefaultPos(transform.localPosition);
+                    asingConditions = true;
+                }
                 extraActionScript.ExtraAction();
+            }
+            else if (restored && canBeCollectedAgain)
+            {
+                Debug.Log("hey");
+                asingConditions = false;
+                base.OnActionButton();
             }
         }
        
@@ -91,4 +107,25 @@ public class PropGrabable : PropAnalizable
         }
 
     }
+
+    private void OnDestroy()
+    {
+        SubstractFromObserversList();
+    }
+    private void OnDisable()
+    {
+        SubstractFromObserversList();
+    }
+    //new protected void AddToObserversList()
+    //{
+    //    Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
+    //    Main_Interacction_Controller.instance.onBackButton += OnBackButton;
+    //    Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
+    //}
+    //new protected void SubstractFromObserversList()
+    //{
+    //    Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
+    //    Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
+    //    Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
+    //}
 }

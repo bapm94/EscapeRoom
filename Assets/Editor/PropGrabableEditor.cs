@@ -15,6 +15,7 @@ public class PropGrabableEditor : Editor
     protected SerializedProperty deactivateAfterDialogue;
 
     SerializedProperty dialogueOnlyOnce;
+    SerializedProperty canBeCollectedAgain;
 
     bool dialogueOptionsGroup1, analizingOptions = true;
 
@@ -32,7 +33,7 @@ public class PropGrabableEditor : Editor
         localAnalizingEulerAngles = serializedObject.FindProperty("localAnalizingEulerAngles");
 
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
-
+        canBeCollectedAgain = serializedObject.FindProperty("canBeCollectedAgain");
     }
     public override void OnInspectorGUI()
     {
@@ -68,6 +69,8 @@ public class PropGrabableEditor : Editor
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         EditorGUILayout.PropertyField(spriteScale);
+        EditorGUILayout.PropertyField(canBeCollectedAgain);
+
         serializedObject.ApplyModifiedProperties();
     }
 }

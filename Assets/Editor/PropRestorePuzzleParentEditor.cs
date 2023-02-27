@@ -14,6 +14,8 @@ public class PropRestorePuzzleParentEditor : Editor
     protected SerializedProperty dialogueOnlyOnce;
     protected SerializedProperty VictoryConditions;
     protected SerializedProperty FinalPositionOfItem;
+
+    protected SerializedProperty subMision;
     bool dialogueOptionsGroup = true;
 
     MonoScript script = null;
@@ -30,6 +32,8 @@ public class PropRestorePuzzleParentEditor : Editor
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
         VictoryConditions = serializedObject.FindProperty("VictoryConditions");
         FinalPositionOfItem = serializedObject.FindProperty("FinalPositionOfItem");
+
+        subMision = serializedObject.FindProperty("subMision");
     }
     public override void OnInspectorGUI()
     {
@@ -59,6 +63,8 @@ public class PropRestorePuzzleParentEditor : Editor
 
         EditorGUILayout.PropertyField(VictoryConditions);
         EditorGUILayout.PropertyField(FinalPositionOfItem);
+        EditorGUILayout.PropertyField(subMision);
+       
 
         serializedObject.ApplyModifiedProperties();
     }

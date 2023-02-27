@@ -7,7 +7,7 @@ public class Restoring_Puzzle : MonoBehaviour
     public List<GameObject> VictoryConditions;
     public List<GameObject> FinalPositionOfItem;
     public bool[] conditionAchived;
-
+    [SerializeField] GameObject subMision;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class Restoring_Puzzle : MonoBehaviour
                     part.transform.localScale = Vector3.one;
                     part.transform.GetChild(0).gameObject.SetActive(true);
                     part.transform.GetChild(1).gameObject.SetActive(false);
+
                     break;
                 }
             }
@@ -59,6 +60,11 @@ public class Restoring_Puzzle : MonoBehaviour
         if (count == VictoryConditions.Count)
         {
             victory = true;
+            if (subMision != null)
+            {
+                subMision.SetActive(true);
+            }
+
         }
         return victory;
 

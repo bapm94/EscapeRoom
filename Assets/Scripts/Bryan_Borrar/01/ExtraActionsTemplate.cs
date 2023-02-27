@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExtraActionsTemplate : MonoBehaviour
 {
+    Vector3 defaultPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,15 @@ public class ExtraActionsTemplate : MonoBehaviour
     public virtual void ExtraAction()
     {
 
+    }
+
+    public void SetDefaultPos(Vector3 x)
+    {
+        defaultPos = x;
+    }
+
+    public Vector3 GetDefaultPos()
+    {
+        return defaultPos;
     }
 }

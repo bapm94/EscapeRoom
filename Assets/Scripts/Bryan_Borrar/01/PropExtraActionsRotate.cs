@@ -5,11 +5,17 @@ using UnityEngine;
 public class PropExtraActionsRotate : ExtraActionsTemplate
 {
     [SerializeField] float angleAmount;
-    [SerializeField] Vector3 angles;
+    [SerializeField] bool rotationAxisY = true;
+    [SerializeField] bool rotationAxisX = false;
+    [SerializeField] bool rotationAxisZ = false;
+    [SerializeField] GameObject water;
+    public Vector3 originalAngle { get; set; }
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalAngle = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -20,22 +26,44 @@ public class PropExtraActionsRotate : ExtraActionsTemplate
 
     public override void ExtraAction()
     {
-        
-        float angle = angleAmount + transform.eulerAngles.y;
-        //if (angles.x == 1)
-        //{
-        //    angle = angleAmount + transform.eulerAngles.x;
-        //}
-        //else if (angles.y == 1)
-        //{
-        //    angle = angleAmount + transform.eulerAngles.y;
-        //}
-        //else if (angles.z == 1)
-        //{
-        //    angle = angleAmount + transform.eulerAngles.z;
-        //}
-        //transform.Rotate(angles, angle, Space.Self);
-        Debug.Log("caraculo" + angle);
-        LeanTween.rotateY(gameObject, angle, 1);
+        originalAngle = GetDefaultPos();
+        if (rotationAxisY)
+        {
+            
+            float angle = angleAmount + transform.localEulerAngles.y;
+            if (angle > originalAngle.y + angleAmount)
+            {
+                angle = originalAngle.y;
+                water.SetActive(false);
+            }
+            else { water.SetActive(true); }
+            LeanTween.rotateLocal(gameObject, Vector3.up * angle, 1);
+        }
+        else if (rotationAxisX)
+        {
+            float angle = angleAmount + transform.localEulerAngles.x;
+            if (angle > originalAngle.x + angleAmount)
+            {
+                angle = originalAngle.x; 
+                water.SetActive(false);
+            }
+            else { water.SetActive(true); }
+            LeanTween.rotateLocal(gameObject, Vector3.right * angle, 1);
+            
+        }
+        else if (rotationAxisZ)
+        {
+            float angle = angleAmount + transform.localEulerAngles.z;
+            if (angle > originalAngle.z + angleAmount)
+            {
+                angle = originalAngle.z;
+                water.SetActive(false);
+            }
+            else { water.SetActive(true); }
+            LeanTween.rotateLocal(gameObject, Vector3.forward * angle, 1);
+            //Debug.Log("should rotate " + angle + " angles");
+        }
+        //LeanTween.rotateY(gameObject, angle, 1);
+        //LeanTween.rotateLocal(gameObject, Vector3.up * angle, 1);
     }
 }

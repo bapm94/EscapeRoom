@@ -14,10 +14,11 @@ public class PropAnalizable : Prop
     }
     protected override void OnActionButton()
     {
-        base.OnActionButton();
+        
         if (gameObject.layer == 8 && !isBeingAnalized)
         {
-            isBeingAnalized=true;
+            base.OnActionButton();
+            isBeingAnalized =true;
             if (localAnalizingScale != Vector3.one || localAnalizingEulerAngles != Vector3.zero)
             {
                 Main_Character_Controller_v2.instance.StartAnalizing(gameObject, localAnalizingScale, localAnalizingEulerAngles);

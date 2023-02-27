@@ -81,7 +81,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
         transform.position = spawn.position; transform.rotation = spawn.rotation;
 
-        
+        LeanTween.reset();
     }
 
 
