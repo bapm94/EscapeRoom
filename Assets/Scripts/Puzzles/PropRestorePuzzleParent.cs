@@ -10,7 +10,7 @@ public class PropRestorePuzzleParent : Prop
     public List<GameObject> FinalPositionOfItem;
     public bool[] conditionAchived;
     [SerializeField] GameObject subMision;
-
+    
 
     //[SerializeField] ExtraActionsTemplate extraActionScript;
     
@@ -56,7 +56,11 @@ public class PropRestorePuzzleParent : Prop
                         part.transform.GetChild(0).gameObject.SetActive(true);
                         part.transform.GetChild(1).gameObject.SetActive(false);
                         script.restored = true;
+                        Inventory_Temp.instance.propsGrabbed.Remove(part);
+                        
+                        
                     }
+                    
                     extra.ExtraAction();
                 }
                 //else break;

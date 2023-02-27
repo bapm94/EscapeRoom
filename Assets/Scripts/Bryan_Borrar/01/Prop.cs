@@ -12,6 +12,7 @@ public class Prop : MonoBehaviour
     [SerializeField] bool dialogueOnlyOnce;
     [Tooltip("After showing the dialogue the object deactivates its interactability")]
     [SerializeField] bool deactivateAfterDialogue;
+    public int localIndex;
 
     private void Start()
     {
@@ -84,6 +85,7 @@ public class Prop : MonoBehaviour
 
     protected void AddToObserversList()
     {
+
         Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
         Main_Interacction_Controller.instance.onBackButton += OnBackButton;
         Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;

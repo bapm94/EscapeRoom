@@ -9,6 +9,7 @@ public class Main_Interacction_Controller : MonoBehaviour
 {
     public static Main_Interacction_Controller instance;
 
+  
     void Awake()
     {
         instance = this;

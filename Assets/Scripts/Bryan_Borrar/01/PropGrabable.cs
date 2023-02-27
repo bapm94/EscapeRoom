@@ -36,8 +36,11 @@ public class PropGrabable : PropAnalizable
             _2DForm.SetActive(false);
         }
         _originalParent = transform.parent.gameObject;
-    }        
-    
+    }
+    private void OnEnable()
+    {
+        AddToObserversList();
+    }
     public void PutInTempInventory()
     {
         GameObject inventory = Inventory_Temp.instance.gameObject;
@@ -49,6 +52,7 @@ public class PropGrabable : PropAnalizable
         inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
         transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
+        //localIndex = inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count - 1 ;
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one * spriteScale;
         if (transform.childCount > 1)
@@ -112,10 +116,7 @@ public class PropGrabable : PropAnalizable
     {
         SubstractFromObserversList();
     }
-    private void OnDisable()
-    {
-        SubstractFromObserversList();
-    }
+
     //new protected void AddToObserversList()
     //{
     //    Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
