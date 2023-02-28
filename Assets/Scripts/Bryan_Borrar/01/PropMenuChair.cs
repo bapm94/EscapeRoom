@@ -30,8 +30,6 @@ public class PropMenuChair : Prop
                 if (tutorialObject.GetComponent<Tutorial_Manager>().tutorialActive)
                 {
                     tutorialObject.GetComponent<Tutorial_Manager>().Deactivate();
-                    Dialogue_System_Controller.instance.GetDialogueInfo(12, 15);
-                    //character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();
                 }
                 else { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
             }

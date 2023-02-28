@@ -14,17 +14,21 @@ public class Dialogue_System_Controller : MonoBehaviour
     public bool dialogueOnGoing;
     [SerializeField] bool isTyping;
     [SerializeField] int rangeMaxLocal;
+    [SerializeField] int rangeMinLocal;
     public string[] names;
     public TextMeshProUGUI characterName;
     public GameObject dialogueParent;
+    public Animator animator;
     
     Coroutine lastRoutine;
 
     public static Dialogue_System_Controller instance;
 
-
+    
     void Start()
     {
+        animator = dialogueParent.gameObject.GetComponent<Animator>();
+
         dialogueParent.SetActive(false);
 
         if (instance == null) { Dialogue_System_Controller.instance = this; }
@@ -36,7 +40,7 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     private void OnAction_Button()
     {
-        if (dialogueOnGoing)
+        if (dialogueOnGoing && rangeMinLocal != Index) //ARREGLAR ESTO; NO SE PUEDE SKIPPEAR EL PRIMER DIÁLOGO
         {
             NextSentence(rangeMaxLocal);
         }
@@ -45,6 +49,7 @@ public class Dialogue_System_Controller : MonoBehaviour
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
         rangeMaxLocal = rangeMax;
+        rangeMinLocal = rangeMin;
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
 
         if (!dialogueOnGoing)
@@ -61,7 +66,6 @@ public class Dialogue_System_Controller : MonoBehaviour
         dialogueText.text = "";
         lastRoutine = null;
         lastRoutine = StartCoroutine(WriteSentence());
-        dialogueOnGoing = true;
     }
 
     void NextSentence(int rangeMax)
@@ -70,7 +74,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         {
             if (Index > rangeMax)
             {
-                DissapearDialogueBox();
+                StartCoroutine(DissapearDialogueBox());
             }
             else
             {
@@ -81,9 +85,9 @@ public class Dialogue_System_Controller : MonoBehaviour
         }
         else if (dialogueOnGoing && isTyping)
         {
-            if (Index > rangeMax) 
+            if (Index > rangeMax)
             {
-                DissapearDialogueBox();
+                StartCoroutine(DissapearDialogueBox());
             }
             else
             {
@@ -95,20 +99,27 @@ public class Dialogue_System_Controller : MonoBehaviour
                 {
                     dialogueText.text += temp[i];
                 }
+                animator.Play("DialogueBoxSkip");
                 Index++;
             }
         }
     }
 
-    void DissapearDialogueBox()
+    IEnumerator DissapearDialogueBox()
     {
         dialogueOnGoing = false;
+        animator.Play("DialogueBoxOut");
+        yield return new WaitForSeconds(0.8f);
         dialogueParent.SetActive(false);
         if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
     }
 
     IEnumerator WriteSentence()
     {
+        if (rangeMinLocal == Index) { animator.Play("DialogueBox"); }
+        else { animator.Play("DialogueBoxSkipStop"); }
+
+        dialogueOnGoing = true;
         isTyping = true;
         char[] Characters = sentences[Index].ToCharArray();
         for (int i = 0; i < Characters.Length; i++)
@@ -128,6 +139,7 @@ public class Dialogue_System_Controller : MonoBehaviour
                 if (!isTyping) { break; }
             }
         }
+        animator.Play("DialogueBoxSkip");
         Index++;
         isTyping = false; 
     }
