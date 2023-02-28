@@ -75,6 +75,7 @@ public class Level_Controller : MonoBehaviour
     public IEnumerator BookReturn()
     {
         animCheck = false;
+        textCanvas.SetActive(false);
         b_animator.SetTrigger("Close");
         yield return new WaitForSeconds(0.66f);
         p_animator.SetTrigger("MoveBack");
