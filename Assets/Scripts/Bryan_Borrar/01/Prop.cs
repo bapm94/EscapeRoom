@@ -25,13 +25,6 @@ public class Prop : MonoBehaviour
     }
 
 
-    //private void OnEnable()
-    //{
-
-    //    gameObject.tag = "000"; gameObject.layer = 6;  //By default all props are interactable. The code sets the correct tag and layer.
-       
-        
-    //}
 
 
     /// <summary>
