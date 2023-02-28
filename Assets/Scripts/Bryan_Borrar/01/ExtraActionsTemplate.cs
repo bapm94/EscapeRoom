@@ -16,7 +16,10 @@ public class ExtraActionsTemplate : MonoBehaviour
     {
         
     }
+    public virtual void ExtraActionOnInteraction()
+    {
 
+    }
     public virtual void ExtraAction()
     {
 

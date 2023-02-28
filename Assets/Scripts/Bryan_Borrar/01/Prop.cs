@@ -14,8 +14,14 @@ public class Prop : MonoBehaviour
     [SerializeField] bool deactivateAfterDialogue;
     public int localIndex;
 
+    //[SerializeField] bool extraActionOnInteraction;
+    ExtraActionsTemplate extraAction;
+
     private void Start()
     {
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
+        if (extra != null) { extraAction = extra; }
+        
         AddToObserversList();
         //gameObject.tag = "000"; gameObject.layer = 6;
     }
@@ -34,10 +40,12 @@ public class Prop : MonoBehaviour
     {        
         if (gameObject.layer == 8)  //Only the game object thats being observe will perform the action.
         {
+            if (extraAction != null) { extraAction.ExtraActionOnInteraction(); }
             if (hasDialogue)
             {
                 if (dialogueOnlyOnce) { hasDialogue = false; }                
                 Dialogue_System_Controller.instance.GetDialogueInfo(dialogueBeggining, dialogueEnd);
+                
                 if (deactivateAfterDialogue)
                 {
                     SwitchInteractability(false);

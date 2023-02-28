@@ -23,7 +23,8 @@ public class PropGrabable : PropAnalizable
     private void Start()
     {
         gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
-        extraActionScript = extra;
+        if (extra != null) { extraActionScript = extra; }
+        
 
         AddToObserversList();
         //base.AddToObserversList();
