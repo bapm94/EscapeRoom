@@ -5,7 +5,7 @@ using UnityEngine;
 public class PropRestorePuzzleParentEditor : Editor
 {
     public static PropRestorePuzzleParentEditor instance;
-    new public SerializedProperty hasDialogue;
+    public SerializedProperty hasDialogue;
     protected SerializedProperty isInteracatable;
     protected SerializedProperty dialogueBeggining;
     protected SerializedProperty dialogueEnd;
@@ -18,7 +18,7 @@ public class PropRestorePuzzleParentEditor : Editor
     protected SerializedProperty subMision;
     bool dialogueOptionsGroup = true;
 
-    MonoScript script = null;
+    //MonoScript script = null;
     private void OnEnable()
     {
         //script = MonoScript.FromMonoBehaviour((MyScript)target);

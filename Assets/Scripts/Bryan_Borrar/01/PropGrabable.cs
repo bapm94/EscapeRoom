@@ -15,7 +15,7 @@ public class PropGrabable : PropAnalizable
     bool asingConditions = false;
 
     [SerializeField] bool canBeCollectedAgain = false;
-
+    [SerializeField] bool extraActionOnCollected = false;
     In_Game_Tool info;
 
     [SerializeField] ExtraActionsTemplate extraActionScript;
@@ -61,6 +61,11 @@ public class PropGrabable : PropAnalizable
         }
         isBeingAnalized = false;
         info.GrabIt();
+
+        if (extraActionScript != null)
+        {
+            extraActionScript.ExtraActionOnCollected();
+        }
         
 
     }
@@ -75,6 +80,11 @@ public class PropGrabable : PropAnalizable
                 Debug.Log("hey im not restored");
                 
                 base.OnActionButton();
+                
+                //if (extraActionOnCollected)
+                //{
+                    
+                //}
             }
             else if (restored && !canBeCollectedAgain)
             {
@@ -91,6 +101,7 @@ public class PropGrabable : PropAnalizable
                 Debug.Log("hey");
                 asingConditions = false;
                 base.OnActionButton();
+                extraActionScript.ExtraAction();
             }
         }
        

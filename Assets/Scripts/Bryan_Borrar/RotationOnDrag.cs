@@ -8,12 +8,12 @@ public class RotationOnDrag : MonoBehaviour
 {
     private Quaternion originalRotation;
     private float startAngle = 0;
-    [SerializeField] Vector3 rotationAxis = new Vector3 (0,0,1);
+    //[SerializeField] Vector3 rotationAxis = new Vector3 (0,0,1);
 
     // Start is called before the first frame update
     void Start()
     {
-        originalRotation = gameObject.transform.rotation;
+        originalRotation = gameObject.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class RotationOnDrag : MonoBehaviour
         Quaternion newRotation = Quaternion.AngleAxis(angle - startAngle, transform.forward);
         newRotation.y = 0; //see comment from above 
         newRotation.eulerAngles = new Vector3(0, 0, newRotation.eulerAngles.z);
-        transform.rotation = originalRotation * newRotation;
+        transform.localRotation = originalRotation * newRotation;
         Debug.Log(newRotation.ToString());
     }
 }

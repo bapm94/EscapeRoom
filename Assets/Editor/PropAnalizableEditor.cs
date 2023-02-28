@@ -5,8 +5,8 @@ using UnityEditor;
 public class  PropAnalizableEditor : PropEditor
 {
     //SerializedProperty hasDialogue;
-    new protected SerializedProperty localAnalizingScale;
-    new protected SerializedProperty localAnalizingEulerAngles;
+    protected SerializedProperty localAnalizingScale;
+    protected SerializedProperty localAnalizingEulerAngles;
 
     new public SerializedProperty hasDialogue;
     new protected SerializedProperty isInteracatable;

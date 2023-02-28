@@ -16,6 +16,7 @@ public class PropGrabableEditor : Editor
 
     SerializedProperty dialogueOnlyOnce;
     SerializedProperty canBeCollectedAgain;
+    //SerializedProperty extraActionOnCollected;
 
     bool dialogueOptionsGroup1, analizingOptions = true;
 
@@ -34,6 +35,7 @@ public class PropGrabableEditor : Editor
 
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
         canBeCollectedAgain = serializedObject.FindProperty("canBeCollectedAgain");
+      //  extraActionOnCollected = serializedObject.FindProperty("extraActionOnCollected");
     }
     public override void OnInspectorGUI()
     {
@@ -70,6 +72,7 @@ public class PropGrabableEditor : Editor
         EditorGUILayout.EndFoldoutHeaderGroup();
         EditorGUILayout.PropertyField(spriteScale);
         EditorGUILayout.PropertyField(canBeCollectedAgain);
+       // EditorGUILayout.PropertyField(extraActionOnCollected);
 
         serializedObject.ApplyModifiedProperties();
     }
