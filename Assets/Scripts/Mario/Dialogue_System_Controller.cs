@@ -21,6 +21,7 @@ public class Dialogue_System_Controller : MonoBehaviour
     public Animator animator;
     public AudioSource[] beepSfxs;
     public int whoIsTalking;
+    [SerializeField] bool dialogueCheck = false;
     
     Coroutine lastRoutine;
 
@@ -42,14 +43,13 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     private void OnAction_Button()
     {
-        if (dialogueOnGoing && rangeMinLocal != Index) //ARREGLAR ESTO; NO SE PUEDE SKIPPEAR EL PRIMER DIÁLOGO
-        {
-            NextSentence(rangeMaxLocal);
-        }
+        if (!dialogueCheck) { dialogueCheck = true; return; }
+        if (dialogueOnGoing && dialogueCheck) { NextSentence(rangeMaxLocal); }
     }
     
     public void GetDialogueInfo(int rangeMin, int rangeMax)
     {
+        dialogueCheck = false;
         rangeMaxLocal = rangeMax;
         rangeMinLocal = rangeMin;
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
@@ -109,6 +109,7 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     IEnumerator DissapearDialogueBox()
     {
+        dialogueCheck = false;
         dialogueOnGoing = false;
         animator.Play("DialogueBoxOut");
         yield return new WaitForSeconds(0.8f);
