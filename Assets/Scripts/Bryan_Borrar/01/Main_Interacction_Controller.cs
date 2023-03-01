@@ -19,8 +19,7 @@ public class Main_Interacction_Controller : MonoBehaviour
     public event Action onInventoryButton;
     public event Action onBackButton;
     public void ActionButton()
-    {
-        
+    {        
         if (onActionButton != null)
         {
             onActionButton();            

@@ -124,7 +124,10 @@ public class PropGrabable : PropAnalizable
         }
 
     }
-
+    protected override void OnBackButton()
+    {
+        base.OnBackButton();
+    }
     private void OnDestroy()
     {
         SubstractFromObserversList();

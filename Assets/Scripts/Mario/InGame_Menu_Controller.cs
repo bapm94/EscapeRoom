@@ -21,13 +21,13 @@ public class InGame_Menu_Controller : MonoBehaviour
     public bool canMove;
 
     public static InGame_Menu_Controller instance;
-    private void Awake()
-    {
-        if (SceneManager.GetActiveScene().name != "LobbyScene")
-        {
-            this.enabled = false;
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (SceneManager.GetActiveScene().name != "LobbyScene")
+    //    {
+    //        this.enabled = false;
+    //    }
+    //}
     private void Start()
     {
         canMove = true;
@@ -35,10 +35,14 @@ public class InGame_Menu_Controller : MonoBehaviour
         else { Destroy(this); }
 
         //disables buttons, sets camera to player
-        for (int i = 0; i < writtenButtons.Length; i++)
+        if (writtenButtons.Length > 0)
         {
-            writtenButtons[i].interactable = false;
+            for (int i = 0; i < writtenButtons.Length; i++)
+            {
+                writtenButtons[i].interactable = false;
+            }
         }
+        
         GoBackToPlayerCam();
     }
 
@@ -94,12 +98,15 @@ public class InGame_Menu_Controller : MonoBehaviour
             currentCamera = 0;
             IndexChange(currentCamera); //this is what changes the camera
             currentLevel = 0;
-            animator.Play("BookIdle");
-            for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
+            if (animator != null) { animator.Play("BookIdle");}
+            if (writtenButtons.Length > 0)
             {
-                writtenButtons[i].interactable = false;
+                for (int i = 0; i < writtenButtons.Length; i++) //disables button interactability
+                {
+                    writtenButtons[i].interactable = false;
+                }
             }
-
+            
             if (Main_Camera_Controller.instance != null) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
         }
     }
@@ -249,17 +256,22 @@ public class InGame_Menu_Controller : MonoBehaviour
     /// <param name="menuIndexValue"></param>
     public void IndexChange(int menuIndexValue)
     {
+        currentCamera = menuIndexValue;
         for (int i = 0; i < cams.Length; i++)
         {
             cams[i].Priority = 1;
             cams[menuIndexValue].Priority = 10;
         }
-        for (int i = 0; i < writtenButtons.Length; i++)
+        if (writtenButtons.Length > 0)
         {
-            if (menuIndexValue == 1) { writtenButtons[i].interactable = true; }
-            else { writtenButtons[i].interactable = false; }
+            for (int i = 0; i < writtenButtons.Length; i++)
+            {
+                if (menuIndexValue == 1) { writtenButtons[i].interactable = true; }
+                else { writtenButtons[i].interactable = false; }
+            }
+            writtenButtons[0].Select();
         }
-        writtenButtons[0].Select();
+        
     }
 
     /// <summary>

@@ -7,12 +7,16 @@ public class PropCodePuzzle : Prop
     [SerializeField] bool numericCode;
     //[SerializeField] string[] codeParts;
     [SerializeField] GameObject[] dials;
+    [SerializeField] bool backToPlayerCamAfterVictory = true;
+
+
     //int[] codeGiven { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        //codeGiven = new int[codeParts.Length];
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
+        if (extra != null) { extraAction = extra; }
 
     }
 
@@ -36,7 +40,10 @@ public class PropCodePuzzle : Prop
 
         if (victoryCount == dials.Length)
         {
-            Debug.Log("VICTORIA");
+            if (backToPlayerCamAfterVictory) { InGame_Menu_Controller.instance.IndexChange(0); }
+            Main_Camera_Controller.instance.ChangeFollowStatus(true);
+            SwitchInteractability(false);
+            if (extraAction != null) { extraAction.ExtraActionOnVictory(); }
         }
 
     }

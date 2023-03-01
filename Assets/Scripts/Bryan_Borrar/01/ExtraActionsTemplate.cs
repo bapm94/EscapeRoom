@@ -28,6 +28,10 @@ public class ExtraActionsTemplate : MonoBehaviour
     {
 
     }
+    public virtual void ExtraActionOnVictory()
+    {
+
+    }
 
     public void SetDefaultPos(Vector3 x)
     {

@@ -48,10 +48,9 @@ public class RotationOnDrag : MonoBehaviour
         if (dialVictoryValue - 10 <= transform.localEulerAngles.z && transform.localEulerAngles.z < dialVictoryValue + 10)
         {
             victory = true;
-            //ShowState();
-            //Debug.Log(transform.localEulerAngles.ToString() + victory);
+            
         }
-        else { victory = false; /*Debug.Log( victory);*/ }
+        else { victory = false; }
         
     }
     

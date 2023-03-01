@@ -15,7 +15,7 @@ public class Prop : MonoBehaviour
     public int localIndex;
 
     //[SerializeField] bool extraActionOnInteraction;
-    ExtraActionsTemplate extraAction;
+    protected ExtraActionsTemplate extraAction;
     new protected AudioSource audio;
 
     private void Start()
@@ -68,7 +68,7 @@ public class Prop : MonoBehaviour
 
     }
 
-    protected virtual void SwitchInteractability(bool newState)
+    public virtual void SwitchInteractability(bool newState)
     {
         if (newState == false)
         {
@@ -76,6 +76,7 @@ public class Prop : MonoBehaviour
             gameObject.tag = "111"; //gameObject.layer = 0;
             SubstractFromObserversList();
             isInteractable = false;
+            Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(gameObject, 0);
         }
         else
         {
@@ -88,10 +89,10 @@ public class Prop : MonoBehaviour
     {
         SubstractFromObserversList();
     }
-    private void OnDisable()
-    {
-        SubstractFromObserversList();
-    }
+    //private void OnDisable()
+    //{
+    //    SubstractFromObserversList();
+    //}
 
     protected void AddToObserversList()
     {

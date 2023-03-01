@@ -223,7 +223,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     private void OnMenu_Button()
     {
-        if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene")
+        if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene" && InGame_Menu_Controller.instance.currentCamera ==0)
         {
             if (InGameMenu.instance.baseMenu.activeSelf)
             {
