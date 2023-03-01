@@ -10,10 +10,10 @@ public class PropRestorePuzzleParent : Prop
     public List<GameObject> FinalPositionOfItem;
     public bool[] conditionAchived;
     [SerializeField] GameObject subMision;
-    
+    public int count = 0;
 
     //[SerializeField] ExtraActionsTemplate extraActionScript;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +71,7 @@ public class PropRestorePuzzleParent : Prop
     public bool CheckForVictory()
     {
         bool victory = false;
-        int count = 0;
+
         for (int i = 0; i < VictoryConditions.Count; i++)
         {
             if (conditionAchived[i])
@@ -79,6 +79,7 @@ public class PropRestorePuzzleParent : Prop
                 count++;
             }
         }
+
         if (count == VictoryConditions.Count)
         {
             victory = true;
@@ -92,6 +93,7 @@ public class PropRestorePuzzleParent : Prop
             }
             this.enabled = false;
         }
+        else {victory = false; }
         return victory;
 
     }

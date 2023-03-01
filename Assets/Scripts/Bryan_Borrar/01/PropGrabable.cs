@@ -95,7 +95,9 @@ public class PropGrabable : PropAnalizable
             {
                 //Debug.Log("hey");
                 asingConditions = false;
+                gameObject.transform.parent.parent.GetComponent<PropRestorePuzzleParent>().count--;
                 base.OnActionButton();
+
                 //extraActionScript.ExtraAction();
             }
         }
