@@ -16,11 +16,15 @@ public class Prop : MonoBehaviour
 
     //[SerializeField] bool extraActionOnInteraction;
     ExtraActionsTemplate extraAction;
+    new protected AudioSource audio;
 
     private void Start()
     {
         gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
         if (extra != null) { extraAction = extra; }
+
+        gameObject.TryGetComponent<AudioSource>(out AudioSource audioSource);
+        if (audioSource != null) { audio = audioSource; }
         
         AddToObserversList();
         //gameObject.tag = "000"; gameObject.layer = 6;
@@ -41,6 +45,7 @@ public class Prop : MonoBehaviour
         if (gameObject.layer == 8)  //Only the game object thats being observe will perform the action.
         {
             if (extraAction != null) { extraAction.ExtraActionOnInteraction(); }
+            if (audio != null) { audio.Play(); }
             if (hasDialogue)
             {
                 if (dialogueOnlyOnce) { hasDialogue = false; }                

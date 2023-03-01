@@ -41,6 +41,7 @@ public class PropGrabable : PropAnalizable
     private void OnEnable()
     {
         AddToObserversList();
+        
     }
     public void PutInTempInventory()
     {
