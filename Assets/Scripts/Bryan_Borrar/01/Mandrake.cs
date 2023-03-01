@@ -20,6 +20,7 @@ public class Mandrake : ExtraActionsTemplate
     public override void ExtraActionOnCollected()
     {
         grabable.enabled = true;
+        grabable.AddToObserversList();
     }
 
 }

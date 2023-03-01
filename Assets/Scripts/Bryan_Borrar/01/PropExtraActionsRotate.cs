@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropExtraActionsRotate : ExtraActionsTemplate
+public  class PropExtraActionsRotate : ExtraActionsTemplate
 {
     [SerializeField] float angleAmount;
     [SerializeField] bool rotationAxisY = true;

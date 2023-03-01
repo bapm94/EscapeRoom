@@ -14,7 +14,7 @@ public class PropGrabable : PropAnalizable
     private GameObject _2DForm;
     bool asingConditions = false;
 
-    [SerializeField] bool canBeCollectedAgain = false;
+    [SerializeField] public bool canBeCollectedAgain = false;
     [SerializeField] bool extraActionOnCollected = false;
     In_Game_Tool info;
 
@@ -40,7 +40,7 @@ public class PropGrabable : PropAnalizable
     }
     private void OnEnable()
     {
-        AddToObserversList();
+        //AddToObserversList();
         
     }
     public void PutInTempInventory()
@@ -79,14 +79,7 @@ public class PropGrabable : PropAnalizable
             //Debug.Log("hey");
             if (!restored)
             {
-                //Debug.Log("hey im not restored");
-                
                 base.OnActionButton();
-                
-                //if (extraActionOnCollected)
-                //{
-                    
-                //}
             }
             else if (restored && !canBeCollectedAgain)
             {
@@ -96,14 +89,14 @@ public class PropGrabable : PropAnalizable
                     if (extraActionScript != null) { extraActionScript.SetDefaultPos(transform.localPosition); }
                     asingConditions = true;
                 }
-                extraActionScript.ExtraAction();
+                if (extraActionScript != null) { extraActionScript.ExtraAction(); }
             }
             else if (restored && canBeCollectedAgain)
             {
                 //Debug.Log("hey");
                 asingConditions = false;
                 base.OnActionButton();
-                extraActionScript.ExtraAction();
+                //extraActionScript.ExtraAction();
             }
         }
        
@@ -133,16 +126,16 @@ public class PropGrabable : PropAnalizable
         SubstractFromObserversList();
     }
 
-    new protected void AddToObserversList()
-    {
-        Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
-        Main_Interacction_Controller.instance.onBackButton += OnBackButton;
-        Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
-    }
-    new protected void SubstractFromObserversList()
-    {
-        Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
-        Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
-        Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
-    }
+    //new protected void AddToObserversList()
+    //{
+    //    Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
+    //    Main_Interacction_Controller.instance.onBackButton += OnBackButton;
+    //    Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
+    //}
+    //new protected void SubstractFromObserversList()
+    //{
+    //    Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
+    //    Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
+    //    Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
+    //}
 }

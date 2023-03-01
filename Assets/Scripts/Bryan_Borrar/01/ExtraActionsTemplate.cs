@@ -32,7 +32,10 @@ public class ExtraActionsTemplate : MonoBehaviour
     {
 
     }
+    public virtual void ExtraActionOnCollectedAgain()
+    {
 
+    }
     public void SetDefaultPos(Vector3 x)
     {
         defaultPos = x;

@@ -82,7 +82,7 @@ public class Prop : MonoBehaviour
         else
         {
             gameObject.tag = "000"; gameObject.layer = 6;
-            AddToObserversList();
+            //AddToObserversList();
             isInteractable=true;
         }
     }
@@ -95,7 +95,7 @@ public class Prop : MonoBehaviour
     //    SubstractFromObserversList();
     //}
 
-    protected void AddToObserversList()
+    public void AddToObserversList()
     {
         Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
         Main_Interacction_Controller.instance.onBackButton -= OnBackButton;

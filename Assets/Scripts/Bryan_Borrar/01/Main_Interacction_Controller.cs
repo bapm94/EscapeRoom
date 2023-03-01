@@ -8,16 +8,16 @@ using UnityEngine;
 public class Main_Interacction_Controller : MonoBehaviour
 {
     public static Main_Interacction_Controller instance;
+    public event Action onActionButton;
+    public event Action onInventoryButton;
+    public event Action onBackButton;
 
-  
     void Awake()
     {
         instance = this;
     }
 
-    public event Action onActionButton;
-    public event Action onInventoryButton;
-    public event Action onBackButton;
+    
     public void ActionButton()
     {        
         if (onActionButton != null)
