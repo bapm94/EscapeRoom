@@ -97,7 +97,9 @@ public class Prop : MonoBehaviour
 
     protected void AddToObserversList()
     {
-
+        Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
+        Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
+        Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
         Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
         Main_Interacction_Controller.instance.onBackButton += OnBackButton;
         Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;

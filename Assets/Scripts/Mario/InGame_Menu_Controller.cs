@@ -329,14 +329,14 @@ public class InGame_Menu_Controller : MonoBehaviour
     }
     public void OnAction_Button()
     {
-        if (Main_Character_Controller_v2.instance.PerceivedGO != null )
-        {
-            if (Main_Character_Controller_v2.instance.PerceivedGO.name == "Armchair1")
-            {
-                GoIntoMenu();
-            }
+        //if (Main_Character_Controller_v2.instance.PerceivedGO != null )
+        //{
+        //    if (Main_Character_Controller_v2.instance.PerceivedGO.name == "Armchair1")
+        //    {
+        //        GoIntoMenu();
+        //    }
             
-        }
+        //}
         if (isInCam && currentCamera == 4 && canPress > 1.0f)
         {
             for (int i = 0; i < levels.Length; i++)

@@ -165,53 +165,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         {
             Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
 
-            //if (percievedGO.GetComponent<In_Game_Tool>() != null)
-            //{
-            //    In_Game_Tool range = percievedGO.GetComponent<In_Game_Tool>();
-            //    if (range.hasDialogue == true) 
-            //    {
-            //        range.hasDialogue = false;
-            //        Dialogue_System_Controller.instance.GetDialogueInfo(range.dialogueBeginning, range.dialogueEnd);
-            //    }
-            //}
-
-            //percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
-            //if (controller != null) { controller.ActionButtonOnIt(); percievedGO.layer = 9; } 
-            
-            //percievedGO.TryGetComponent<Restoring_Puzzle>(out Restoring_Puzzle controller2);
-            //if (controller2 != null) { controller2.ActionButtonOnIt(); percievedGO.layer = 6; }
-
-            #region Old TagSystem
-            //if (percievedGO.tag == "MenuChair")
-            //{
-            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu(); }
-            //    percievedGO.layer = 6;
-            //}
-            //if (percievedGO.tag == "MenuLibrary")
-            //{
-            //    if (physicalMenu != null) { physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
-            //    percievedGO.layer = 6;
-            //}
-            //if (percievedGO.tag == "Analizable")
-            //{
-            //    StartAnalizing(percievedGO);
-            //}
-            //if (percievedGO.tag == "Tool")
-            //{
-            //    percievedGO.TryGetComponent<Prop_Controller>(out Prop_Controller propController);
-            //    if (propController != null)
-            //    {
-            //        percievedGO.transform.GetComponent<Prop_Controller>().PutInTempInventory();
-            //    }
-            //    else
-            //    {
-            //        percievedGO.transform.parent.GetComponent<Prop_Controller>().PutInTempInventory();
-            //    }
-
-            //    percievedGO.layer = 6;
-            //}
-            #endregion
-
         }
     }
 
