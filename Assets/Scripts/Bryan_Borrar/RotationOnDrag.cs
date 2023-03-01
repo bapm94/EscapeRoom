@@ -57,7 +57,7 @@ public class RotationOnDrag : MonoBehaviour
 
     public void ShowState()
     {
-        Debug.Log(victory);
+        //Debug.Log(victory);
     }
     private void OnMouseUp()
     {

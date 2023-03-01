@@ -60,8 +60,8 @@ public class PropRestorePuzzleParent : Prop
                         
                         
                     }
+                    if (extra != null) { extra.ExtraAction(); }
                     
-                    extra.ExtraAction();
                 }
                 //else break;
             }

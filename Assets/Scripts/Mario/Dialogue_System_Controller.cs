@@ -137,7 +137,7 @@ public class Dialogue_System_Controller : MonoBehaviour
             {
                 dialogueText.text += Characters[i];
                 playSfx = !playSfx;
-                if (playSfx) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); }
+                if (playSfx && beepSfxs.Length > 0) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); }
 
                 if (Characters[i].ToString() == ",") { yield return new WaitForSeconds(dialogueSpeed + 0.35f); }
                 else if (Characters[i].ToString() == "." || Characters[i].ToString() == "?" || Characters[i].ToString() == "!") { yield return new WaitForSeconds(dialogueSpeed + 0.5f); }  

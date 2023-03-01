@@ -31,7 +31,8 @@ public class Prop : MonoBehaviour
     }
     private void Awake()
     {
-        gameObject.tag = "000"; gameObject.layer = 6;  //By default all props are interactable. The code sets the correct tag and layer.
+        SwitchInteractability(true);
+          //By default all props are interactable. The code sets the correct tag and layer.
     }
 
 
@@ -80,7 +81,7 @@ public class Prop : MonoBehaviour
         }
         else
         {
-            gameObject.tag = "000"; //gameObject.layer = 6;
+            gameObject.tag = "000"; gameObject.layer = 6;
             AddToObserversList();
             isInteractable=true;
         }

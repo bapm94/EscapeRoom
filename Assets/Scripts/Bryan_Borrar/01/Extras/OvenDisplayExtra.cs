@@ -23,6 +23,7 @@ public class OvenDisplayExtra : ExtraActionsTemplate
         beingInteract = true;
         InGame_Menu_Controller.instance.IndexChange(1);
         Main_Camera_Controller.instance.ChangeFollowStatus(false);
+        
         gameObject.GetComponent<Prop>().SwitchInteractability(false);
         
     }
