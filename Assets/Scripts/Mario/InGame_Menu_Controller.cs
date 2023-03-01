@@ -79,14 +79,6 @@ public class InGame_Menu_Controller : MonoBehaviour
         }*/
     }
 
-    public void BackWithBooks()
-    {
-        for (int i = 0; i < levels.Length; i++)
-        {
-            levels[i].GetComponent<Chosen_Level>().isCurrentlyActive = false;
-            levels[i].GetComponent<Chosen_Level>().ActiveCheck();
-        }
-    }
     /// <summary>
     /// gets camera back to player view
     /// </summary>
@@ -325,7 +317,15 @@ public class InGame_Menu_Controller : MonoBehaviour
         {
             StartCoroutine(BackToLevelMenu());
         }
-        else { GoBackToPlayerCam(); /*BackWithBooks();*/ }
+        else if (currentCamera == 4) 
+        { 
+            for (int i = 0; i < levels.Length; i++)
+            {
+                levels[i].GetComponent<Level_Controller>().BookUnselected();
+            }
+            Invoke("GoBackToPlayerCam", 1.0f); 
+        }
+        else { GoBackToPlayerCam();}
     }
     public void OnAction_Button()
     {

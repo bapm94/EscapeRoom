@@ -35,21 +35,24 @@ public class Level_Controller : MonoBehaviour
         active = true;
         b_animator.SetTrigger("Shift"); 
         LeanTween.delayedCall(0.2f, () => ResetAllTriggers());
-        LeanTween.delayedCall(0.33f, () => TextSlide());
+        LeanTween.delayedCall(0.33f, () => TextSlideIn());
     }
 
     public void BookUnselected()
     {
         b_animator.SetTrigger("Idle");
         LeanTween.delayedCall(0.2f, () => ResetAllTriggers());
-        LeanTween.delayedCall(0.33f, () => TextSlide());
+        LeanTween.delayedCall(0.33f, () => TextSlideOut());
         active = false;
     }
 
-    public void TextSlide()
+    public void TextSlideIn()
     {
-            if (!textIsOut && active) { LeanTween.moveLocalX(text, -65.0f, 0.5f); textIsOut = true; }
-            else { LeanTween.moveLocal(text, initialPos, 0.5f); textIsOut = false; }
+        LeanTween.moveLocalX(text, -65.0f, 0.5f); textIsOut = true;
+    }
+    public void TextSlideOut()
+    {
+        LeanTween.moveLocal(text, initialPos, 0.5f); textIsOut = false;
     }
 
     public void ResetAllTriggers()
@@ -66,18 +69,20 @@ public class Level_Controller : MonoBehaviour
     public IEnumerator BookDisplay()
     {
         active = true;
-        TextSlide();
+        TextSlideOut();
         p_animator.SetTrigger("MoveToCamera");
         yield return new WaitForSeconds(2.35f);
         b_animator.SetTrigger("Open");
+        yield return new WaitForSeconds(1.83f);
+        ActivateOrDCanvas();
     }
 
     public IEnumerator BookReturn()
     {
-        animCheck = false;
-        textCanvas.SetActive(false);
         b_animator.SetTrigger("Close");
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(0.1f);
+        ActivateOrDCanvas();
+        yield return new WaitForSeconds(0.56f);
         p_animator.SetTrigger("MoveBack");
         yield return new WaitForSeconds(2.25f);
         BookSelected();
@@ -88,14 +93,20 @@ public class Level_Controller : MonoBehaviour
         if (!active) { p_animator.enabled = false; }
         else { p_animator.enabled = true; }
 
-        if (!animCheck)
-        {
-            textCanvas.SetActive(false);
-        }
-        if (!animCheck && b_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && b_animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|BookOpen"))
-        {
-            animCheck = true;
-            textCanvas.SetActive(true);
-        }
+        //if (!animCheck)
+        //{
+        //    textCanvas.SetActive(false);
+        //}
+        //if (!animCheck && b_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && b_animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|BookOpen"))
+        //{
+        //    animCheck = true;
+        //    textCanvas.SetActive(true);
+        //}
+    }
+
+    void ActivateOrDCanvas()
+    {
+        if (textCanvas.activeSelf == false) { textCanvas.SetActive(true); }
+        else { textCanvas.SetActive(false); }
     }
 }
