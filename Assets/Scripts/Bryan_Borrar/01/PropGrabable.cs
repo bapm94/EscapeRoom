@@ -20,6 +20,8 @@ public class PropGrabable : PropAnalizable
 
     [SerializeField] ExtraActionsTemplate extraActionScript;
 
+
+
     private void Start()
     {
         gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
@@ -128,16 +130,11 @@ public class PropGrabable : PropAnalizable
         SubstractFromObserversList();
     }
 
-    //new protected void AddToObserversList()
-    //{
-    //    Main_Interacction_Controller.instance.onActionButton += OnActionButton;  //As interactable it should recive the principal interactión.
-    //    Main_Interacction_Controller.instance.onBackButton += OnBackButton;
-    //    Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
-    //}
-    //new protected void SubstractFromObserversList()
-    //{
-    //    Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
-    //    Main_Interacction_Controller.instance.onBackButton -= OnBackButton;
-    //    Main_Interacction_Controller.instance.onInventoryButton -= OnInventoryButton;
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (gameObject.GetComponent<Collider>().isTrigger)
+        {
+            base.OnActionButton();
+        }
+    }
 }

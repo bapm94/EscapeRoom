@@ -10,6 +10,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     [SerializeField] bool rotationAxisZ = false;
     [SerializeField] GameObject water;
     [SerializeField] GameObject drinkMeBottle;
+    [SerializeField] GameObject potMision;
     public Vector3 originalAngle { get; set; }
     
 
@@ -71,7 +72,9 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
             {
                 drinkMeBottle.TryGetComponent<TakeOffCap>(out TakeOffCap script);
                 script.isFilled = true;
+                potMision.SetActive(true);
                 Debug.Log("You've filled the botlle");
+
             }
         }
     }

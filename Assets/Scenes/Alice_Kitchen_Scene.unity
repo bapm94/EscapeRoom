@@ -5736,6 +5736,7 @@ MonoBehaviour:
   rotationAxisX: 0
   rotationAxisZ: 0
   water: {fileID: 1697584103}
+  drinkMeBottle: {fileID: 2117623965}
 --- !u!1 &487484428
 GameObject:
   m_ObjectHideFlags: 0
@@ -6231,7 +6232,7 @@ GameObject:
   - component: {fileID: 560535519}
   - component: {fileID: 560535520}
   m_Layer: 0
-  m_Name: Mision1
+  m_Name: Mision0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13680,7 +13681,7 @@ GameObject:
   - component: {fileID: 1347069475}
   - component: {fileID: 1347069474}
   m_Layer: 0
-  m_Name: Mision0
+  m_Name: Mision1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27253,7 +27254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182744858543263685}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020071054, y: 0.005273541, z: 0.00068592664}
+  m_LocalPosition: {x: 0.02, y: 0.0051, z: 0.0007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35523,7 +35524,7 @@ MonoBehaviour:
   FinalPositionOfItem:
   - {fileID: 2060143290}
   conditionAchived: 
-  subMision: {fileID: 1347069472}
+  subMision: {fileID: 560535517}
   count: 0
 --- !u!23 &3521551517936039600
 MeshRenderer:
