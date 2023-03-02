@@ -241,9 +241,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         var newPos = transform.position + move; // The movement done at the end of calculations
         var wallDetection = (newPos - transform.position).normalized;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.4f, 8) /*&& isCollidingWithWall*/)
+        if (Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.05f, 8) /*&& isCollidingWithWall*/)
         {
-            
+            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else
         {

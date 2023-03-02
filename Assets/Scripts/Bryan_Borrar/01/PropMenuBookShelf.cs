@@ -26,6 +26,7 @@ public class PropMenuBookShelf : Prop
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
             if (character.physicalMenu != null) { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
             gameObject.layer = 6;
+            Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(gameObject, 6);
         }
             
     }
