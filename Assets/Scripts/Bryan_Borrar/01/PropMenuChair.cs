@@ -17,17 +17,17 @@ public class PropMenuChair : Prop
         if (gameObject.layer == 8)
         {
             Debug.Log("pepe");
-            GameObject tutorialObject = GameObject.Find("Tutorial1");
+            GameObject tutorialObject = GameObject.Find("Tutorials");
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
             if (character.physicalMenu != null)
             {
-                if (tutorialObject.GetComponent<Tutorial_Manager>().tutorialActive)
+                if (tutorialObject.GetComponent<Tutorial_Manager>().tutorialActive1)
                 {
                     base.OnActionButton();
-                    tutorialObject.GetComponent<Tutorial_Manager>().Deactivate();
+                    tutorialObject.GetComponent<Tutorial_Manager>().DeactivateTutorial1();
                     
                 }                
-                else if (!tutorialObject.GetComponent<Tutorial_Manager>().tutorialActive){ character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();  }
+                else if (!tutorialObject.GetComponent<Tutorial_Manager>().tutorialActive1){ character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();  }
                 
             }
         }
