@@ -40,6 +40,10 @@ public class ExtraActionsTemplate : MonoBehaviour
     {
 
     }
+    public virtual void ExtraActionOnRestoring()
+    {
+
+    }
     public void SetDefaultPos(Vector3 x)
     {
         defaultPos = x;

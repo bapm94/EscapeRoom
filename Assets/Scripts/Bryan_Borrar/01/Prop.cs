@@ -35,9 +35,6 @@ public class Prop : MonoBehaviour
           //By default all props are interactable. The code sets the correct tag and layer.
     }
 
-
-
-
     /// <summary>
     /// This performs the initial dialogue, then the action if true
     /// </summary>
@@ -75,7 +72,7 @@ public class Prop : MonoBehaviour
         {
             
             gameObject.tag = "111"; //gameObject.layer = 0;
-            SubstractFromObserversList();
+            //SubstractFromObserversList();
             isInteractable = false;
             Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(gameObject, 0);
         }
@@ -90,10 +87,7 @@ public class Prop : MonoBehaviour
     {
         SubstractFromObserversList();
     }
-    //private void OnDisable()
-    //{
-    //    SubstractFromObserversList();
-    //}
+
 
     public void AddToObserversList()
     {

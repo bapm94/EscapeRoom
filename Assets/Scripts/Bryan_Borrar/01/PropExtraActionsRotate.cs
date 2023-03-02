@@ -71,11 +71,16 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
             if (drinkMeBottle != null && drinkMeBottle.GetComponent<PropGrabable>().restored)
             {
                 drinkMeBottle.TryGetComponent<TakeOffCap>(out TakeOffCap script);
+                drinkMeBottle.transform.parent.parent.gameObject.GetComponent<Collider>().enabled = false;
+                
                 script.isFilled = true;
+                drinkMeBottle.GetComponent<PropGrabable>().canBeCollectedAgain = true;
                 potMision.SetActive(true);
                 Debug.Log("You've filled the botlle");
 
             }
         }
+
     }
+
 }
