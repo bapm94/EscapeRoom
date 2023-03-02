@@ -99,4 +99,9 @@ public class PropRestorePuzzleParent : Prop
     {
         SubstractFromObserversList();
     }
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("entrando " + other.name);
+    }
+
 }
