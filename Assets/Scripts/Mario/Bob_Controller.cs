@@ -20,7 +20,7 @@ public class Bob_Controller : MonoBehaviour
     public void HeadBob()
     {
         movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
-        if (Mathf.Abs(movement.normalized.x) > 0) { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
-        else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
+        if (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0) { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
+        else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }
     }
 }
