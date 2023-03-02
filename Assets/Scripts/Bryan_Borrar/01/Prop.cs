@@ -104,7 +104,7 @@ public class Prop : MonoBehaviour
         Main_Interacction_Controller.instance.onBackButton += OnBackButton;
         Main_Interacction_Controller.instance.onInventoryButton += OnInventoryButton;
     }
-    protected void SubstractFromObserversList()
+    public void SubstractFromObserversList()
     {
         Main_Interacction_Controller.instance.onActionButton -= OnActionButton;
         Main_Interacction_Controller.instance.onBackButton -= OnBackButton;

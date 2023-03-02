@@ -11,16 +11,22 @@ public class PropRestorePuzzleParent : Prop
     public bool[] conditionAchived;
     [SerializeField] GameObject subMision;
     public int count = 0;
+    ExtraActionsTemplate extra;
 
-    //[SerializeField] ExtraActionsTemplate extraActionScript;
-
-    // Start is called before the first frame update
     void Start()
     {
-        AddToObserversList();
-        conditionAchived = new bool[VictoryConditions.Count];
-        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);        
+        Initialized();
     }
+
+    public void Initialized()
+    {
+        base.AddToObserversList();
+        
+        conditionAchived = new bool[VictoryConditions.Count];
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extraS);
+        if (extraS != null) { extra = extraS; }
+    }
+
 
 
     protected override void OnActionButton()
@@ -32,6 +38,7 @@ public class PropRestorePuzzleParent : Prop
             {
                 base.OnActionButton();
             }
+            else if (CheckForVictory() && extra != null) { extra.ExtraActionOnVictory(); }
         }   
     }
 
@@ -57,10 +64,10 @@ public class PropRestorePuzzleParent : Prop
                         part.transform.GetChild(1).gameObject.SetActive(false);
                         script.restored = true;
                         Inventory_Temp.instance.propsGrabbed.Remove(part);
-                        
+                        count++;
                         
                     }
-                    if (extra != null) { extra.ExtraAction(); }
+                    if (extra != null) { extra.ExtraActionOnPositioning(); }
                     
                 }
                 //else break;
@@ -72,14 +79,6 @@ public class PropRestorePuzzleParent : Prop
     {
         bool victory = false;
 
-        for (int i = 0; i < VictoryConditions.Count; i++)
-        {
-            if (conditionAchived[i])
-            {
-                count++;
-            }
-        }
-
         if (count == VictoryConditions.Count)
         {
             victory = true;
@@ -89,13 +88,11 @@ public class PropRestorePuzzleParent : Prop
                 gameObject.layer = 0;
                 gameObject.tag = "111";
                 Main_Character_Controller_v2.instance.PerceivedGO = null;
-
             }
             this.enabled = false;
         }
         else {victory = false; }
         return victory;
-
     }
 
     private void OnDisable()
