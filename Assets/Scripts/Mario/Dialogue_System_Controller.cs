@@ -10,7 +10,6 @@ public class Dialogue_System_Controller : MonoBehaviour
     public string[] sentences;
     [SerializeField] int Index = 0;
     public float dialogueSpeed;
-    public float timeBetweenDialogues;
     public bool dialogueOnGoing;
     [SerializeField] bool isTyping;
     [SerializeField] int rangeMaxLocal;
@@ -21,7 +20,7 @@ public class Dialogue_System_Controller : MonoBehaviour
     public Animator animator;
     public AudioSource[] beepSfxs;
     public int whoIsTalking;
-    [SerializeField] bool dialogueCheck = false;
+    public bool dialogueCheck = false;
     
     Coroutine lastRoutine;
 
@@ -37,8 +36,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         if (instance == null) { Dialogue_System_Controller.instance = this; }
         else { Destroy(this); }
 
-        timeBetweenDialogues = 2.5f;
-        dialogueSpeed = 0.022f;
+        dialogueSpeed = 0.025f;
     }
 
     private void OnAction_Button()
@@ -119,7 +117,7 @@ public class Dialogue_System_Controller : MonoBehaviour
 
     IEnumerator WriteSentence()
     {
-        bool playSfx = false;
+        int playSfx = 0;
         if (rangeMinLocal == Index) { animator.Play("DialogueBox"); }
         else { animator.Play("DialogueBoxSkipStop"); }
 
@@ -138,12 +136,8 @@ public class Dialogue_System_Controller : MonoBehaviour
                 dialogueText.text += Characters[i];
                 if (beepSfxs.Length > 0)
                 {
-                    if (Characters[i].ToString() == ".") { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); }
-                    else
-                    {
-                        playSfx = !playSfx;
-                        if (playSfx) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); }
-                    }
+                    playSfx++;
+                    if (playSfx == 1) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); playSfx = 0; }
                 }
 
                 if (Characters[i].ToString() == ",") { yield return new WaitForSeconds(dialogueSpeed + 0.35f); }

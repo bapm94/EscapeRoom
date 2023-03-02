@@ -8,10 +8,17 @@ public class Bob_Controller : MonoBehaviour
     private Controlls _controls;
     public CinemachineVirtualCamera playerCam;
     public Vector2 movement;
+    public bool canBob;
+
+    public static Bob_Controller instance;
 
     // Start is called before the first frame update
     void Start()
     {
+        canBob = true;
+        if (instance == null) { Bob_Controller.instance = this; }
+        else { Destroy(this); }
+
         _controls = new Controlls();
         _controls.CharacterControl.Enable();
     }
@@ -19,8 +26,19 @@ public class Bob_Controller : MonoBehaviour
 
     public void HeadBob()
     {
-        movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
-        if (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0) { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
-        else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }
+        if (canBob)
+        {
+            movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
+            if (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0) { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
+            else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }
+        }
+        else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }   
+    }
+
+    public void cantBob()
+    {
+        if (canBob) { canBob = false; }
+        else { canBob = true; }
+        HeadBob();
     }
 }
