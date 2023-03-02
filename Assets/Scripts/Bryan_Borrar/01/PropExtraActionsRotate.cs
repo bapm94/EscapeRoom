@@ -9,6 +9,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     [SerializeField] bool rotationAxisX = false;
     [SerializeField] bool rotationAxisZ = false;
     [SerializeField] GameObject water;
+    [SerializeField] GameObject drinkMeBottle;
     public Vector3 originalAngle { get; set; }
     
 
@@ -36,7 +37,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
                 angle = originalAngle.y;
                 water.SetActive(false);
             }
-            else { water.SetActive(true); }
+            else { water.SetActive(true); OnActivatingWater(); }
             LeanTween.rotateLocal(gameObject, Vector3.up * angle, 1);
         }
         else if (rotationAxisX)
@@ -47,7 +48,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
                 angle = originalAngle.x; 
                 water.SetActive(false);
             }
-            else { water.SetActive(true); }
+            else { water.SetActive(true); OnActivatingWater(); }
             LeanTween.rotateLocal(gameObject, Vector3.right * angle, 1);
             
         }
@@ -59,11 +60,19 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
                 angle = originalAngle.z;
                 water.SetActive(false);
             }
-            else { water.SetActive(true); }
+            else { water.SetActive(true); OnActivatingWater(); }
             LeanTween.rotateLocal(gameObject, Vector3.forward * angle, 1);
             //Debug.Log("should rotate " + angle + " angles");
         }
-        //LeanTween.rotateY(gameObject, angle, 1);
-        //LeanTween.rotateLocal(gameObject, Vector3.up * angle, 1);
+        
+        void OnActivatingWater()
+        {
+            if (drinkMeBottle != null && drinkMeBottle.GetComponent<PropGrabable>().restored)
+            {
+                drinkMeBottle.TryGetComponent<TakeOffCap>(out TakeOffCap script);
+                script.isFilled = true;
+                Debug.Log("You've filled the botlle");
+            }
+        }
     }
 }

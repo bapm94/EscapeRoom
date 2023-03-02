@@ -4,6 +4,7 @@ using UnityEngine;
 
 public  class TakeOffCap : ExtraActionsTemplate
 {
+    public bool isFilled { get; set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public  class TakeOffCap : ExtraActionsTemplate
     {
         
     }
-    public override void ExtraAction()
+    public override void ExtraActionOnCollected()
     {
         var cap = transform.GetChild(0).GetChild(1).gameObject;
 
