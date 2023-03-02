@@ -50,8 +50,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     #endregion
 
-
-    
     #region Temporal Inventory
     [SerializeField] Inventory_Temp inventoryTemp;
     #endregion
@@ -250,6 +248,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         else
         {
             transform.position = newPos;
+            if (gameObject.GetComponent<Bob_Controller>() != null) { gameObject.GetComponent<Bob_Controller>().HeadBob(); }
         }
     }
     private void Rotation()
