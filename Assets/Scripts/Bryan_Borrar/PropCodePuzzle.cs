@@ -10,19 +10,11 @@ public class PropCodePuzzle : Prop
     [SerializeField] bool backToPlayerCamAfterVictory = true;
 
 
-    //int[] codeGiven { get; set; }
-
     // Start is called before the first frame update
     void Start()
     {
         gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
         if (extra != null) { extraAction = extra; }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

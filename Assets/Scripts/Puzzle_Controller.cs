@@ -6,9 +6,7 @@ using TMPro;
 
 public class Puzzle_Controller : MonoBehaviour
 {
-    bool puzzleSolved = false; // FirstPuzzle
-    //TMP_Dropdown victoryCondition;
-    //List<string> victoryConditions = new List<string> {"findObject", "combineObjects", "password", "unlock" };
+    bool puzzleSolved = false; 
     public List<GameObject> VictoryConditions /*= new List<GameObject> { "findObject", "combineObjects", "password", "unlock" }*/;
     public bool[] conditionAchived;
    
@@ -42,14 +40,7 @@ public class Puzzle_Controller : MonoBehaviour
                     count++;
                 }
             }
-                
 
-
-            //if (conditionAchived[i])
-            //{
-            //    count++;
-            //}
-            //conditionAchived[i] = false;
         }
         if (count == VictoryConditions.Count)
         {

@@ -42,7 +42,6 @@ public class PropGrabable : PropAnalizable
     }
     private void OnEnable()
     {
-        //AddToObserversList();
         
     }
     public void PutInTempInventory()
@@ -52,11 +51,9 @@ public class PropGrabable : PropAnalizable
         _3DForm.SetActive(false);
         _2DForm.SetActive(true);
         inventory.SetActive(true);
-        //inventory.GetComponent<Inventory_Temp>().InitialAnimation();
         inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
         transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
-        //localIndex = inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count - 1 ;
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one * spriteScale;
         if (transform.childCount > 1)
@@ -70,8 +67,6 @@ public class PropGrabable : PropAnalizable
         {
             extraActionScript.ExtraActionOnCollected();
         }
-        
-
     }
 
     protected override void OnActionButton()
@@ -95,17 +90,11 @@ public class PropGrabable : PropAnalizable
             }
             else if (restored && canBeCollectedAgain)
             {
-                //Debug.Log("hey");
                 asingConditions = false;
                 gameObject.transform.parent.parent.GetComponent<PropRestorePuzzleParent>().count--;
                 base.OnActionButton();
-
-                //extraActionScript.ExtraAction();
             }
         }
-       
-
-
     }
     protected override void OnInventoryButton()
     {
@@ -128,13 +117,5 @@ public class PropGrabable : PropAnalizable
     private void OnDestroy()
     {
         SubstractFromObserversList();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (gameObject.GetComponent<Collider>().isTrigger)
-        {
-            base.OnActionButton();
-        }
     }
 }
