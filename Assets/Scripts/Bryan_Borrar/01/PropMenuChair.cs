@@ -14,9 +14,10 @@ public class PropMenuChair : Prop
     {
         if (gameObject.layer == 8)
         {
+            base.OnActionButton();
             GameObject tutorialObject = GameObject.Find("Tutorials");
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
-            if (character.physicalMenu != null)
+            if (character.physicalMenu != null && character.canMove)
             {
                 character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();
             }
