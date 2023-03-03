@@ -2268,7 +2268,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6436219286449250839}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -3929,8 +3929,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346380565}
-  m_LocalRotation: {x: -0.065113366, y: 0.6786487, z: -0.06194576, w: -0.72894377}
-  m_LocalPosition: {x: -7.743, y: 0.875, z: -4.146}
+  m_LocalRotation: {x: -0, y: 0.04161406, z: -0, w: 0.99913377}
+  m_LocalPosition: {x: -0.47493795, y: 1.54, z: -3.1121016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4458,12 +4458,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 100
+  m_Priority: 2
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 35
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -6222,7 +6222,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6436219286449250839}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -7959,7 +7959,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3228090850865858342}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -10102,7 +10102,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7836214734040188907}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -10945,7 +10945,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7836214734040188907}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -11666,7 +11666,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 15
+  m_Priority: 103
   m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1880545263}
@@ -15907,7 +15907,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3228090850865858342}
         m_TargetAssemblyTypeName: LockBeamsBones, Assembly-CSharp
         m_MethodName: Rotate
         m_Mode: 6
@@ -30885,6 +30885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3228090850865858341}
   - component: {fileID: 3228090850865858342}
+  - component: {fileID: 3228090850865858343}
   m_Layer: 0
   m_Name: Wheel3
   m_TagString: Untagged
@@ -32999,6 +33000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177391435506630000}
+  - component: {fileID: 2183181764245073543}
   m_Layer: 0
   m_Name: LockArmature
   m_TagString: Untagged
@@ -33006,6 +33008,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2183181764245073543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2183181764245073542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0df37f426e7a944bc23db8799c07ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDialogue: 0
+  isInteractable: 1
+  dialogueBeggining: 0
+  dialogueEnd: 0
+  dialogueOnlyOnce: 0
+  deactivateAfterDialogue: 0
+  localIndex: 0
+  numericCode: 0
+  dials:
+  - {fileID: 6436219286449250838}
+  - {fileID: 5757305789123822084}
+  - {fileID: 1549350873723488605}
+  backToPlayerCamAfterVictory: 1
 --- !u!4 &2219633315743797503
 Transform:
   m_ObjectHideFlags: 0
@@ -36235,7 +36262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549350873723488605}
-  m_LocalRotation: {x: 0.0050898697, y: -0.0052359877, z: 0.0005957535, w: 0.9999732}
+  m_LocalRotation: {x: -0.005090578, y: 0.0052388525, z: -0.00059284666, w: -0.9999731}
   m_LocalPosition: {x: -0.003519544, y: 0.17006782, z: -0.13789475}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36243,7 +36270,7 @@ Transform:
   - {fileID: 7543598720651952819}
   m_Father: {fileID: 8690734100291535009}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.584, y: 288, z: 0.065}
 --- !u!114 &3228090850865858342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36256,7 +36283,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99e7040bf9018b4ead2962ebe7491d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTime: 0.5
+  rotationTime: 0.2
+  victoryCondition: 288
+  codePuzzleParent: {fileID: 2183181764245073543}
+--- !u!114 &3228090850865858343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549350873723488605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863d097fc8889554a94f29210a274be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialVictoryValue: 0
+  puzzleSolver: {fileID: 0}
 --- !u!33 &3233130821809399764
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42394,7 +42437,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436219286449250838}
-  m_LocalRotation: {x: 0.005090333, y: -0.005240657, z: 0.00059109414, w: 0.9999732}
+  m_LocalRotation: {x: -0.005090578, y: 0.0052388525, z: -0.00059284666, w: -0.9999731}
   m_LocalPosition: {x: -0.003669114, y: 0.2907525, z: -0.13666682}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42402,7 +42445,7 @@ Transform:
   - {fileID: 573686422132335395}
   m_Father: {fileID: 8690734100291535009}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.584, y: 63.4, z: 0.065}
 --- !u!23 &5005348629084909784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44820,6 +44863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7836214734040188906}
   - component: {fileID: 7836214734040188907}
+  - component: {fileID: 7836214734040188908}
   m_Layer: 0
   m_Name: Wheel2
   m_TagString: Untagged
@@ -46993,6 +47037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4993756044324369687}
   - component: {fileID: 6436219286449250839}
+  - component: {fileID: 6436219286449250840}
   m_Layer: 0
   m_Name: Wheel1
   m_TagString: Untagged
@@ -47012,7 +47057,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99e7040bf9018b4ead2962ebe7491d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTime: 0.5
+  rotationTime: 0.2
+  victoryCondition: 63
+  codePuzzleParent: {fileID: 2183181764245073543}
+--- !u!114 &6436219286449250840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436219286449250838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863d097fc8889554a94f29210a274be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialVictoryValue: 0
+  puzzleSolver: {fileID: 0}
 --- !u!23 &6449030541554068177
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -51341,7 +51402,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99e7040bf9018b4ead2962ebe7491d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTime: 0.5
+  rotationTime: 0.2
+  victoryCondition: 0
+  codePuzzleParent: {fileID: 2183181764245073543}
+--- !u!114 &7836214734040188908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757305789123822084}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863d097fc8889554a94f29210a274be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialVictoryValue: 0
+  puzzleSolver: {fileID: 0}
 --- !u!4 &7839642978213787195
 Transform:
   m_ObjectHideFlags: 0

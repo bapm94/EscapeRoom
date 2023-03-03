@@ -5,12 +5,20 @@ using UnityEngine;
 public class LockBeamsBones : MonoBehaviour
 {
     [SerializeField] float rotationTime = 0.5f;
+    bool rotating = false;
+    [Range(0,9)]
+    [SerializeField] int victoryCondition;
+    [SerializeField] PropCodePuzzle codePuzzleParent;
     // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         
+        if (victoryCondition == 0)
+        {
+            gameObject.GetComponent<RotationOnDrag>().victory = true;
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -18,18 +26,30 @@ public class LockBeamsBones : MonoBehaviour
     }
     public void Rotate(bool x)
     {
-        if (!LeanTween.isTweening(gameObject))
+        
+        if (!rotating)
         {
+            victoryCondition = victoryCondition * 36;
+            Debug.Log("Rotate");
+            Vector3 newRotation = Vector3.one;
+            rotating = true;
+            LeanTween.delayedCall(rotationTime + 0.01f, () => rotating = false);
             if (x)
             {
-                Vector3 newRotation = Vector3.up * (transform.localEulerAngles.y - 36);
+
+                newRotation = Vector3.up * (transform.localEulerAngles.y - 36);
                 LeanTween.rotateLocal(gameObject, newRotation, rotationTime);
             }
             else
             {
-                Vector3 newRotation = Vector3.up * (transform.localEulerAngles.y + 36);
+                newRotation = Vector3.up * (transform.localEulerAngles.y + 36);
                 LeanTween.rotateLocal(gameObject, newRotation, rotationTime);
             }
+            if (victoryCondition - 10 <= newRotation.y && newRotation.y < victoryCondition + 10)
+            {
+                gameObject.GetComponent<RotationOnDrag>().victory = true;
+            }
+            codePuzzleParent.CheckForVictory();
         }
 
     }

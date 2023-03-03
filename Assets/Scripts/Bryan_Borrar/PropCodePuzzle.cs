@@ -20,6 +20,7 @@ public class PropCodePuzzle : Prop
 
     public void CheckForVictory()
     {
+        Debug.Log("Checking for vic");
         int victoryCount = 0;
         for (int i = 0; i < dials.Length; i++)
         {
@@ -36,6 +37,7 @@ public class PropCodePuzzle : Prop
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
             SwitchInteractability(false);
             if (extraAction != null) { extraAction.ExtraActionOnVictory(); }
+            Debug.Log("vic");
         }
 
     }
