@@ -5,6 +5,7 @@ using UnityEngine;
 public class PotExtra : ExtraActionsTemplate
 {
     [SerializeField] GameObject seeds;
+    [SerializeField] ApearingTree tree;
 
     public override void ExtraAction() //Once set in place the action gets call when interacted.
     {
@@ -21,8 +22,11 @@ public class PotExtra : ExtraActionsTemplate
                     part.transform.localScale = Vector3.zero;
                     script.restored = true;
                     Inventory_Temp.instance.propsGrabbed.Remove(part);
+                    tree.gameObject.SetActive(true);
+                    tree.StartGrowingTree(); 
                 }
                 if (extra != null) { extra.ExtraActionOnPositioning(); }
+                gameObject.GetComponent<PropGrabable>().SwitchInteractability(false);
                 Debug.Log("PLant growing");
             }
         }
@@ -33,6 +37,6 @@ public class PotExtra : ExtraActionsTemplate
     }
     public override void ExtraActionOnVictory()
     {
-        Debug.Log("PLant growing");
+        
     }
 }

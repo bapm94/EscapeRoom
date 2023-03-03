@@ -12,7 +12,7 @@ public class ApearingTree : MonoBehaviour
     [SerializeField] GameObject cherrapple;
     bool fullGrow = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cherrapple.SetActive(false);
         childs = new GameObject[transform.childCount];
@@ -32,7 +32,7 @@ public class ApearingTree : MonoBehaviour
         //meshes = gameObject.GetComponent<MeshRenderer>();
         //materials = meshes.material;
 
-        StartGrowingTree();
+        
     }
 
     // Update is called once per frame
