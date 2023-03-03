@@ -15,7 +15,7 @@ public class PropMenuChair : Prop
         if (gameObject.layer == 8)
         {
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
-            if (Tutorial_Manager.instance.objectsChecked)
+            if (Main_Game_Manager.instance.objectsChecked)
             {
                 base.OnActionButton();
                 if (character.physicalMenu != null && character.canMove)

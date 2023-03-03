@@ -17,10 +17,6 @@ public class Tutorial_Manager : MonoBehaviour
     public Sprite[] rotatingSpritesARROWS;
     int currentSprite;
 
-    bool movedForWasd = false;
-    bool lookedForArrows = false;
-    public bool objectsChecked = false;
-
     private Controlls _controls;
     public Vector2 movement;
     public Vector2 rotation;
@@ -43,7 +39,10 @@ public class Tutorial_Manager : MonoBehaviour
         {
             if (Main_Game_Manager.instance.aliceLevelStarted == false)
             {
-                tutorialActive3 = true;
+                Main_Game_Manager.instance.movedForWasd = false;
+                Main_Game_Manager.instance.lookedForArrows = false;
+                Main_Game_Manager.instance.objectsChecked = false;
+                Main_Game_Manager.instance.tutorialActive3 = true;
                 tempVect1 = new Vector3(0, 0.175f, 0);
                 tutorialText.text = "Interact with this object!"; ;
                 RotateSprites();
@@ -53,6 +52,7 @@ public class Tutorial_Manager : MonoBehaviour
                 tutorials.Add(StartTutorial3);
                 tutorials.Add(StartTutorial1);
             }
+            else { EndTutorials(20); }
         }
     }
 
@@ -60,8 +60,8 @@ public class Tutorial_Manager : MonoBehaviour
     {
         movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
         rotation = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>() * Time.deltaTime;
-        if (!movedForWasd && (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0)) { movedForWasd = true; StartCoroutine(WasdCompleted()); }
-        if (movedForWasd && !lookedForArrows && (Mathf.Abs(rotation.normalized.x) > 0 || Mathf.Abs(rotation.normalized.y) > 0)) { lookedForArrows = true; StartCoroutine(ArrowsCompleted()); }
+        if (!Main_Game_Manager.instance.movedForWasd && (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0)) { Main_Game_Manager.instance.movedForWasd = true; StartCoroutine(WasdCompleted()); }
+        if (Main_Game_Manager.instance.movedForWasd && !Main_Game_Manager.instance.lookedForArrows && (Mathf.Abs(rotation.normalized.x) > 0 || Mathf.Abs(rotation.normalized.y) > 0)) { Main_Game_Manager.instance.lookedForArrows = true; StartCoroutine(ArrowsCompleted()); }
 
         Camera camera = Camera.main;
         tutorialCanvas[0].transform.LookAt(tutorialCanvas[0].transform.position + camera.GetComponent<Camera>().transform.rotation * Vector3.forward, camera.GetComponent<Camera>().transform.rotation * Vector3.up);
@@ -87,7 +87,7 @@ public class Tutorial_Manager : MonoBehaviour
     {
         tutorialCanvas[0].SetActive(true);
         MoveUpTutorial1();
-        objectsChecked = true;
+        Main_Game_Manager.instance.objectsChecked = true;
     }
 
     public void MoveUpTutorial1()

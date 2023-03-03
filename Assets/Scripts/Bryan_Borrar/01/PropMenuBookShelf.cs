@@ -26,12 +26,15 @@ public class PropMenuBookShelf : Prop
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
             if (character.physicalMenu != null)
             {
-                if (Tutorial_Manager.instance.tutorialActive3) { Tutorial_Manager.instance.tutorialActive3 = false; }
+                if (Main_Game_Manager.instance.aliceLevelStarted == false)
+                {
+                    if (Main_Game_Manager.instance.tutorialActive3) { Main_Game_Manager.instance.tutorialActive3 = false; }
+                    else { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+                }
                 else { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
             }
             gameObject.layer = 6;
             Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(gameObject, 6);
         }
-            
     }
 }

@@ -9,6 +9,13 @@ public class Main_Game_Manager : MonoBehaviour
     public static Main_Game_Manager instance;
     public bool aliceLevelStarted = false;
 
+    #region tutorialManager
+    public bool movedForWasd = false;
+    public bool lookedForArrows = false;
+    public bool objectsChecked = false;
+    public bool tutorialActive3 = false;
+    #endregion
+
     void Start()
     {
         #region Singleton
