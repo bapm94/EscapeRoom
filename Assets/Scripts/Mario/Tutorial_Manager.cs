@@ -19,6 +19,7 @@ public class Tutorial_Manager : MonoBehaviour
 
     bool movedForWasd = false;
     bool lookedForArrows = false;
+    public bool objectsChecked = false;
 
     private Controlls _controls;
     public Vector2 movement;
@@ -80,6 +81,7 @@ public class Tutorial_Manager : MonoBehaviour
     {
         tutorialCanvas[0].SetActive(true);
         MoveUpTutorial1();
+        objectsChecked = true;
     }
 
     public void MoveUpTutorial1()
