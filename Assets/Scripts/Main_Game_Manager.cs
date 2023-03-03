@@ -36,6 +36,11 @@ public class Main_Game_Manager : MonoBehaviour
         if (newScene == "Alice_Kitchen_Scene") { aliceLevelStarted = true; }
     }
 
+    public void ChangeToSceneButton(string newScene)
+    {
+        Main_Game_Manager.instance.ChangeToScene(newScene);
+    }
+
     public void SaveAllData()
     {
 

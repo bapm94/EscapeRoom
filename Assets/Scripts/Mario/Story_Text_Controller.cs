@@ -15,16 +15,22 @@ public class Story_Text_Controller : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (hasDialogue)
+        if (Main_Game_Manager.instance != null)
         {
-            if (other.gameObject.layer == 14)
+            if (Main_Game_Manager.instance.aliceLevelStarted == false)
             {
-                Debug.Log("storyelement");
-                Dialogue_System_Controller.instance.GetDialogueInfo(dialogueStart, dialogueEnd);
-                Dialogue_System_Controller.instance.dialogueCheck = true;
-                if (activateDialogueOnce) { hasDialogue = false; this.gameObject.SetActive(false); }
-                if (endsOtherTutorials) { Tutorial_Manager.instance.EndTutorials(tutorialAdvanced); }
-                if (advancesTutorials) { Tutorial_Manager.instance.AdvanceTutorial(tutorialAdvanced); }
+                if (hasDialogue)
+                {
+                    if (other.gameObject.layer == 14)
+                    {
+                        Debug.Log("storyelement");
+                        Dialogue_System_Controller.instance.GetDialogueInfo(dialogueStart, dialogueEnd);
+                        Dialogue_System_Controller.instance.dialogueCheck = true;
+                        if (activateDialogueOnce) { hasDialogue = false; this.gameObject.SetActive(false); }
+                        if (endsOtherTutorials) { Tutorial_Manager.instance.EndTutorials(tutorialAdvanced); }
+                        if (advancesTutorials) { Tutorial_Manager.instance.AdvanceTutorial(tutorialAdvanced); }
+                    }
+                }
             }
         }
     }

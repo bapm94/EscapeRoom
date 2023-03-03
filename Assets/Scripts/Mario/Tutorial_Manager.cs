@@ -39,15 +39,21 @@ public class Tutorial_Manager : MonoBehaviour
         _controls = new Controlls();
         _controls.CharacterControl.Enable();
 
-        tutorialActive3 = true;
-        tempVect1 = new Vector3(0, 0.175f, 0);
-        tutorialText.text = "Interact with this object!";;
-        RotateSprites();
-        wasd.SetActive(true);
-        arrows.SetActive(false);
+        if (Main_Game_Manager.instance != null)
+        {
+            if (Main_Game_Manager.instance.aliceLevelStarted == false)
+            {
+                tutorialActive3 = true;
+                tempVect1 = new Vector3(0, 0.175f, 0);
+                tutorialText.text = "Interact with this object!"; ;
+                RotateSprites();
+                wasd.SetActive(true);
+                arrows.SetActive(false);
 
-        tutorials.Add(StartTutorial3);
-        tutorials.Add(StartTutorial1);
+                tutorials.Add(StartTutorial3);
+                tutorials.Add(StartTutorial1);
+            }
+        }
     }
 
     private void Update()
