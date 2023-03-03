@@ -24,7 +24,11 @@ public class PropMenuBookShelf : Prop
             base.OnActionButton();
             Debug.Log("pepe2");
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
-            if (character.physicalMenu != null) { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+            if (character.physicalMenu != null)
+            {
+                if (Tutorial_Manager.instance.tutorialActive3) { Tutorial_Manager.instance.tutorialActive3 = false; }
+                else { character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoLevelMenu(); }
+            }
             gameObject.layer = 6;
             Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(gameObject, 6);
         }

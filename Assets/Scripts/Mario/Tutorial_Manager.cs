@@ -8,8 +8,7 @@ public class Tutorial_Manager : MonoBehaviour
 {
     public GameObject[] tutorialCanvas;
     public TextMeshProUGUI tutorialText;
-    public bool tutorialActive1;
-    public bool tutorialActive2;
+    public bool tutorialActive3;
     public Vector3 tempVect1;
     public GameObject wasd;
     public TextMeshProUGUI tuto2Text;
@@ -18,6 +17,8 @@ public class Tutorial_Manager : MonoBehaviour
     public Sprite[] rotatingSpritesARROWS;
     int currentSprite;
 
+    public int tutorialAdvancement;
+
     bool movedForWasd = false;
     bool lookedForArrows = false;
 
@@ -25,19 +26,27 @@ public class Tutorial_Manager : MonoBehaviour
     public Vector2 movement;
     public Vector2 rotation;
 
+    public static Tutorial_Manager instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null) { Tutorial_Manager.instance = this; }
+        else { Destroy(this); }
+
+        tutorialAdvancement = 0;
+
         _controls = new Controlls();
         _controls.CharacterControl.Enable();
 
-        tutorialActive1 = true;
+        tutorialActive3 = true;
         tempVect1 = new Vector3(0, 0.175f, 0);
         tutorialText.text = "Interact with this object!";
         MoveUpTutorial1();
         RotateSprites();
         wasd.SetActive(true);
         arrows.SetActive(false);
+
     }
 
     private void Update()
@@ -49,6 +58,21 @@ public class Tutorial_Manager : MonoBehaviour
 
         Camera camera = Camera.main;
         tutorialCanvas[0].transform.LookAt(tutorialCanvas[0].transform.position + camera.GetComponent<Camera>().transform.rotation * Vector3.forward, camera.GetComponent<Camera>().transform.rotation * Vector3.up);
+        tutorialCanvas[2].transform.LookAt(tutorialCanvas[2].transform.position + camera.GetComponent<Camera>().transform.rotation * Vector3.forward, camera.GetComponent<Camera>().transform.rotation * Vector3.up);
+    }
+
+    public void AdvanceTutorial()
+    {
+        tutorialAdvancement++;
+        if (tutorialAdvancement == 1)
+        {
+            StartTutorial3();
+        }
+    }
+
+    public void EndTutorials()
+    {
+        tutorialCanvas[2].SetActive(false);
     }
 
     #region Tutorial1
@@ -66,7 +90,7 @@ public class Tutorial_Manager : MonoBehaviour
 
     public void DeactivateTutorial1()
     {
-        tutorialActive1 = false;
+        tutorialActive3 = false;
         tutorialCanvas[0].SetActive(false);
     }
     #endregion
@@ -97,6 +121,31 @@ public class Tutorial_Manager : MonoBehaviour
         arrows.SetActive(false);
         tutorialCanvas[1].SetActive(false);
     }
-    
+
+    #endregion
+
+    #region Tutorial3
+    public void StartTutorial3()
+    {
+        tutorialCanvas[2].SetActive(true);
+        MoveUpTutorial3();
+    }
+
+    public void MoveUpTutorial3()
+    {
+        LeanTween.move(tutorialCanvas[2], tutorialCanvas[2].transform.localPosition + tempVect1, 1.0f);
+        Invoke("MoveDownTutorial3", 1.0f);
+    }
+
+    public void MoveDownTutorial3()
+    {
+        LeanTween.move(tutorialCanvas[2], tutorialCanvas[2].transform.localPosition - tempVect1, 1.0f);
+        Invoke("MoveUpTutorial3", 1.0f);
+    }
+
+    public void DeactivateTutorial3()
+    {
+        tutorialCanvas[2].SetActive(false);
+    }
     #endregion
 }

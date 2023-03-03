@@ -36,7 +36,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         if (instance == null) { Dialogue_System_Controller.instance = this; }
         else { Destroy(this); }
 
-        dialogueSpeed = 0.025f;
+        dialogueSpeed = 0.033f;
     }
 
     private void OnAction_Button()
@@ -137,7 +137,7 @@ public class Dialogue_System_Controller : MonoBehaviour
                 if (beepSfxs.Length > 0)
                 {
                     playSfx++;
-                    if (playSfx == 1) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); playSfx = 0; }
+                    if (playSfx == 4) { beepSfxs[whoIsTalking].pitch = Random.Range(0.8f, 1.2f); beepSfxs[whoIsTalking].Play(); playSfx = 0; }
                 }
 
                 if (Characters[i].ToString() == ",") { yield return new WaitForSeconds(dialogueSpeed + 0.35f); }
