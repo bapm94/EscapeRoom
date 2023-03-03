@@ -17,8 +17,6 @@ public class Tutorial_Manager : MonoBehaviour
     public Sprite[] rotatingSpritesARROWS;
     int currentSprite;
 
-    public int tutorialAdvancement;
-
     bool movedForWasd = false;
     bool lookedForArrows = false;
 
@@ -26,6 +24,9 @@ public class Tutorial_Manager : MonoBehaviour
     public Vector2 movement;
     public Vector2 rotation;
 
+    delegate void ActivateTutorialsList();
+
+    List<ActivateTutorialsList> tutorials = new List<ActivateTutorialsList>();
     public static Tutorial_Manager instance;
 
     // Start is called before the first frame update
@@ -34,19 +35,18 @@ public class Tutorial_Manager : MonoBehaviour
         if (instance == null) { Tutorial_Manager.instance = this; }
         else { Destroy(this); }
 
-        tutorialAdvancement = 0;
-
         _controls = new Controlls();
         _controls.CharacterControl.Enable();
 
         tutorialActive3 = true;
         tempVect1 = new Vector3(0, 0.175f, 0);
-        tutorialText.text = "Interact with this object!";
-        MoveUpTutorial1();
+        tutorialText.text = "Interact with this object!";;
         RotateSprites();
         wasd.SetActive(true);
         arrows.SetActive(false);
 
+        tutorials.Add(StartTutorial3);
+        tutorials.Add(StartTutorial1);
     }
 
     private void Update()
@@ -61,21 +61,27 @@ public class Tutorial_Manager : MonoBehaviour
         tutorialCanvas[2].transform.LookAt(tutorialCanvas[2].transform.position + camera.GetComponent<Camera>().transform.rotation * Vector3.forward, camera.GetComponent<Camera>().transform.rotation * Vector3.up);
     }
 
-    public void AdvanceTutorial()
+    public void AdvanceTutorial(int tutorialAdvanced)
     {
-        tutorialAdvancement++;
-        if (tutorialAdvancement == 1)
+        tutorials[tutorialAdvanced]();
+    }
+
+    public void EndTutorials(int tutorialAdvanced)
+    {
+        for (int i = 0; i < tutorialCanvas.Length; i++)
         {
-            StartTutorial3();
+            if (i == tutorialAdvanced) { continue; }
+            else { tutorialCanvas[i].SetActive(false); }
         }
     }
 
-    public void EndTutorials()
+    #region Tutorial1
+    public void StartTutorial1()
     {
-        tutorialCanvas[2].SetActive(false);
+        tutorialCanvas[0].SetActive(true);
+        MoveUpTutorial1();
     }
 
-    #region Tutorial1
     public void MoveUpTutorial1()
     {
         LeanTween.move(tutorialCanvas[0], tutorialCanvas[0].transform.localPosition + tempVect1, 1.0f);

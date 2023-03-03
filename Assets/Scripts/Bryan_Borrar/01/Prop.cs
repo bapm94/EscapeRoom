@@ -42,7 +42,6 @@ public class Prop : MonoBehaviour
     {        
         if (gameObject.layer == 8)  //Only the game object thats being observe will perform the action.
         {
-            if (extraAction != null) { extraAction.ExtraActionOnInteraction(); }
             if (audio != null) { audio.Play(); }
             if (hasDialogue)
             {
@@ -54,7 +53,7 @@ public class Prop : MonoBehaviour
                     SwitchInteractability(false);
                 }
             }           //If the prop has dialogue to reproduce it does it now
-            
+            if (extraAction != null) { extraAction.ExtraActionOnInteraction(); }
         }
     }
     protected virtual void OnBackButton()

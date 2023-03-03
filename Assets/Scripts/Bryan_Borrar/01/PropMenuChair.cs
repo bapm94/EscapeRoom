@@ -12,19 +12,15 @@ public class PropMenuChair : Prop
 
     protected override void OnActionButton()    
     {
-        Debug.Log("pepe");
-
         if (gameObject.layer == 8)
         {
-            Debug.Log("pepe");
             GameObject tutorialObject = GameObject.Find("Tutorials");
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
             if (character.physicalMenu != null)
             {
                 character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();
             }
-        }
-       
+        }  
     }
 
 

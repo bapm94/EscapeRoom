@@ -112,7 +112,7 @@ public class Dialogue_System_Controller : MonoBehaviour
         animator.Play("DialogueBoxOut");
         yield return new WaitForSeconds(0.8f);
         dialogueParent.SetActive(false);
-        if (!Main_Character_Controller_v2.instance.isAnalizingOject) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
+        if (!Main_Character_Controller_v2.instance.isAnalizingOject && InGame_Menu_Controller.instance.currentCamera == 0) { Main_Camera_Controller.instance.ChangeFollowStatus(true); }
     }
 
     IEnumerator WriteSentence()
