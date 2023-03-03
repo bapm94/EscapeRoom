@@ -51,7 +51,7 @@ public class Main_Camera_Controller : MonoBehaviour
 
     public void ChangeFollowStatus(bool isFollowing)
     {
-        Bob_Controller.instance.cantBob();
+        if (Bob_Controller.instance != null) { Bob_Controller.instance.cantBob(); }
         isFollowingCharacter = isFollowing;
         GameObject player = Main_Character_Controller_v2.instance.gameObject;
         Main_Character_Controller_v2 v2 = player.GetComponent<Main_Character_Controller_v2>();

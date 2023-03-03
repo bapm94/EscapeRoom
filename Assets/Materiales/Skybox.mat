@@ -120,11 +120,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-<<<<<<< Updated upstream
-    - _Rotation: 0.40745294
-=======
-    - _Rotation: 96.235
->>>>>>> Stashed changes
+    - _Rotation: 40.656586
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

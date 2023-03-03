@@ -37,7 +37,7 @@ public class PropCodePuzzle : Prop
             Main_Camera_Controller.instance.ChangeFollowStatus(true);
             SwitchInteractability(false);
             if (extraAction != null) { extraAction.ExtraActionOnVictory(); }
-            Debug.Log("vic");
+            
         }
 
     }

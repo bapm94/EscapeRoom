@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AliceLockAnimation1 : MonoBehaviour
+public class AliceLock1CodeExtra : ExtraActionsTemplate
 {
-    [SerializeField] GameObject _lock;
-    [SerializeField] GameObject _buttonsCanvas;
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +17,8 @@ public class AliceLockAnimation1 : MonoBehaviour
         
     }
 
-    void hideLock()
+    public override void ExtraActionOnVictory()
     {
-        _lock.SetActive(false);
-    }
-    void hideButtons()
-    {
-        _buttonsCanvas.SetActive(false);
+        animator.SetTrigger("Unlocked");
     }
 }
