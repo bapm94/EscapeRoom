@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2173359373936333495
+--- !u!114 &-7574322580070427152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,23 +19,23 @@ MonoBehaviour:
     m_Bits: 767
   outlinesOccluderLayerMask:
     serializedVersion: 2
-    m_Bits: 258
+    m_Bits: 256
   outlineSettings:
-    outlineColor: {r: 0.38581347, g: 0.6417547, b: 0.9622642, a: 1}
-    outlineScale: 0.75
-    depthThreshold: 4.6
-    robertsCrossMultiplier: 89
-    normalThreshold: 0.95
-    steepAngleThreshold: 0.76
-    steepAngleMultiplier: 119
+    outlineColor: {r: 0.3971164, g: 0.6270968, b: 0.8679245, a: 1}
+    outlineScale: 1.33
+    depthThreshold: 3.9
+    robertsCrossMultiplier: 169
+    normalThreshold: 0.505
+    steepAngleThreshold: 0.045
+    steepAngleMultiplier: 101
   viewSpaceNormalsTextureSettings:
-    colorFormat: 10
+    colorFormat: 17
     depthBufferBits: 10
-    filterMode: 2
+    filterMode: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    perObjectData: -1
-    enableDynamicBatching: 1
-    enableInstancing: 1
+    perObjectData: 0
+    enableDynamicBatching: 0
+    enableInstancing: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,10 +52,10 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
       type: 3}
   m_RendererFeatures:
-  - {fileID: -2173359373936333495}
+  - {fileID: -7574322580070427152}
   - {fileID: 913053304564225582}
   - {fileID: 223220026761806986}
-  m_RendererFeatureMap: 496d42132aadd6e12e168c9724d1ab0c8a04e4816e091903
+  m_RendererFeatureMap: f095ae70be99e2962e168c9724d1ab0c8a04e4816e091903
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e74ab29c92ff584bb35a18a9d566a0f, type: 3}
-  m_Name: ScreenSpaceOutlines
+  m_Name: InteractableOutlines
   m_EditorClassIdentifier: 
   m_Active: 1
   renderPassEvent: 450
@@ -117,21 +117,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   outlineSettings:
-    outlineColor: {r: 1, g: 0.54987025, b: 0, a: 1}
-    outlineScale: 1.98
+    outlineColor: {r: 1, g: 0.5498703, b: 0, a: 1}
+    outlineScale: 1.94
     depthThreshold: 2.5
     robertsCrossMultiplier: 100
     normalThreshold: 0.4
     steepAngleThreshold: 0.2
     steepAngleMultiplier: 25
   viewSpaceNormalsTextureSettings:
-    colorFormat: 27
-    depthBufferBits: 16
+    colorFormat: 17
+    depthBufferBits: 12
     filterMode: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    perObjectData: 0
-    enableDynamicBatching: 0
-    enableInstancing: 0
+    perObjectData: -1
+    enableDynamicBatching: 1
+    enableInstancing: 1
 --- !u!114 &913053304564225582
 MonoBehaviour:
   m_ObjectHideFlags: 0
