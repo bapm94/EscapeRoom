@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliceLevelStarted: 0
+  movedForWasd: 0
+  lookedForArrows: 0
+  objectsChecked: 0
+  tutorialActive3: 0
 --- !u!82 &5479102529833002492
 AudioSource:
   m_ObjectHideFlags: 0

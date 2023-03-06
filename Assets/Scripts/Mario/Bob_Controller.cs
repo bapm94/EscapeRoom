@@ -9,6 +9,8 @@ public class Bob_Controller : MonoBehaviour
     public CinemachineVirtualCamera playerCam;
     public Vector2 movement;
     public bool canBob;
+    public AudioSource[] footsteps;
+    int doesSfx;
 
     public static Bob_Controller instance;
 
@@ -29,7 +31,12 @@ public class Bob_Controller : MonoBehaviour
         if (canBob)
         {
             movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
-            if (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0) { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1; }
+            if (Mathf.Abs(movement.normalized.x) > 0 || Mathf.Abs(movement.normalized.y) > 0) 
+            {
+                playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1;
+                doesSfx++;
+                if (doesSfx > 24) { footsteps[Random.Range(0, 2)].Play(); doesSfx = 0; }
+            }
             else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }
         }
         else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }   
