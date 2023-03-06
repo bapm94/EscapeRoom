@@ -65,7 +65,7 @@ public class PropRestorePuzzleParent : Prop
                         script.restored = true;
                         Inventory_Temp.instance.propsGrabbed.Remove(part);
                         count++;
-                        extra.ExtraActionOnRestoring();
+                        if (extra != null)  extra.ExtraActionOnRestoring();
                     }
                     if (extra != null) { extra.ExtraActionOnPositioning(); }
                     

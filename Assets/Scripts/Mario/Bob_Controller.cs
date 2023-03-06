@@ -35,7 +35,7 @@ public class Bob_Controller : MonoBehaviour
             {
                 playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1;
                 doesSfx++;
-                if (doesSfx > 24) { footsteps[Random.Range(0, 2)].Play(); doesSfx = 0; }
+                if (doesSfx > 24  && footsteps != null) { footsteps[Random.Range(0, 2)].Play(); doesSfx = 0; }
             }
             else { playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0; }
         }
