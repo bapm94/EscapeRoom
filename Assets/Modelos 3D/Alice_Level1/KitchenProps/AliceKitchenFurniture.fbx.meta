@@ -1,59 +1,9 @@
 fileFormatVersion: 2
-guid: a04bdc8f0922ea44c980c9ce0454c434
+guid: 2b465f56d2d6cee44905dcbed4e23fa3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Base
-    second: {fileID: 2100000, guid: eb01ca66956b0e1439bd180fe91dae3f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cereza
-    second: {fileID: 2100000, guid: 111ed40675ea8b34ea22c29a71af5f0f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Crema
-    second: {fileID: 2100000, guid: d05cd2201997576429e25036c9955fcc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Default OBJ.004
-    second: {fileID: 2100000, guid: 1874aa1c9ee70ce4887120a473d3c639, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fresa
-    second: {fileID: 2100000, guid: d6c7053194db2874d831583cf5aff646, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Galleta
-    second: {fileID: 2100000, guid: 412141ce967ac5c49ba8077519f5915c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: HojaFresa
-    second: {fileID: 2100000, guid: 641b97afe655609469e7a4b857b8d733, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nata
-    second: {fileID: 2100000, guid: d363acf3d0c8f1043962f71d611adc1c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RabilloCereza
-    second: {fileID: 2100000, guid: 22fc77e29454ff347b7f1d7429c89f8f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tubitos
-    second: {fileID: 2100000, guid: 6e26e90ec1ccd9749b273c03fb979fa3, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
