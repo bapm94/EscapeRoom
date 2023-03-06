@@ -73,3 +73,6 @@ crashlytics-build.properties
 Assets/Materiales/SPACE-1.hdr.meta
 Assets/Materiales/SPACE-1.hdr
 Assets/Settings/URP-HighFidelity.asset
+Assets/Settings/URP-HighFidelity.asset
+ProjectSettings/QualitySettings.asset
+ProjectSettings/QualitySettings.asset
