@@ -11,6 +11,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     [SerializeField] GameObject water;
     [SerializeField] GameObject drinkMeBottle;
     [SerializeField] GameObject potMision;
+    [SerializeField] GameObject finalBrewMision;
     public Vector3 originalAngle { get; set; }
     
 
@@ -76,6 +77,12 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
                 script.isFilled = true;
                 drinkMeBottle.GetComponent<PropGrabable>().canBeCollectedAgain = true;
                 potMision.SetActive(true);
+                finalBrewMision.SetActive(true);
+                drinkMeBottle.GetComponent<PropGrabable>().restored = false;
+                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().enabled = true;
+                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().conditionAchived = new bool[1];
+                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().VictoryConditions.Clear();
+                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().VictoryConditions.Add(drinkMeBottle);
                 Debug.Log("You've filled the botlle");
 
             }
