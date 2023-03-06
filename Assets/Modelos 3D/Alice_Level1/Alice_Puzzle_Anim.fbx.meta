@@ -3,7 +3,12 @@ guid: 7e66edcd3e6741f4fb573bee985444a5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LockWheelMat
+    second: {fileID: 2100000, guid: 87d6041215c0081439524db99080fbd9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
