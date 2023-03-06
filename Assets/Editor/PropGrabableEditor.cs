@@ -16,6 +16,7 @@ public class PropGrabableEditor : Editor
 
     SerializedProperty dialogueOnlyOnce;
     SerializedProperty canBeCollectedAgain;
+    SerializedProperty spriteEurlerAngles;
     //SerializedProperty extraActionOnCollected;
 
     bool dialogueOptionsGroup1, analizingOptions = true;
@@ -35,6 +36,8 @@ public class PropGrabableEditor : Editor
 
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
         canBeCollectedAgain = serializedObject.FindProperty("canBeCollectedAgain");
+
+        spriteEurlerAngles = serializedObject.FindProperty("spriteEurlerAngles");
       //  extraActionOnCollected = serializedObject.FindProperty("extraActionOnCollected");
     }
     public override void OnInspectorGUI()
@@ -71,6 +74,7 @@ public class PropGrabableEditor : Editor
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         EditorGUILayout.PropertyField(spriteScale);
+        EditorGUILayout.PropertyField(spriteEurlerAngles);
         EditorGUILayout.PropertyField(canBeCollectedAgain);
        // EditorGUILayout.PropertyField(extraActionOnCollected);
 

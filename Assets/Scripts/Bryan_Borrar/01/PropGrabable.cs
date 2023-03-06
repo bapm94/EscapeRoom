@@ -7,6 +7,7 @@ public class PropGrabable : PropAnalizable
 {
     
     [SerializeField] protected float spriteScale = 0.5f;
+    [SerializeField] public Vector3 spriteEurlerAngles = Vector3.zero;
     public bool restored = false;
 
     private GameObject _originalParent;
@@ -55,6 +56,7 @@ public class PropGrabable : PropAnalizable
         transform.SetParent(inventoryPlaces.transform.GetChild(inventory.GetComponent<Inventory_Temp>().propsGrabbed.Count));
         inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
         transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = spriteEurlerAngles ;
         transform.localScale = Vector3.one * spriteScale;
         if (transform.childCount > 1)
         {
