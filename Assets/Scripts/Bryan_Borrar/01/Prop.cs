@@ -39,7 +39,9 @@ public class Prop : MonoBehaviour
     /// This performs the initial dialogue, then the action if true
     /// </summary>
     protected virtual void OnActionButton()  // The action is suscribed to the main interaction controller event.
-    {        
+    {
+        gameObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
+        if (extra != null) { extraAction = extra; }
         if (gameObject.layer == 8)  //Only the game object thats being observe will perform the action.
         {
             if (audio != null) { audio.Play(); }
