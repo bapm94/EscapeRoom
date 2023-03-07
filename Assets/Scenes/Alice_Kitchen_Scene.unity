@@ -8612,6 +8612,12 @@ MonoBehaviour:
   physicalMenu: {fileID: 346380565}
   isAnalizingOject: 0
   inventoryTemp: {fileID: 1627952674}
+  ignoreMe:
+    serializedVersion: 2
+    m_Bits: 1024
+  collideMe:
+    serializedVersion: 2
+    m_Bits: 1032
 --- !u!114 &416380739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19463,7 +19469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085909674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19479,7 +19485,7 @@ Transform:
   m_GameObject: {fileID: 1085909673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.684047, y: 1.0686831, z: -4.6161203}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1318, y: 1.0255, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2060355427}
@@ -36009,7 +36015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2060355427}
   - component: {fileID: 2060355428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
