@@ -62,6 +62,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
         if (Main_Character_Controller_v2.instance == null)
         {
             Main_Character_Controller_v2.instance = this;
