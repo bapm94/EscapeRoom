@@ -7,11 +7,12 @@ public class CluesMenu : MonoBehaviour
 {
     GameObject cluesController;
     [SerializeField] letritas _letritas;
+    [SerializeField] public GameObject visual;
     // Start is called before the first frame update
     void Start()
     {
         cluesController = transform.GetChild(0).gameObject;
-        cluesController.SetActive(false);
+        visual.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,18 +20,18 @@ public class CluesMenu : MonoBehaviour
     {
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            if (cluesController.activeSelf)
+            if (visual.activeSelf)
             {
-                cluesController.SetActive(false);
+                visual.SetActive(false);
                 Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }
             else
             {
-                cluesController.SetActive(true);
+                visual.SetActive(true);
                 Main_Camera_Controller.instance.ChangeFollowStatus(false);
             }
         }
-        if (Keyboard.current.eKey.isPressed && cluesController.activeSelf)
+        if (Keyboard.current.eKey.isPressed && visual.activeSelf)
         {
             _letritas.RevealLetter();
         }

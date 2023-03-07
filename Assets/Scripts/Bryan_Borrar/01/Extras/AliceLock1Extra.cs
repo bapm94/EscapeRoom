@@ -8,6 +8,7 @@ public class AliceLock1Extra : ExtraActionsTemplate
     bool beingInteract = false;
     [SerializeField] GameObject buttonsCanvas;
     [SerializeField] Button firstSelection;
+    
 
     Material material;
     Color originalMatColor;
@@ -50,4 +51,5 @@ public class AliceLock1Extra : ExtraActionsTemplate
         material.color = newColor;
         Debug.Log(material + "  " + newColor);
     }
+
 }

@@ -20,7 +20,7 @@ public class PropCodePuzzle : Prop
 
     public void CheckForVictory()
     {
-        Debug.Log("Checking for vic");
+        //Debug.Log("Checking for vic");
         int victoryCount = 0;
         for (int i = 0; i < dials.Length; i++)
         {

@@ -5,7 +5,8 @@ using UnityEngine;
 public  class TakeOffCap : ExtraActionsTemplate
 {
     public bool isFilled { get; set; }
-
+    int pointsGiven = 0;
+    bool clueChanged;
     public override void ExtraActionOnCollected()
     {
         var cap = transform.GetChild(0).GetChild(1).gameObject;
@@ -23,5 +24,15 @@ public  class TakeOffCap : ExtraActionsTemplate
     public override void ExtraActionOnRestoring()
     {
         gameObject.GetComponent<PropGrabable>().canBeCollectedAgain = false;
+        if (pointsGiven <= 1)
+        {
+            CluesController.instance.insigth += 10;
+            pointsGiven++;
+        }
+        
+    }
+    public override void ExtraActionOnInteraction()
+    {
+        CluesController.instance.ChangeClue(2);
     }
 }

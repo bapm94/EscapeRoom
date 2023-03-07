@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2180e675cb44a614582c0acf81a2a51e, type: 3}
-  m_Name: Cherrapple
+  m_Name: Sugar
   m_EditorClassIdentifier: 
   initialPosition: {x: 0, y: 0, z: 0}
   initialQuaternionRotation: {x: 0, y: 0, z: 0, w: 0}
-  sprite: {fileID: 21300000, guid: c0f4a7ebb3841a846b511db7c905384e, type: 3}
+  sprite: {fileID: 21300000, guid: bd48c01fdfa007f42acfd3cdf305a7ee, type: 3}
   isSprite: 0
   hasDialog: 0
   dialogBeginning: 0

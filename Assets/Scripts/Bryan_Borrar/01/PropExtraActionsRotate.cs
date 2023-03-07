@@ -26,7 +26,11 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     {
         
     }
-
+    public override void ExtraActionOnRestoring()
+    {
+        CluesController.instance.insigth += 10;
+        CluesController.instance.ChangeClue(3);
+    }
     public override void ExtraAction()
     {
         originalAngle = GetDefaultPos();

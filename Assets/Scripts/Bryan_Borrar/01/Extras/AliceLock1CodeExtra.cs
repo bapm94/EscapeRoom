@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AliceLock1CodeExtra : ExtraActionsTemplate
 {
+
     [SerializeField] Animator animator;
+    [SerializeField] GameObject cupboard;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +22,11 @@ public class AliceLock1CodeExtra : ExtraActionsTemplate
     public override void ExtraActionOnVictory()
     {
         animator.SetTrigger("Unlocked");
+        CluesController.instance.insigth += 10;
+        CluesController.instance.ChangeClue(5);
+        cupboard.layer = 0;
+        cupboard.tag = "111";
+        Destroy(cupboard.GetComponent<Prop>());
+
     }
 }

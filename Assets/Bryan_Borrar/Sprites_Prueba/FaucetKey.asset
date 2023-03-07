@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPosition: {x: 0, y: 0, z: 0}
   initialQuaternionRotation: {x: 0, y: 0, z: 0, w: 0}
-  sprite: {fileID: 21300000, guid: 9545548bf437e334dbce978d91b7a4cb, type: 3}
+  sprite: {fileID: 21300000, guid: 739e9422e5c4e594e9bf5af880e332fc, type: 3}
   isSprite: 0
   hasDialog: 0
   dialogBeginning: 0

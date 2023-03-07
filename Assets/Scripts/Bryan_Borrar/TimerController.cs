@@ -25,7 +25,7 @@ public class TimerController : MonoBehaviour
     {
         if (timerOn && !paused && timer > 0)
         {
-        Debug.Log("holka" );
+        
             timer -= Time.deltaTime;
             float minutesLeft = Mathf.FloorToInt(timer / 60);
             float secondsLeft = Mathf.FloorToInt(timer % 60);
