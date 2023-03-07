@@ -8,13 +8,13 @@ public class AliceLock1Extra : ExtraActionsTemplate
     bool beingInteract = false;
     [SerializeField] GameObject buttonsCanvas;
     [SerializeField] Button firstSelection;
-    
+    [SerializeField] GameObject cupboard;
 
     Material material;
     Color originalMatColor;
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         material = GetComponent<SkinnedMeshRenderer>().materials[1];
         originalMatColor = material.color;
         Main_Interacction_Controller.instance.onBackButton += OnBackButton;
@@ -34,6 +34,9 @@ public class AliceLock1Extra : ExtraActionsTemplate
         firstSelection.Select();
         gameObject.GetComponent<Prop>().SwitchInteractability(false);
         gameObject.layer = 6;
+        cupboard.layer = 0;
+        cupboard.tag = "111";
+        Destroy(cupboard.GetComponent<Prop>());
     }
     public void OnBackButton()
     {

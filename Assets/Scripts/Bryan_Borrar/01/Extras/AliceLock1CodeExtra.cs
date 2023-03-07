@@ -19,14 +19,16 @@ public class AliceLock1CodeExtra : ExtraActionsTemplate
         
     }
 
+    //public override void ExtraActionOnInteraction()
+    //{
+    //    cupboard.layer = 0;
+    //    cupboard.tag = "111";
+    //    Destroy(cupboard.GetComponent<Prop>());
+    //}
     public override void ExtraActionOnVictory()
     {
         animator.SetTrigger("Unlocked");
         CluesController.instance.insigth += 10;
         CluesController.instance.ChangeClue(5);
-        cupboard.layer = 0;
-        cupboard.tag = "111";
-        Destroy(cupboard.GetComponent<Prop>());
-
     }
 }

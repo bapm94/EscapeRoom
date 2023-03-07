@@ -2423,7 +2423,7 @@ Transform:
   - {fileID: 1005634227}
   - {fileID: 687631465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160329751
 GameObject:
@@ -3247,7 +3247,7 @@ Transform:
   m_Children:
   - {fileID: 1022142913}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 30.891, y: -16.625, z: -1.152}
 --- !u!1 &220630802
 GameObject:
@@ -6470,11 +6470,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 389409027}
   sentences:
-  - 1What a strange room. It seems like a kitchen but quiet disordered.
-  - 0I don't know Doc, I find it very sweet.
-  - 1Alice, look there is a note on the fridge...
-  - 0Uhh... This cupboard has a lock on it
-  - 1You will need the right code
+  - 1What a strange room. It looks like a kitchen of some sorts, but everything's
+    a mess.
+  - 0I don't know, I find it very sweet!
+  - 1Alice, look, there is a note on the fridge, we should check it out.
+  - 0Hmm... This cupboard has a lock, I wonder what the combination is?
+  - 1Take a closer look at the numbers, they have all have a different symbol. I
+    bet that's the key to finding the combination.
   - 0What's this?
   - 1Looks like an empty bottle
   - 0With no handdle no water...
@@ -7579,7 +7581,7 @@ Transform:
   m_Children:
   - {fileID: 585965528}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 10.312, y: -85.897, z: 0.112}
 --- !u!1 &384349132
 GameObject:
@@ -8069,7 +8071,7 @@ Transform:
   - {fileID: 346380575}
   - {fileID: 1038852573}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &399049739
 GameObject:
@@ -11347,7 +11349,7 @@ Transform:
   m_Children:
   - {fileID: 2142251039}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 2.391, y: -1.246, z: 1.757}
 --- !u!1 &611369362
 GameObject:
@@ -11727,12 +11729,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clues:
-  - Look at the paper in the fridge
-  - You should find a recipient to brew the potion
-  - It would be pretty usefull to fill the bottle with water.
+  - There is a note in the fridge
+  - Find a recipient to brew the potion
+  - The bottle can be filled with water
   - Maybe there is something cooking in the oven
-  - That CUPboard has a lock for some reason...
-  - There is no cherrapple, but we have a pot with soil, water and the seeds.
+  - How many teacups of each color?
+  - No cherrapple, but we have a pot with soil, water and seeds
   - Lets brew it!
   insigth: 20
 --- !u!114 &631934219
@@ -11794,7 +11796,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!1 &635451025
 GameObject:
@@ -14718,7 +14720,7 @@ Transform:
   m_Children:
   - {fileID: 731076392}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &809300775
 MonoBehaviour:
@@ -16620,7 +16622,7 @@ RectTransform:
   - {fileID: 467002647}
   - {fileID: 172709010}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19452,6 +19454,38 @@ Transform:
   m_Father: {fileID: 160115138}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 149.518, y: 1.6450043, z: 87.319}
+--- !u!1 &1085909673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085909674}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085909674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085909673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.684047, y: 1.0686831, z: -4.6161203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2060355427}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089054677
 GameObject:
   m_ObjectHideFlags: 0
@@ -26178,7 +26212,7 @@ Transform:
   - {fileID: 1190850313}
   - {fileID: 543450652989975927}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664458371
 GameObject:
@@ -26403,7 +26437,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1684581620
 GameObject:
@@ -26661,7 +26695,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690961880
 GameObject:
@@ -33223,7 +33257,7 @@ RectTransform:
   m_GameObject: {fileID: 1852327711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.000013960804}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 13.251889, y: 1.2121, z: 1.2121}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 255322472}
@@ -35178,7 +35212,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988127502
 GameObject:
@@ -35965,6 +35999,51 @@ Transform:
   m_Father: {fileID: 2652450141144279915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2060355426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060355427}
+  - component: {fileID: 2060355428}
+  m_Layer: 0
+  m_Name: Collider 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060355427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060355426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.152, z: 0.38}
+  m_LocalScale: {x: 1.4368129, y: 1.8839, z: 2.9533901}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1085909674}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2060355428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060355426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2061100398
 GameObject:
   m_ObjectHideFlags: 0
@@ -65460,8 +65539,8 @@ GameObject:
   - component: {fileID: 540760334774399097}
   - component: {fileID: 3938770824381286350}
   - component: {fileID: 3938770824381286353}
-  - component: {fileID: 3938770824381286352}
-  - component: {fileID: 3938770824381286351}
+  - component: {fileID: 3938770824381286355}
+  - component: {fileID: 3938770824381286354}
   m_Layer: 0
   m_Name: Lock
   m_TagString: Untagged
@@ -66117,21 +66196,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.054022714, y: 0.09336656, z: 0.0023233593}
     m_Extent: {x: 0.13544542, y: 0.53901047, z: 0.43227968}
   m_DirtyAABB: 0
---- !u!114 &3938770824381286351
-MonoBehaviour:
+--- !u!65 &3938770824381286353
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850679723584030838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9626063693161a948b36d1b5ac4a3e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonsCanvas: {fileID: 2129637994}
-  firstSelection: {fileID: 156336265}
---- !u!114 &3938770824381286352
+  serializedVersion: 2
+  m_Size: {x: 0.5814383, y: 0.8945908, z: 1.1324714}
+  m_Center: {x: -1.4324988, y: 0.008756787, z: 2.0174322}
+--- !u!114 &3938770824381286354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66150,19 +66228,21 @@ MonoBehaviour:
   dialogueOnlyOnce: 1
   deactivateAfterDialogue: 0
   localIndex: 0
---- !u!65 &3938770824381286353
-BoxCollider:
+--- !u!114 &3938770824381286355
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850679723584030838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5814383, y: 0.8945908, z: 1.1324714}
-  m_Center: {x: -1.4324988, y: 0.008756787, z: 2.0174322}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9626063693161a948b36d1b5ac4a3e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonsCanvas: {fileID: 2129637994}
+  firstSelection: {fileID: 156336265}
+  cupboard: {fileID: 8678126480993663404}
 --- !u!1 &3940864693021719680
 GameObject:
   m_ObjectHideFlags: 0
