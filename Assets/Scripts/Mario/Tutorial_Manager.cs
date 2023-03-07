@@ -34,6 +34,7 @@ public class Tutorial_Manager : MonoBehaviour
 
         _controls = new Controlls();
         _controls.CharacterControl.Enable();
+        Main_Character_Controller_v2.instance.canRotate = false;
 
         if (Main_Game_Manager.instance != null)
         {
@@ -123,6 +124,7 @@ public class Tutorial_Manager : MonoBehaviour
     {
         tuto2Text.text = "Great!";
         yield return new WaitForSeconds(1.0f);
+        Main_Character_Controller_v2.instance.canRotate = true;
         tuto2Text.text = "To Look!";
         wasd.SetActive(false);
         arrows.SetActive(true);

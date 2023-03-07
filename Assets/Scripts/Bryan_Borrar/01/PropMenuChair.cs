@@ -18,6 +18,7 @@ public class PropMenuChair : Prop
             if (Main_Game_Manager.instance.objectsChecked)
             {
                 base.OnActionButton();
+                Tutorial_Manager.instance.DeactivateTutorial1();
                 if (character.physicalMenu != null && character.canMove)
                 {
                     character.physicalMenu.GetComponent<InGame_Menu_Controller>().GoIntoMenu();
