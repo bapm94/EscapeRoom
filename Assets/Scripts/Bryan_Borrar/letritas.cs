@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class letritas : MonoBehaviour
 {
@@ -21,9 +22,29 @@ public class letritas : MonoBehaviour
     [SerializeField] float timeBetweenLetter = 0.5f;
     [SerializeField] float velocidad;
     int letersShown = 0;
+
+    CluesController cluesController;
+
+    [SerializeField] TextMeshProUGUI remainingInsigth;
+    [SerializeField] Slider sliderInsigth;
     // Start is called before the first frame update
     void Start()
     {
+        cluesController = transform.parent.GetComponent<CluesController>();
+        ReloadText();
+        remainingInsigth.text = cluesController.insigth.ToString();
+        //newText.text = "<alpha=#00>" + textHolder.text;    // 00, 22, 44, 66, 88, AA, CC, FF
+    }
+
+    public void ReloadText()
+    {
+        revelead = false;
+        jeje = new char[0];
+        totalLetters = 0;
+        timer = 0;
+        canShow = true;
+        letersShown = 0;
+
         textHolder = GetComponent<TextMeshProUGUI>();
         textHolder.UpdateVertexData();
         jeje = textHolder.text.ToCharArray();
@@ -36,23 +57,22 @@ public class letritas : MonoBehaviour
                 //isVisible.Add(true);
                 isVisible[i] = true;
                 valoresAlfa[i] = 255;
-                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X")+">" + jeje[i].ToString();
+                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
                 letersShown++;
             }
             else
             {
                 //isVisible.Add(false);
                 isVisible[i] = false;
-                totalLetters ++;
+                totalLetters++;
 
-                valoresAlfa [i] = 16;
+                valoresAlfa[i] = 16;
 
                 newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
             }
-            
+
         }
-        
-        //newText.text = "<alpha=#00>" + textHolder.text;    // 00, 22, 44, 66, 88, AA, CC, FF
+        sliderInsigth.maxValue = jeje.Length;
     }
 
     // Update is called once per frame
@@ -64,10 +84,10 @@ public class letritas : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= timeBetweenLetter) { timer = 0; canShow = true; }
         }
-        if (Keyboard.current.lKey.isPressed)
-        {
-            RevealLetter();
-        }
+        //if (Keyboard.current.lKey.isPressed)
+        //{
+        //    RevealLetter();
+        //}
         if (letersShown != jeje.Length) { ImprimirTexto(); }
         
     }
@@ -96,10 +116,11 @@ public class letritas : MonoBehaviour
         
     }
 
-    private void RevealLetter()
+    public void RevealLetter()
     {
-        if (!revelead && canShow)
+        if (!revelead && canShow && cluesController.insigth > 0)
         {
+            cluesController.insigth--;
             int random = -1;
             newText.text = "";
             while (random == -1)
@@ -110,7 +131,12 @@ public class letritas : MonoBehaviour
             totalLetters -= 1;
             if (totalLetters == 0) { revelead = true; }
             canShow = false; timer = 0;
+            sliderInsigth.value++;
+
+            //Actualizar insigth
+            remainingInsigth.text = cluesController.insigth.ToString();
         }
+        
     }
 
     private int ChoseRandom()

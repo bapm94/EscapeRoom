@@ -6,7 +6,10 @@ public class TeapotNoteExtra : ExtraActionsTemplate
 {
     [SerializeField] GameObject noteFragment;
 
-
+    private void Start()
+    {
+        
+    }
     public override void ExtraActionOnInteraction()
     {
         //noteFragment.SetActive(!noteFragment.activeSelf);
