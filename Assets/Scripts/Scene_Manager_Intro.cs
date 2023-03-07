@@ -18,6 +18,8 @@ public class Scene_Manager_Intro : MonoBehaviour
         if (timer <= 0)
         {
             Main_Game_Manager.instance.ChangeToScene("InitialMenu");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }

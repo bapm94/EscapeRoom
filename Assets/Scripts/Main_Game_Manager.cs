@@ -8,6 +8,7 @@ public class Main_Game_Manager : MonoBehaviour
     private Scene nextScene;
     public static Main_Game_Manager instance;
     public bool aliceLevelStarted = false;
+    [SerializeField] Texture2D cursor;
 
     #region tutorialManager
     public bool movedForWasd = false;
@@ -30,6 +31,10 @@ public class Main_Game_Manager : MonoBehaviour
         }
         #endregion
         DontDestroyOnLoad(this);
+        //Cursor.SetCursor(cursor,Vector2.zero, CursorMode.Auto);
+        
+        //HidePointer(true);
+
     }
 
     void Update()
@@ -39,13 +44,17 @@ public class Main_Game_Manager : MonoBehaviour
 
     public void ChangeToScene(string newScene)
     {
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = true;
         SceneManager.LoadScene(newScene);
         if (newScene == "Alice_Kitchen_Scene") { aliceLevelStarted = true; }
+        
     }
 
     public void ChangeToSceneButton(string newScene)
     {
         Main_Game_Manager.instance.ChangeToScene(newScene);
+
     }
 
     public void SaveAllData()
@@ -64,4 +73,19 @@ public class Main_Game_Manager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    //public void LockPointer(bool locked)
+    //{
+    //    if (locked)
+    //    {
+    //        //Cursor.visible = false;
+    //        Cursor.lockState = CursorLockMode.Locked;
+    //    }
+    //}
+    //public void HidePointer(bool hiden)
+    //{
+    //    Cursor.lockState = CursorLockMode.Locked;
+    //    Cursor.visible = hiden;
+    //    Debug.Log("game manager");
+    //}
 }
