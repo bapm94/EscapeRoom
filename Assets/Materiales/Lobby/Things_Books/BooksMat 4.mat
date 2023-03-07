@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BooksMat 3
+  m_Name: BooksMat 4
   m_Shader: {fileID: -6465566751694194690, guid: 3289457f341652249bde56da198d20dd,
     type: 3}
   m_ValidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 4942e31510404b04aa666f1a60c23398, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4990f829b479c9e4081f36e1f9f35369, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ambient_Occlusion:
