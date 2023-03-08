@@ -28,7 +28,7 @@ TagManager:
   - LookingAt
   - InteractingInFront
   - Collider
-  - 
+  - AimChecker
   - 
   - 
   - Player
