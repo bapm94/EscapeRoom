@@ -12,7 +12,12 @@ public class Prop : MonoBehaviour
     [SerializeField] bool dialogueOnlyOnce;
     [Tooltip("After showing the dialogue the object deactivates its interactability")]
     [SerializeField] bool deactivateAfterDialogue;
+    [SerializeField] bool isNotImportant;
     public int localIndex;
+    public bool hasDone;
+    [SerializeField] Color outlineColor;
+    Color notImportantColor = new Color(1.0f, 0.7f, 0.1f, 1.0f);
+    Color importantColor = new Color(0.57f, 0.0f, 0.92f, 1.0f);
 
     //[SerializeField] bool extraActionOnInteraction;
     protected ExtraActionsTemplate extraAction;
@@ -84,6 +89,17 @@ public class Prop : MonoBehaviour
             isInteractable=true;
         }
     }
+
+    public void OutlineColor()
+    {
+        if (!hasDone)
+        {
+            hasDone = true;
+            if (isNotImportant) { OutlineController.instance.ChangeInteractionColor(notImportantColor); }
+            else { OutlineController.instance.ChangeInteractionColor(importantColor); }
+        }
+    }
+
     private void OnDestroy()
     {
         SubstractFromObserversList();

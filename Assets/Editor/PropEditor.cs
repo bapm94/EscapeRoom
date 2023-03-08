@@ -9,6 +9,8 @@ public class PropEditor : Editor
     protected SerializedProperty dialogueBeggining;
     protected SerializedProperty dialogueEnd;
     protected SerializedProperty deactivateAfterDialogue;
+    protected SerializedProperty isNotImportant;
+    protected SerializedProperty outlineColor;
 
     SerializedProperty dialogueOnlyOnce;
 
@@ -22,6 +24,8 @@ public class PropEditor : Editor
         dialogueBeggining = serializedObject.FindProperty("dialogueBeggining");
         dialogueEnd = serializedObject.FindProperty("dialogueEnd");
         deactivateAfterDialogue = serializedObject.FindProperty("deactivateAfterDialogue");
+        isNotImportant = serializedObject.FindProperty("isNotImportant");
+        outlineColor = serializedObject.FindProperty("outlineColor");
 
         dialogueOnlyOnce = serializedObject.FindProperty("dialogueOnlyOnce");
     }
@@ -45,7 +49,8 @@ public class PropEditor : Editor
             
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
-        
+        EditorGUILayout.PropertyField(isNotImportant);
+        EditorGUILayout.PropertyField(outlineColor);
 
         serializedObject.ApplyModifiedProperties();
     }

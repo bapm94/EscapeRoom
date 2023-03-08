@@ -87,7 +87,6 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         LeanTween.reset();
     }
 
-
     private void FixedUpdate()
     {
         if (canMove) { Movement(); LookFront(); }
@@ -120,11 +119,15 @@ public class Main_Character_Controller_v2 : MonoBehaviour
                         percievedGO.layer = 8;
                         ChangeSubmeshesLayer(percievedGO, 8);
                     }
+                    percievedGO.GetComponent<Prop>().OutlineColor();
                 }
-
-
             }
-            else { isLookingSomething = false; percievedGO = null; }
+            else 
+            {
+                isLookingSomething = false; 
+                if (percievedGO != null) { percievedGO.GetComponent<Prop>().hasDone = false; } 
+                percievedGO = null; 
+            }
         }
      
         return isLookingSomething;
@@ -249,9 +252,12 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         if (Physics.Raycast(transform.position + Vector3.down * transform.position.y * 3 / 4, wallDetection , out hit, GetComponent<CapsuleCollider>().radius + 0.05f, collideMe) /*&& isCollidingWithWall*/)
         {
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameObject.GetComponent<Bob_Controller>().canBob = false;
+            gameObject.GetComponent<Bob_Controller>().HeadBob();
         }
         else
         {
+            gameObject.GetComponent<Bob_Controller>().canBob = true;
             transform.position = newPos;
             if (gameObject.GetComponent<Bob_Controller>() != null) { gameObject.GetComponent<Bob_Controller>().HeadBob(); }
         }

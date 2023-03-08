@@ -15,6 +15,7 @@ TagManager:
   - 000
   - 111
   - storyElement
+  - notImportant
   layers:
   - Default
   - TransparentFX

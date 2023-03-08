@@ -13,6 +13,8 @@ public class PropGrabableEditor : Editor
     protected SerializedProperty dialogueBeggining;
     protected SerializedProperty dialogueEnd;
     protected SerializedProperty deactivateAfterDialogue;
+    protected SerializedProperty isNotImportant;
+    protected SerializedProperty outlineColor;
 
     SerializedProperty dialogueOnlyOnce;
     SerializedProperty canBeCollectedAgain;
@@ -29,7 +31,8 @@ public class PropGrabableEditor : Editor
         dialogueBeggining = serializedObject.FindProperty("dialogueBeggining");
         dialogueEnd = serializedObject.FindProperty("dialogueEnd");
         deactivateAfterDialogue = serializedObject.FindProperty("deactivateAfterDialogue");
-
+        isNotImportant = serializedObject.FindProperty("isNotImportant");
+        outlineColor = serializedObject.FindProperty("outlineColor");
 
         localAnalizingScale = serializedObject.FindProperty("localAnalizingScale");
         localAnalizingEulerAngles = serializedObject.FindProperty("localAnalizingEulerAngles");
@@ -65,6 +68,8 @@ public class PropGrabableEditor : Editor
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
+        EditorGUILayout.PropertyField(isNotImportant);
+        EditorGUILayout.PropertyField(outlineColor);
 
         analizingOptions = EditorGUILayout.BeginFoldoutHeaderGroup(analizingOptions, "Analizing Transform");
         if (analizingOptions)
