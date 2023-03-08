@@ -77,6 +77,12 @@ public class Level_Controller : MonoBehaviour
         ActivateOrDCanvas();
     }
 
+    public void BookReturnButton()
+    {
+        StartCoroutine(BookReturn());
+        LeanTween.delayedCall(2.0f, () => InGame_Menu_Controller.instance.IndexChange(4));
+    }
+
     public IEnumerator BookReturn()
     {
         b_animator.SetTrigger("Close");
