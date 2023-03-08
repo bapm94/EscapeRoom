@@ -33,11 +33,11 @@ public class Aim_Distance_Controller : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         other.TryGetComponent<Prop> (out Prop p);
-        if (p != null) { props.Remove(p.gameObject); if (other.gameObject == nearestGO) { distance = 1000.0f; nearestGO = null; } }
+        if (p != null) { if (other.gameObject == nearestGO) { distance = 1000.0f; nearestGO = null; } props.Remove(p.gameObject); }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (nearestGO == null)
         {
@@ -46,17 +46,27 @@ public class Aim_Distance_Controller : MonoBehaviour
 
         foreach (GameObject g in props)
         {
-            var gDistanceV2 = new Vector2(cam.WorldToViewportPoint(g.transform.position).x, cam.WorldToViewportPoint(g.transform.position).y);
-            var tDistanceV2 = new Vector2(cam.WorldToViewportPoint(transform.position).x, cam.WorldToViewportPoint(transform.position).y);
-            var gDistance = (gDistanceV2 - tDistanceV2).magnitude;
+            var objectDistanceVector2 = new Vector2(cam.WorldToViewportPoint(g.transform.position).x, cam.WorldToViewportPoint(g.transform.position).y);
+            var thisDistanceVector2 = new Vector2(cam.WorldToViewportPoint(transform.position).x, cam.WorldToViewportPoint(transform.position).y);
+            var gDistance = (objectDistanceVector2 - thisDistanceVector2).magnitude;
             if (gDistance < distance) { distance = gDistance; nearestGO = g; }
 
-            colorAlpha.a = Mathf.Abs(1.0f - gDistance * 2);
+            if (nearestGO == g) { distance = gDistance; colorAlpha.a = Mathf.Abs(1.0f - gDistance * 2); }
 
             Debug.Log(colorAlpha.a + " ALPHA VALUE");
+            Debug.Log(distance + " CURRENT DISTANCE");
 
-            if (nearestGO != null) { Debug.Log(nearestGO.name + " || Distance: " + gDistance); }
+            if (nearestGO != null && nearestGO == g) { Debug.Log(g.name + " || Distance: " + gDistance); }
         }
+
+        //for (int i = 0; i < props.Count; i++)
+        //{
+        //    GameObject g = props[i];
+        //    var objectDistanceVector2 = new Vector2(cam.WorldToViewportPoint(g.transform.position).x, cam.WorldToViewportPoint(g.transform.position).y);
+        //    var thisDistanceVector2 = new Vector2(cam.WorldToViewportPoint(transform.position).x, cam.WorldToViewportPoint(transform.position).y);
+        //    var gDistance = (objectDistanceVector2 - thisDistanceVector2).magnitude;
+        //    if (gDistance < distance) { distance = gDistance; nearestGO = g; }
+        //}
 
         crosshair.color = colorAlpha;
     }
