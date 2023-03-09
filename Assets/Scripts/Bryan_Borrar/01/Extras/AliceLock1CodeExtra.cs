@@ -28,7 +28,7 @@ public class AliceLock1CodeExtra : ExtraActionsTemplate
     public override void ExtraActionOnVictory()
     {
         animator.SetTrigger("Unlocked");
-        CluesController.instance.insigth += 10;
+        CluesController.instance.AddInsigth(10);
         CluesController.instance.ChangeClue(5);
     }
 }

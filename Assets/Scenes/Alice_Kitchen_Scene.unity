@@ -10151,6 +10151,8 @@ MonoBehaviour:
   water: {fileID: 1697584103}
   drinkMeBottle: {fileID: 2117623965}
   potMision: {fileID: 1347069472}
+  cherrappleSeeds: {fileID: 3300461010458524731}
+  tree: {fileID: 375763333}
   finalBrewMision: {fileID: 743685638}
 --- !u!1 &487484428
 GameObject:
@@ -11855,7 +11857,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: -3
-    ModeOverride: 1
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -24150,8 +24152,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362316176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -26219,8 +26221,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.92678076, y: 1, z: 0.9999996}
+  m_Center: {x: -0.03660965, y: 0, z: -6.882474e-11}
 --- !u!1 &1513196946
 GameObject:
   m_ObjectHideFlags: 0
@@ -35348,6 +35350,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5666190817402015578, guid: 9ce21110444b6474c84d24f7ff83f0d0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666190817402015579, guid: 9ce21110444b6474c84d24f7ff83f0d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666190817485241824, guid: 9ce21110444b6474c84d24f7ff83f0d0,
+        type: 3}
+      propertyPath: cherrapple
+      value: 
+      objectReference: {fileID: 782477774}
     - target: {fileID: 8343314487464253511, guid: 9ce21110444b6474c84d24f7ff83f0d0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -39888,7 +39905,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117623965}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.01
   m_Height: 0.03948253
@@ -46036,7 +46053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7282244894197297762}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018173592, y: -1.0102482e-11, z: -0.037600346}
+  m_LocalPosition: {x: -0.018173592, y: -1.0102482e-11, z: -0.03794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -71468,7 +71485,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4259573906311007120}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0043241787, y: 0.004214242, z: 0.0052315993}
@@ -71481,7 +71498,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4259573906311007120}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0022500514, y: 0.0016247333, z: 0.0015231316}
@@ -74047,10 +74064,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113084899701982648}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5426217881260533514, guid: a04bdc8f0922ea44c980c9ce0454c434, type: 3}
 --- !u!114 &4608972521293072658
@@ -104927,7 +104944,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3300461010458524731}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0025517559, y: 0.0024227037, z: 0.001}
@@ -105613,7 +105630,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9103962308433288291}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -105632,7 +105649,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seeds: {fileID: 3300461010458524731}
-  tree: {fileID: 375763333}
 --- !u!33 &9107408161974230064
 MeshFilter:
   m_ObjectHideFlags: 0

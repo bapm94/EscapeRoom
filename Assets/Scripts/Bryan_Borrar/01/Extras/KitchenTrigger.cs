@@ -10,7 +10,7 @@ public class KitchenTrigger : MonoBehaviour
         cluesController.SetActive(true);
         LeanTween.delayedCall(0.002f, () => cluesController.GetComponent<CluesController>().ChangeClue(1));
         LeanTween.delayedCall(0.0021f, () => cluesController.SetActive(false));
-        cluesController.GetComponent<CluesController>().insigth += 10;
+        cluesController.GetComponent<CluesController>().AddInsigth(10);
         Dialogue_System_Controller.instance.GetDialogueInfo(2, 2);
         //cluesController.SetActive(false);
         Destroy(gameObject);

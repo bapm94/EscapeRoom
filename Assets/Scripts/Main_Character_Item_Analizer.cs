@@ -55,6 +55,8 @@ public class Main_Character_Item_Analizer : MonoBehaviour
     {
         if (targetsOriginalParent != null)
         {
+            targetObject.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extraActions);
+            if (extraActions != null) { extraActions.ExtraActionOnStopAnalizing(); }
             targetObject.layer = 6;
             Main_Character_Controller_v2.instance.ChangeSubmeshesLayer(targetObject, 6);
             targetObject.transform.SetParent(targetsOriginalParent.transform);

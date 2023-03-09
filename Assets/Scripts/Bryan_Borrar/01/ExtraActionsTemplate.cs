@@ -44,6 +44,10 @@ public class ExtraActionsTemplate : MonoBehaviour
     {
 
     }
+    public virtual void ExtraActionOnStopAnalizing()
+    {
+
+    }
     public void SetDefaultPos(Vector3 x)
     {
         defaultPos = x;

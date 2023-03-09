@@ -11,7 +11,10 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     [SerializeField] GameObject water;
     [SerializeField] GameObject drinkMeBottle;
     [SerializeField] GameObject potMision;
+    [SerializeField] GameObject cherrappleSeeds;
+    [SerializeField] ApearingTree tree;
     [SerializeField] GameObject finalBrewMision;
+
     public Vector3 originalAngle { get; set; }
     
 
@@ -28,7 +31,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     }
     public override void ExtraActionOnRestoring()
     {
-        CluesController.instance.insigth += 10;
+        CluesController.instance.AddInsigth(10);
         CluesController.instance.ChangeClue(3);
     }
     public override void ExtraAction()
@@ -83,12 +86,12 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
                 potMision.SetActive(true);
                 finalBrewMision.SetActive(true);
                 drinkMeBottle.GetComponent<PropGrabable>().restored = false;
-                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().enabled = true;
-                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().conditionAchived = new bool[1];
-                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().VictoryConditions.Clear();
-                //finalBrewMision.GetComponent<PropRestorePuzzleParent>().VictoryConditions.Add(drinkMeBottle);
                 Debug.Log("You've filled the botlle");
-
+            }
+            if (cherrappleSeeds != null && cherrappleSeeds.GetComponent<PropGrabable>().restored)
+            {
+                tree.gameObject.SetActive(true);
+                tree.StartGrowingTree();
             }
         }
 

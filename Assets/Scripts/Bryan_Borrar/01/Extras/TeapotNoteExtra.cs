@@ -15,4 +15,8 @@ public class TeapotNoteExtra : ExtraActionsTemplate
         //noteFragment.SetActive(!noteFragment.activeSelf);
         noteFragment.layer = 9;
     }
+    public override void ExtraActionOnStopAnalizing()
+    {
+        noteFragment.layer = 0;
+    }
 }
