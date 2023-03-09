@@ -75,7 +75,6 @@ public class PropGrabable : PropAnalizable
     {
         if (gameObject.layer == 8  && this.enabled)
         {
-            //Debug.Log("hey");
             if (!restored)
             {
                 base.OnActionButton();
@@ -97,6 +96,8 @@ public class PropGrabable : PropAnalizable
                 base.OnActionButton();
             }
         }
+
+        Debug.Log(gameObject + " " + gameObject.layer);
     }
     protected override void OnInventoryButton()
     {
@@ -110,7 +111,6 @@ public class PropGrabable : PropAnalizable
                 //Main_Character_Controller_v2.instance.PerceivedGO = null;
             }
         }
-
     }
     protected override void OnBackButton()
     {

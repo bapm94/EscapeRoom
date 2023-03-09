@@ -60,10 +60,6 @@ public class Aim_Controller_V2 : MonoBehaviour
                 }
             }
         }
-
-
-        Debug.Log(closestCollider + " " + closestDistance);
-
         // Calculate the opacity of the crosshair based on the distance to the closest object
         float opacity = 1.0f - (closestDistance / maxOpacityDistance);
         opacity = Mathf.Clamp(opacity, minOpacity, 1.0f);

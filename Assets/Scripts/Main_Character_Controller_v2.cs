@@ -174,6 +174,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         {
             Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
         }
+        else if (isAnalizingOject) { Main_Interacction_Controller.instance.YButton(); }
     }
 
     private void OnBack_Button()
