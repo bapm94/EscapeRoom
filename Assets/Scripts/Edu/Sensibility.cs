@@ -18,8 +18,8 @@ public class Sensibility : MonoBehaviour
             //movementSpeed = movementSlider.value;
             //cameraSpeed = cameraSlider.value;
 
-            Main_Character_Controller_v2.instance.walkSpeed = movementSlider.value * 20 + 10;
-            Main_Character_Controller_v2.instance.turnSpeed = cameraSlider.value * 20 +10;
+            Main_Character_Controller_v2.instance.walkSpeed = movementSlider.value * 2 + 2;
+            Main_Character_Controller_v2.instance.turnSpeed = cameraSlider.value * 2 + 2;
         }
     }
 }
