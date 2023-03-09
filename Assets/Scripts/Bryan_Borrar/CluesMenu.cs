@@ -20,12 +20,12 @@ public class CluesMenu : MonoBehaviour
     {
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            if (visual.activeSelf)
+            if (visual.activeSelf  && !Main_Character_Controller_v2.instance.canMove)
             {
                 visual.SetActive(false);
                 Main_Camera_Controller.instance.ChangeFollowStatus(true);
             }
-            else
+            else if (!visual.activeSelf && Main_Character_Controller_v2.instance.canMove)
             {
                 visual.SetActive(true);
                 Main_Camera_Controller.instance.ChangeFollowStatus(false);
