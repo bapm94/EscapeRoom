@@ -16,6 +16,7 @@ TagManager:
   - 111
   - storyElement
   - notImportant
+  - PlayerTag
   layers:
   - Default
   - TransparentFX
