@@ -325,7 +325,7 @@ public class InGame_Menu_Controller : MonoBehaviour
             }
             Invoke("GoBackToPlayerCam", 1.0f); 
         }
-        else { GoBackToPlayerCam();}
+        else if (!Dialogue_System_Controller.instance.dialogueOnGoing) { GoBackToPlayerCam();}
     }
     public void OnAction_Button()
     {

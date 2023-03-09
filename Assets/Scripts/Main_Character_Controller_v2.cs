@@ -58,6 +58,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     public LayerMask collideMe;
 
+    [SerializeField] Camera analizingCam;
+
     bool isCollidingWithWall;
 
     public static Main_Character_Controller_v2 instance;
@@ -81,6 +83,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         mainCamera = transform.GetChild(0).gameObject;
         _controls = new Controlls();    //variable to keep track of the controlls there are used this time
         _controls.CharacterControl.Enable();
+
+        analizingCam.gameObject.SetActive(false);
 
         transform.position = spawn.position; transform.rotation = spawn.rotation;
 
@@ -166,29 +170,29 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     //}
     private void OnAction_Button()
     {
-        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
         if (LookFront() && canMove)
         {
             Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
-
         }
     }
 
     private void OnBack_Button()
     {
         Main_Interacction_Controller.instance.BackButton();
-
+        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
     }
 
     private void OnMenu_Button()
     {
-        if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene" && InGame_Menu_Controller.instance.currentCamera ==0)
+        if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
+        else if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene" && InGame_Menu_Controller.instance.currentCamera ==0 && !Dialogue_System_Controller.instance.dialogueOnGoing)
         {
             if (InGameMenu.instance.baseMenu.activeSelf)
             {
+                Debug.Log("hola");
                 InGameMenu.instance.ChangeBaseMenuStatus(false);
             }
-            if (!InGameMenu.instance.baseMenu.activeSelf && !InGameMenu.instance.settingsMenu.activeSelf)
+            else if (!InGameMenu.instance.baseMenu.activeSelf && !InGameMenu.instance.settingsMenu.activeSelf)
             {
                 InGameMenu.instance.ChangeBaseMenuStatus(true);
             }
@@ -292,6 +296,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     public void StartAnalizing(GameObject GOtoAnalize, Vector3 localScale, Vector3 localEulerAngle)
     {
+        analizingCam.gameObject.SetActive(true);
         canMove = false; canRotate = false; isAnalizingOject = true;
         analizableObject = GOtoAnalize;
         analizer.PositioningItem(GOtoAnalize);
@@ -317,6 +322,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     }
     public void StopAnalizing()
     {
+        analizingCam.gameObject.SetActive(false);
         analizer.ReturnItem();        
         Main_Camera_Controller.instance.ChangeFollowStatus(true);
         isAnalizingOject = false;        

@@ -62,6 +62,7 @@ public class Main_Character_Item_Analizer : MonoBehaviour
             targetObject.transform.SetParent(targetsOriginalParent.transform);
             targetObject.transform.SetPositionAndRotation(targetsOriginalPosition, targetsOriginalRotation);
             targetObject.transform.localScale = targetsOriginalScale;
+            targetObject.GetComponent<PropAnalizable>().isBeingAnalized = false;
         } 
     }
 }

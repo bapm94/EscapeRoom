@@ -7,7 +7,7 @@ public class PropAnalizable : Prop
     
     [SerializeField] Vector3 localAnalizingScale;
     [SerializeField] Vector3 localAnalizingEulerAngles;
-    protected bool isBeingAnalized = false;
+    public bool isBeingAnalized = false;
     private void Start()
     {
         base.AddToObserversList();

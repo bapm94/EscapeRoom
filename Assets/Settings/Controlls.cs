@@ -365,6 +365,17 @@ public partial class @Controlls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""33e3c381-cd2c-441c-83c8-3234320ef2d9"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y_Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""61a1a95e-b2cd-40cc-9d94-45ad250b56bc"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",

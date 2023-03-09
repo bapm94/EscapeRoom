@@ -9093,6 +9093,7 @@ MonoBehaviour:
   collideMe:
     serializedVersion: 2
     m_Bits: 1032
+  analizingCam: {fileID: 1277465720}
 --- !u!114 &416380739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10201,6 +10202,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 275, y: 275, z: 275}
   localAnalizingEulerAngles: {x: 310.60748, y: 9.474477, z: 304.2269}
+  isBeingAnalized: 0
   spriteScale: 2.3
   spriteEurlerAngles: {x: 0, y: 180, z: 0}
   restored: 0
@@ -15082,7 +15084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: Pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27600,6 +27602,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 36, y: 36, z: 36}
   localAnalizingEulerAngles: {x: 0, y: 0, z: 0}
+  isBeingAnalized: 0
   spriteScale: 0.5
   spriteEurlerAngles: {x: 0, y: 0, z: 0}
   restored: 0
@@ -40668,6 +40671,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 0.3, y: 0.3, z: 0.3}
   localAnalizingEulerAngles: {x: 0, y: 0, z: 0}
+  isBeingAnalized: 0
   spriteScale: 2.3
   spriteEurlerAngles: {x: 0, y: 0, z: 0}
   restored: 0
@@ -41206,6 +41210,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 36, y: 36, z: 36}
   localAnalizingEulerAngles: {x: -90, y: 0, z: -110}
+  isBeingAnalized: 0
   spriteScale: 0.5
   spriteEurlerAngles: {x: -90, y: 55, z: 0}
   restored: 0
@@ -72789,6 +72794,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 255, y: 255, z: 255}
   localAnalizingEulerAngles: {x: 271.26965, y: 271.83115, z: 179.99893}
+  isBeingAnalized: 0
   spriteScale: 1.8
   spriteEurlerAngles: {x: 0, y: 0, z: 0}
   restored: 0
@@ -75305,6 +75311,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 244, y: 244, z: 244}
   localAnalizingEulerAngles: {x: 277.48187, y: 352.95706, z: 64.87898}
+  isBeingAnalized: 0
 --- !u!64 &4608972521293072657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -106437,6 +106444,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 400, y: 400, z: 400}
   localAnalizingEulerAngles: {x: 279.99997, y: 180, z: 300}
+  isBeingAnalized: 0
   spriteScale: 1.75
   spriteEurlerAngles: {x: 0, y: 0, z: 0}
   restored: 0
@@ -107080,6 +107088,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   localAnalizingScale: {x: 325, y: 325, z: 325}
   localAnalizingEulerAngles: {x: -106, y: 0, z: 0}
+  isBeingAnalized: 0
   spriteScale: 2.11
   spriteEurlerAngles: {x: 0, y: 0, z: 13}
   restored: 0
