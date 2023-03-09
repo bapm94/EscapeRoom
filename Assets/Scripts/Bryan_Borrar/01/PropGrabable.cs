@@ -97,7 +97,7 @@ public class PropGrabable : PropAnalizable
             }
         }
 
-        Debug.Log(gameObject + " " + gameObject.layer);
+        //Debug.Log(gameObject + " " + gameObject.layer);
     }
     protected override void OnInventoryButton()
     {
@@ -131,8 +131,6 @@ public class PropGrabable : PropAnalizable
         inventory.SetActive(true);
         inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
         transform.SetParent(inventoryPlaces.transform.GetChild(buttonPosition));
-        Debug.Log(buttonPosition);
-        inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = spriteEurlerAngles;
         transform.localScale = Vector3.one * spriteScale;

@@ -85,10 +85,20 @@ public class Inventory_Temp : MonoBehaviour
     {
         if (propsGrabbed.Count > 0)
         {
+            List<GameObject> temporalList = new List<GameObject>();
             for (int i = 0; i < propsGrabbed.Count; i++)
             {
-                propsGrabbed[i].GetComponent<PropGrabable>().ReorderInTempInventory(i);
+                if (propsGrabbed[i] != null)
+                {
+                    Debug.Log(propsGrabbed.Count);
+                    temporalList.Add(propsGrabbed[i]);
+                    propsGrabbed[i].GetComponent<PropGrabable>().ReorderInTempInventory(i);
+                }
+                
+                
             }
+
+            propsGrabbed = temporalList;
         }
 
     }
