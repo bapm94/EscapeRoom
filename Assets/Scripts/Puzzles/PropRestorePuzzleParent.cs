@@ -90,6 +90,7 @@ public class PropRestorePuzzleParent : Prop
                 Main_Character_Controller_v2.instance.PerceivedGO = null;
             }
             this.enabled = false;
+            gameObject.SetActive(false);
         }
         else {victory = false; }
         return victory;
