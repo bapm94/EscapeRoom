@@ -16,14 +16,10 @@ public class Tutorial_Manager : MonoBehaviour
     public Sprite[] rotatingSpritesWASD;
     public Sprite[] rotatingSpritesARROWS;
     int currentSprite;
-    public GameObject trailTutorial3;
 
     private Controlls _controls;
     public Vector2 movement;
     public Vector2 rotation;
-
-    Vector3 initialPos;
-    bool stopTrail = true;
 
     delegate void ActivateTutorialsList();
 
@@ -149,22 +145,6 @@ public class Tutorial_Manager : MonoBehaviour
     {
         tutorialCanvas[2].SetActive(true);
         MoveUpTutorial3();
-        initialPos = trailTutorial3.transform.position;
-        stopTrail = false;
-        trailMovement();
-    }
-
-    void trailMovement()
-    {
-        if (!stopTrail)
-        {
-        Camera cam = Camera.main;
-        trailTutorial3.SetActive(true);
-        LeanTween.move(trailTutorial3, initialPos, 1.55f);
-        LeanTween.delayedCall(2.55f, () => trailTutorial3.SetActive(false));
-        trailTutorial3.transform.position = cam.transform.position - new Vector3(0.0f, 1.0f, 0.0f);
-        Invoke("trailMovement", 4.0f);
-        }
     }
 
     public void MoveUpTutorial3()
@@ -182,7 +162,6 @@ public class Tutorial_Manager : MonoBehaviour
     public void DeactivateTutorial3()
     {
         tutorialCanvas[2].SetActive(false);
-        stopTrail = true;
     }
     #endregion
 }
