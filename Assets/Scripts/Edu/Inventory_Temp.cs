@@ -18,6 +18,8 @@ public class Inventory_Temp : MonoBehaviour
     [SerializeField] float animationTime = 5f;
     [SerializeField] public GameObject firstSelect;
 
+    GameObject buttonsParent;
+    GameObject[] itemSpots;
 
     public GameObject[] prop;
     public List<GameObject> propsGrabbed = new List<GameObject>();
@@ -43,6 +45,12 @@ public class Inventory_Temp : MonoBehaviour
             prop[i].GetComponent<In_Game_Tool>().element_Local_Index = i;
         }
         gameObject.SetActive(false);
+        buttonsParent = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        itemSpots = new GameObject[buttonsParent.transform.childCount];
+        for (int i = 0; i < buttonsParent.transform.childCount; i++)
+        {
+            itemSpots[i] = buttonsParent.transform.GetChild(i).gameObject;
+        }
     }
 
     private void OnEnable()
@@ -71,5 +79,17 @@ public class Inventory_Temp : MonoBehaviour
     {
         InitialAnimation();
         LeanTween.delayedCall(timeToClose, () => CloseInventory());
+    }
+
+    public void ElementRemoved()
+    {
+        if (propsGrabbed.Count > 0)
+        {
+            for (int i = 0; i < propsGrabbed.Count; i++)
+            {
+                propsGrabbed[i].GetComponent<PropGrabable>().ReorderInTempInventory(i);
+            }
+        }
+
     }
 }

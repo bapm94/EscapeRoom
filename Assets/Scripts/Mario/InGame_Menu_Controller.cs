@@ -338,10 +338,10 @@ public class InGame_Menu_Controller : MonoBehaviour
 
         //}
 
-        Debug.Log("ACTION1");
+        
         if (isInCam && currentCamera == 4 && canPress > 1.0f)
         {
-            Debug.Log("ACTION2");
+            
             for (int i = 0; i < levels.Length; i++)
             {
                 if (i == currentLevel)

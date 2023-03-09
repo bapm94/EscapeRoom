@@ -22,7 +22,6 @@ public class PropMenuBookShelf : Prop
         if (gameObject.layer == 8)
         {
             base.OnActionButton();
-            Debug.Log("pepe2");
             Main_Character_Controller_v2 character = Main_Character_Controller_v2.instance;
             if (character.physicalMenu != null)
             {
