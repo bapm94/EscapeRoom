@@ -375,5 +375,6 @@ public class InGame_Menu_Controller : MonoBehaviour
     public void CantMove()
     {
         canMove = false;
+        Debug.Log(canMove);
     }
 }
