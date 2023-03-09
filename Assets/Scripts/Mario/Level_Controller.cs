@@ -74,7 +74,7 @@ public class Level_Controller : MonoBehaviour
         yield return new WaitForSeconds(2.35f);
         b_animator.SetTrigger("Open");
         yield return new WaitForSeconds(1.83f);
-        ActivateOrDCanvas();
+        ActivateOrDCanvas(true);
     }
 
     public void BookReturnButton()
@@ -87,7 +87,7 @@ public class Level_Controller : MonoBehaviour
     {
         b_animator.SetTrigger("Close");
         yield return new WaitForSeconds(0.1f);
-        ActivateOrDCanvas();
+        ActivateOrDCanvas(false);
         yield return new WaitForSeconds(0.56f);
         p_animator.SetTrigger("MoveBack");
         yield return new WaitForSeconds(2.25f);
@@ -110,9 +110,10 @@ public class Level_Controller : MonoBehaviour
         //}
     }
 
-    void ActivateOrDCanvas()
+    void ActivateOrDCanvas(bool x)
     {
-        if (textCanvas.activeSelf == false) { textCanvas.SetActive(true); }
-        else { textCanvas.SetActive(false); }
+        textCanvas.SetActive(x);
+        //if (textCanvas.activeSelf == false) { textCanvas.SetActive(true); }
+        //else { textCanvas.SetActive(false); }
     }
 }

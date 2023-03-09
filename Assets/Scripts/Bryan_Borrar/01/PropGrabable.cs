@@ -120,4 +120,26 @@ public class PropGrabable : PropAnalizable
     {
         SubstractFromObserversList();
     }
+
+
+    public void ReorderInTempInventory(int buttonPosition)
+    {
+        GameObject inventory = Inventory_Temp.instance.gameObject;
+        GameObject inventoryPlaces = inventory.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        _3DForm.SetActive(false);
+        _2DForm.SetActive(true);
+        inventory.SetActive(true);
+        inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
+        transform.SetParent(inventoryPlaces.transform.GetChild(buttonPosition));
+        Debug.Log(buttonPosition);
+        inventory.GetComponent<Inventory_Temp>().propsGrabbed.Add(gameObject);
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = spriteEurlerAngles;
+        transform.localScale = Vector3.one * spriteScale;
+        if (transform.childCount > 1)
+        {
+            _2DForm.GetComponent<Image>().sprite = info.sprite;
+        }
+        isBeingAnalized = false;
+    }
 }
