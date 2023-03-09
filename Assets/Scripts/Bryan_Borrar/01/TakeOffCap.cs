@@ -26,7 +26,7 @@ public  class TakeOffCap : ExtraActionsTemplate
         gameObject.GetComponent<PropGrabable>().canBeCollectedAgain = false;
         if (pointsGiven <= 1)
         {
-            CluesController.instance.insigth += 10;
+            CluesController.instance.AddInsigth(10);
             pointsGiven++;
         }
         

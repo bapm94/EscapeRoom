@@ -25,7 +25,7 @@ public class letritas : MonoBehaviour
 
     CluesController cluesController;
 
-    [SerializeField] TextMeshProUGUI remainingInsigth;
+    [SerializeField] public TextMeshProUGUI remainingInsigth;
     [SerializeField] Slider sliderInsigth;
     // Start is called before the first frame update
     void Start()
@@ -74,23 +74,19 @@ public class letritas : MonoBehaviour
         }
         sliderInsigth.maxValue = jeje.Length;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-
+        if (letersShown != jeje.Length) { ImprimirTexto(); }
+    }
+    private void Update()
+    {
         if (!canShow)
         {
             timer += Time.deltaTime;
             if (timer >= timeBetweenLetter) { timer = 0; canShow = true; }
         }
-        //if (Keyboard.current.lKey.isPressed)
-        //{
-        //    RevealLetter();
-        //}
-        if (letersShown != jeje.Length) { ImprimirTexto(); }
-        
     }
+
 
     private void ImprimirTexto()
     {
@@ -100,17 +96,20 @@ public class letritas : MonoBehaviour
         {
             if (isVisible[i] == false)
             {
-                newText.text += "<alpha=#00>" + jeje[i].ToString();
+                var text = "<alpha=#00>" + jeje[i].ToString();
+                newText.text += text;
             }
             else if (isVisible[i] && valoresAlfa[i] >= 255)
             {
-                newText.text += "<alpha=#FF>" + jeje[i].ToString();
+                var text = "<alpha=#FF>" + jeje[i].ToString();
+                newText.text += text;
                 letersShown ++;
             }
             else if (isVisible[i] && valoresAlfa[i] < 256)
             {
+                var text = "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
                 valoresAlfa[i] += Time.deltaTime * velocidad;
-                newText.text += "<alpha=#" + ((byte)valoresAlfa[i]).ToString("X") + ">" + jeje[i].ToString();
+                newText.text += text;
             }            
         }
         

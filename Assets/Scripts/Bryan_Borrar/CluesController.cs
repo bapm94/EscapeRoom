@@ -33,4 +33,10 @@ public class CluesController : MonoBehaviour
         textMeshProUGUI.text = clues[x];
         textObject.GetComponent<letritas>().ReloadText();
     }
+
+    public void AddInsigth(int x)
+    {
+        insigth += x;
+        textObject.GetComponent<letritas>().remainingInsigth.text = insigth.ToString();
+    }
 }
