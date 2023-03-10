@@ -5,13 +5,13 @@ using UnityEngine;
 public class InventoryButtonAction : MonoBehaviour
 {
     GameObject holdingPlace;
-    int thisOrder;
+    public int thisOrder;
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < transform.parent.childCount; i++)
         {
-            if (transform.parent.GetChild(i) == gameObject)
+            if (transform.parent.GetChild(i).gameObject == gameObject)
             {
                 thisOrder = i;  
             }
@@ -48,16 +48,22 @@ public class InventoryButtonAction : MonoBehaviour
         {
             if (transform.childCount > 1)
             {
+                GameObject goToStopHolding = holdingPlace.transform.GetChild(0).gameObject;
                 GameObject goToHold = transform.GetChild(1).gameObject;
+
+
                 goToHold.transform.SetParent(holdingPlace.transform);
-                Inventory_Temp.instance.ElementRemoved();
-                goToHold.transform.localScale = Vector3.zero;
-                ArmAnimation.instance.PlayInventoryItemAnimation(goToHold.name);
-                //ArmAnimation.instance.PlayArmAwayAnimation();
-                holdingPlace.transform.GetChild(0).GetComponent<PropGrabable>().ReorderInTempInventory(thisOrder);
-
-
+                Inventory_Temp.instance.propsGrabbed.Remove(goToHold);
                 
+                goToHold.transform.localScale = Vector3.zero;
+
+                goToStopHolding.GetComponent<PropGrabable>().ReorderInTempInventory(thisOrder);
+                //holdingPlace.transform.GetChild(0).GetComponent<PropGrabable>().ReorderInTempInventory(thisOrder);
+
+                Inventory_Temp.instance.propsGrabbed.Add(goToStopHolding);
+
+                ArmAnimation.instance.PlayInventoryItemAnimation(goToHold.name);
+                Inventory_Temp.instance.ElementRemoved();
             }
         }
     }

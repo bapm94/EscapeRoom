@@ -139,5 +139,6 @@ public class PropGrabable : PropAnalizable
             _2DForm.GetComponent<Image>().sprite = info.sprite;
         }
         isBeingAnalized = false;
+        
     }
 }

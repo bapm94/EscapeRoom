@@ -54,6 +54,7 @@ public class LockBeamsBones : MonoBehaviour
             {
                 gameObject.GetComponent<RotationOnDrag>().victory = true;
             }
+            else { gameObject.GetComponent<RotationOnDrag>().victory = false; }
             
         }
 
@@ -62,5 +63,6 @@ public class LockBeamsBones : MonoBehaviour
     void Delayed()
     {
         rotating = false; codePuzzleParent.CheckForVictory();
+
     }
 }

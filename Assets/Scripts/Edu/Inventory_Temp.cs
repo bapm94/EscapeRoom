@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Inventory_Temp : MonoBehaviour
 {
@@ -78,6 +79,7 @@ public class Inventory_Temp : MonoBehaviour
     public void OpenedByPicking()
     {
         InitialAnimation();
+        EventSystem.current.SetSelectedGameObject(null);
         LeanTween.delayedCall(timeToClose, () => CloseInventory());
     }
 

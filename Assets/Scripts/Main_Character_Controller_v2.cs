@@ -241,12 +241,14 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
             if (inventoryTemp != null && !inventoryTemp.gameObject.activeSelf && canMove)  //If not already open, opens te inventory
             {
+                LeanTween.cancel(inventoryTemp._parentRoot);
                 Camera.main.GetComponent<Volume>().enabled = true;
                 Main_Camera_Controller.instance.ChangeFollowStatus(false);
                 inventoryTemp._parentRoot.SetActive(true);
                 inventoryTemp.openByPlayer = true;                
                 inventoryTemp.firstSelect.GetComponent<Button>().Select();
                 inventoryTemp.InitialAnimation();
+                
             }
             else if (inventoryTemp != null && inventoryTemp.gameObject.activeSelf && inventoryTemp.openByPlayer && !canMove)
             {

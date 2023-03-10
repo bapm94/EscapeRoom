@@ -71,9 +71,15 @@ public class ArmAnimation : MonoBehaviour
     {
 
         animator.SetTrigger("Out");
-        foreach (var obj in objects)
+        LeanTween.delayedCall(1, () => DeactivateObjects());
+        
+
+        void DeactivateObjects()
         {
-            obj.SetActive(false);
+            foreach (var obj in objects)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 }
