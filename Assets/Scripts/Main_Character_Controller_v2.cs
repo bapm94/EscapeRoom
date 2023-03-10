@@ -64,6 +64,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
 
     public static Main_Character_Controller_v2 instance;
 
+    [SerializeField] GameObject clueCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -178,6 +180,13 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             Main_Interacction_Controller.instance.ActionButton();  //If the action button is pressed while moving and its seeing something then it ask the iteración manager to send the perfome the action.
         }
         else if (isAnalizingOject) { Main_Interacction_Controller.instance.YButton(); }
+        //if (clueCanvas != null && !canMove)
+        //{
+        //    if (clueCanvas.activeSelf)
+        //    {
+        //        Main_Interacction_Controller.instance.ActionButton();
+        //    }
+        //}
     }
 
     private void OnBack_Button()
@@ -205,7 +214,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     }
     private void OnX_Button()
     {
-        Debug.Log("X");
+        //Debug.Log("X");
         if (isAnalizingOject)
         {
             analizableObject.TryGetComponent<Prop_Controller>(out Prop_Controller controller);
@@ -217,6 +226,10 @@ public class Main_Character_Controller_v2 : MonoBehaviour
             {
                 analizableObject.transform.localEulerAngles = (Vector3.zero);
             }
+        }
+        if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene")
+        {
+            Main_Interacction_Controller.instance.XButton();
         }
     }
 

@@ -10004,6 +10004,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1032
   analizingCam: {fileID: 1277465720}
+  clueCanvas: {fileID: 255322471}
 --- !u!114 &416380739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15818,7 +15819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeInScreen: {fileID: 443259818}
-  totalTime: 900
+  totalTime: 1200
 --- !u!1 &740719063
 GameObject:
   m_ObjectHideFlags: 0

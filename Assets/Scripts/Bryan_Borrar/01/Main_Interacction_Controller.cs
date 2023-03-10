@@ -11,6 +11,7 @@ public class Main_Interacction_Controller : MonoBehaviour
     public event Action onActionButton;
     public event Action onInventoryButton;
     public event Action onBackButton;
+    public event Action onXButton;
 
     void Awake()
     {
@@ -40,6 +41,13 @@ public class Main_Interacction_Controller : MonoBehaviour
         if (onBackButton != null)
         {
             onBackButton();
+        }
+    }
+    public void XButton()
+    {
+        if (onXButton != null)
+        {
+            onXButton();
         }
     }
 }
