@@ -28,11 +28,15 @@ public class InGameMenu : MonoBehaviour
         {
             Main_Camera_Controller.instance.ChangeFollowStatus(!x);
             Time.timeScale = 0.0f;
+            Cursor.lockState = CursorLockMode.None; 
+            Cursor.visible = true;
         }
         if (!Main_Character_Controller_v2.instance.isAnalizingOject && x == false)
         {
             Main_Camera_Controller.instance.ChangeFollowStatus(!x);
             Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
