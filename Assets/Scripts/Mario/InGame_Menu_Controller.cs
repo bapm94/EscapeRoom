@@ -353,20 +353,21 @@ public class InGame_Menu_Controller : MonoBehaviour
             }
         }
     }
-    private void OnNav_Right()
+    private void OnWalk(InputValue valueInput)
     {
+        Vector2 value = valueInput.Get<Vector2>();
         if (isInCam)
         {
-            NavigateMenuRight();
-            NavigateLevelMenuRight();
-        }   
-    }
-    private void OnNav_Left()
-    {
-        if (isInCam)
-        {
-            NavigateLevelMenuLeft();
-            NavigateMenuLeft();
+            if (value.x > 0)
+            {
+                NavigateMenuRight();
+                NavigateLevelMenuRight();
+            }
+            else if (value.x < 0)
+            {
+                NavigateLevelMenuLeft();
+                NavigateMenuLeft();
+            }
         }
     }
     #endregion
