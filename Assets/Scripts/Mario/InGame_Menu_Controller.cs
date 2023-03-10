@@ -364,7 +364,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     private void OnWalk(InputValue valueInput)
     {
         Vector2 value = valueInput.Get<Vector2>();
-        if (isInCam)
+        if (isInCam && currentCamera == 2)
         {
             if (value.x > 0)
             {
