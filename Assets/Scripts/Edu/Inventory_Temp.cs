@@ -90,7 +90,7 @@ public class Inventory_Temp : MonoBehaviour
             {
                 if (propsGrabbed[i] != null)
                 {
-                    Debug.Log(propsGrabbed.Count);
+                    
                     temporalList.Add(propsGrabbed[i]);
                     propsGrabbed[i].GetComponent<PropGrabable>().ReorderInTempInventory(i);
                 }
