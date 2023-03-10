@@ -53,7 +53,7 @@ public class Main_Game_Manager : MonoBehaviour
         //Cursor.visible = true;
         SceneManager.LoadScene(newScene);
         if (newScene == "Alice_Kitchen_Scene") { aliceLevelStarted = true; }
-        
+        if (newScene == "LobbyScene") { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
     }
 
     public void ChangeToSceneButton(string newScene)
