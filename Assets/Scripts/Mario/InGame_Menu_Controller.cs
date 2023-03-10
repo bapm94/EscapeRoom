@@ -14,6 +14,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     public GameObject[] levels;
     [SerializeField] int currentLevel;
     [SerializeField] Animator animator;
+    [SerializeField] int[] cameras;
     float canPress;
 
     public int currentCamera; //current camera being used
@@ -254,6 +255,13 @@ public class InGame_Menu_Controller : MonoBehaviour
             cams[i].Priority = 1;
             cams[menuIndexValue].Priority = 10;
         }
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (currentCamera == cameras[i]) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; break; }
+            else if (currentCamera != cameras[i]) { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; }
+        }
+
+
         if (writtenButtons.Length > 0)
         {
             for (int i = 0; i < writtenButtons.Length; i++)

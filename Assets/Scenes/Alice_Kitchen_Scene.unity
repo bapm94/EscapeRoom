@@ -7849,6 +7849,7 @@ MonoBehaviour:
   levels: []
   currentLevel: 0
   animator: {fileID: 0}
+  cameras: 0000000003000000
   currentCamera: 0
   isInCam: 0
   canMove: 0

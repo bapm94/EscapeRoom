@@ -43,11 +43,7 @@ public class Main_Game_Manager : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            LeanTween.delayedCall(0.5f, () => Cursor.lockState = CursorLockMode.Locked);
-            Cursor.visible = false;
-        }
+
     }
 
     public void ChangeToScene(string newScene)
