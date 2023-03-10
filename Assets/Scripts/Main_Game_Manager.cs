@@ -34,9 +34,10 @@ public class Main_Game_Manager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         //Cursor.SetCursor(cursor,Vector2.zero, CursorMode.Auto);
-        
+
         //HidePointer(true);
 
     }

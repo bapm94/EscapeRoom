@@ -9,20 +9,28 @@ public class Aim_Controller_V2 : MonoBehaviour
     [SerializeField] private float maxDistanceFromPlayer = 7.0f;  // The maximum distance an object can be from the player to be considered
     [SerializeField] private string tagToCheck = "000";  // The tag of objects to change opacity for
 
+    public bool shouldFollowMouse;
+    Vector3 initialPos;
 
     private Collider[] colliders;  // The colliders of all objects in the scene that meet certain conditions
     private RectTransform rectTransform;  // The RectTransform of this object
     private Camera mainCamera;  // The main camera in the scene
     private Transform playerTransform;  // The transform of the player object
 
+    public static Aim_Controller_V2 instance;
+
     private void Start()
     {
+        if (instance == null) { Aim_Controller_V2.instance = this; }
+        else { Destroy(this); }
+
         // Find all objects in the scene that meet certain conditions, get their colliders, and store them in an array
         colliders = FindObjectsOfType<Prop>()
             .Where(prop => prop.GetComponent<Collider>() != null && prop.GetComponent<Collider>().enabled && prop.gameObject.activeSelf)
             .Select(prop => prop.GetComponent<Collider>())
             .ToArray();
 
+        initialPos = transform.position;
         rectTransform = GetComponent<RectTransform>();  // Get the RectTransform component of this object
         mainCamera = Camera.main;  // Get the main camera in the scene
         playerTransform = GameObject.FindGameObjectWithTag("PlayerTag").transform;  // Find the player object in the scene using its tag
@@ -30,6 +38,9 @@ public class Aim_Controller_V2 : MonoBehaviour
 
     private void Update()
     {
+        if (shouldFollowMouse) { transform.position = Input.mousePosition; }
+        else { transform.position = initialPos; }
+
         Collider closestCollider = null;  // The closest collider to the crosshair
         float closestDistance = Mathf.Infinity;  // The distance to the closest collider
 
@@ -60,13 +71,23 @@ public class Aim_Controller_V2 : MonoBehaviour
                 }
             }
         }
+
         // Calculate the opacity of the crosshair based on the distance to the closest object
         float opacity = 1.0f - (closestDistance / maxOpacityDistance);
         opacity = Mathf.Clamp(opacity, minOpacity, 1.0f);
 
-        // Set the alpha value of the crosshair's color to the calculated opacity
-        Color color = GetComponent<UnityEngine.UI.Image>().color;
-        color.a = opacity;
-        GetComponent<UnityEngine.UI.Image>().color = color;
+        if (!shouldFollowMouse)
+        {
+            // Set the alpha value of the crosshair's color to the calculated opacity
+            Color color = GetComponent<UnityEngine.UI.Image>().color;
+            color.a = opacity;
+            GetComponent<UnityEngine.UI.Image>().color = color;
+        }
+        else if (shouldFollowMouse)
+        {
+            Color color = Color.white; 
+            GetComponent<UnityEngine.UI.Image>().color = color; 
+        }
+
     }
 }

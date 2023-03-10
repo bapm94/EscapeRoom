@@ -257,8 +257,8 @@ public class InGame_Menu_Controller : MonoBehaviour
         }
         for (int i = 0; i < cameras.Length; i++)
         {
-            if (currentCamera == cameras[i]) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; break; }
-            else if (currentCamera != cameras[i]) { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; }
+            if (currentCamera == cameras[i]) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; Aim_Controller_V2.instance.shouldFollowMouse = false; break; }
+            else if (currentCamera != cameras[i]) { Cursor.lockState = CursorLockMode.None; Cursor.visible = false; Aim_Controller_V2.instance.shouldFollowMouse = true; }
         }
 
 
