@@ -14186,9 +14186,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 252381616}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 1.5
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15823,6 +15823,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInScreen: {fileID: 443259818}
   totalTime: 1200
+  resultScreen: {fileID: 0}
+  finalTime: {fileID: 0}
+  finalInsight: {fileID: 0}
 --- !u!1 &740719063
 GameObject:
   m_ObjectHideFlags: 0
@@ -27796,10 +27799,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 740719064}
   m_HandleRect: {fileID: 805080424}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 8
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 4.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
