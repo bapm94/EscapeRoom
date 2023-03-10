@@ -165,9 +165,9 @@ public class Tutorial_Manager : MonoBehaviour
             Camera cam = Camera.main;
             trailTutorial3.SetActive(true);
             LeanTween.move(trailTutorial3, initialPos, 1.55f);
-            LeanTween.delayedCall(2.55f, () => trailTutorial3.SetActive(false));
-            trailTutorial3.transform.position = cam.transform.position - new Vector3(0.0f, 1.0f, 0.0f);
-            Invoke("trailMovement", 4.0f);
+            LeanTween.delayedCall(2.44f, () => trailTutorial3.SetActive(false));
+            trailTutorial3.transform.position = cam.transform.position - new Vector3(0.0f, 0.5f, 0.0f);
+            Invoke("trailMovement", 5.25f);
         }
     }
 

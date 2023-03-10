@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Main_Game_Manager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class Main_Game_Manager : MonoBehaviour
         }
         #endregion
         DontDestroyOnLoad(this);
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         //Cursor.SetCursor(cursor,Vector2.zero, CursorMode.Auto);
         
         //HidePointer(true);
@@ -39,7 +43,11 @@ public class Main_Game_Manager : MonoBehaviour
 
     void Update()
     {
-        
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            LeanTween.delayedCall(0.5f, () => Cursor.lockState = CursorLockMode.Locked);
+            Cursor.visible = false;
+        }
     }
 
     public void ChangeToScene(string newScene)
