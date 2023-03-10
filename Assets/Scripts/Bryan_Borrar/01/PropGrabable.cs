@@ -128,8 +128,8 @@ public class PropGrabable : PropAnalizable
         GameObject inventoryPlaces = inventory.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         _3DForm.SetActive(false);
         _2DForm.SetActive(true);
-        inventory.SetActive(true);
-        inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
+        //inventory.SetActive(true);
+        //inventory.GetComponent<Inventory_Temp>().OpenedByPicking();
         transform.SetParent(inventoryPlaces.transform.GetChild(buttonPosition));
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = spriteEurlerAngles;

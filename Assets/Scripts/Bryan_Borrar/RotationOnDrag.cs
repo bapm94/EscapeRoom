@@ -12,7 +12,8 @@ public class RotationOnDrag : MonoBehaviour
     [SerializeField] int dialVictoryValue;
     public bool victory  {get; set;}
     [SerializeField] PropCodePuzzle puzzleSolver;
-
+    private Controlls _controls;
+    [SerializeField] bool leftDial;
 
     //[SerializeField] Vector3 rotationAxis = new Vector3 (0,0,1);
 
@@ -25,13 +26,18 @@ public class RotationOnDrag : MonoBehaviour
         {
             dialVictoryValue = 360 + dialVictoryValue;
         }
-       
+        _controls = new Controlls();    //variable to keep track of the controlls there are used this time
+        _controls.CharacterControl.Enable();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (InGame_Menu_Controller.instance.currentCamera == 1)
+        {
+           DialWithControls(leftDial);
+        }
     }
     private void OnMouseDrag()
     {
@@ -67,4 +73,44 @@ public class RotationOnDrag : MonoBehaviour
         }
     }
 
+
+    void DialWithControls(bool x)
+    {
+        Vector2 rotation1 = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime; //Same sht but with rotation
+        Vector2 rotation2 = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>() * Time.deltaTime;
+                                                                                                   //  Vector2 movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime;
+                                                                                                   // Vector2 rotation1 = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>();
+        if (x)
+        {            
+            Vector2 rotation = rotation1.normalized * 1;
+            transform.Rotate(Vector3.forward * rotation.x);
+        }
+        else if (!x && rotation1 == Vector2.zero)
+        {
+            Vector2 rotation = rotation2.normalized * 1;
+            transform.Rotate(Vector3.forward * rotation.x);
+        }
+
+
+        if (rotation1 == rotation2)
+        {
+            tryToResolve();
+
+        }
+
+        void tryToResolve()
+        {
+            if (dialVictoryValue - 10 <= transform.localEulerAngles.z && transform.localEulerAngles.z < dialVictoryValue + 10)
+            {
+                victory = true;
+
+            }
+            else { victory = false; }
+
+            if (puzzleSolver != null)
+            {
+                puzzleSolver.CheckForVictory();
+            }
+        }
+    }
 }

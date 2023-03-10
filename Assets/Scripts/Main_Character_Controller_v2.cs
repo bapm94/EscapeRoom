@@ -94,11 +94,14 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void FixedUpdate()
     {
         if (canMove) { Movement(); LookFront(); }
-        if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
+        
         
         if (isAnalizingOject) { Analizing(); }
     }
-
+    private void Update()
+    {
+        if (canRotate) { Rotation(); } //Only rotates when the camera is attached to the character
+    }
     public bool LookFront()
     {
         bool isLookingSomething = false;
@@ -250,8 +253,8 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void Movement()
     {
         Vector2 movement = _controls.CharacterControl.Walk.ReadValue<Vector2>() * Time.deltaTime; //The value of the x and y axis are get. Multiply by speed and delta time to keep consistency.
-        Vector2 moveeee = movement.normalized;
-        Vector3 move = transform.right * moveeee.x * Time.deltaTime * walkSpeed  + transform.forward * moveeee.y * Time.deltaTime * walkSpeed ; //New variable that stores the advance in position
+        //Vector2 moveeee = movement.normalized;
+        Vector3 move = transform.right * movement.x * Time.deltaTime * walkSpeed *10  + transform.forward * movement.y * Time.deltaTime * walkSpeed *10; //New variable that stores the advance in position
         var newPos = transform.position + move; // The movement done at the end of calculations
         var wallDetection = (newPos - transform.position).normalized;
         RaycastHit hit;
@@ -273,7 +276,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         if (Main_Camera_Controller.instance.isFollowingCharacter)
         {
             Vector2 rotation1 = _controls.CharacterControl.Cam_Rotation.ReadValue<Vector2>() ; //Same sht but with rotation
-            Vector2 rotation = rotation1.normalized * turnSpeed * Time.deltaTime * 10;
+            Vector2 rotation = rotation1 * turnSpeed * Time.deltaTime * 3;
             transform.Rotate(Vector3.up * rotation.x );
 
             xRotation -= rotation.y ;

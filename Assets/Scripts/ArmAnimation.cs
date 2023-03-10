@@ -53,6 +53,8 @@ public class ArmAnimation : MonoBehaviour
                 animator.Play(animationNames[i], 1);
                 animator.Play("ArmOut", 0);
             }
+            else { objects[i].SetActive(false); }
+            
         }
 
 
@@ -64,8 +66,14 @@ public class ArmAnimation : MonoBehaviour
 
     }
 
+    
     public void PlayArmAwayAnimation()
     {
+
         animator.SetTrigger("Out");
+        foreach (var obj in objects)
+        {
+            obj.SetActive(false);
+        }
     }
 }
