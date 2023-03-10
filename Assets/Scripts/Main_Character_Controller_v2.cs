@@ -186,8 +186,9 @@ public class Main_Character_Controller_v2 : MonoBehaviour
     private void OnMenu_Button()
     {
         if (isAnalizingOject && !Dialogue_System_Controller.instance.dialogueOnGoing) { StopAnalizing(); }
-        else if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene" && InGame_Menu_Controller.instance.currentCamera ==0 && !Dialogue_System_Controller.instance.dialogueOnGoing)
+        else if (SceneManager.GetActiveScene().name == "Alice_Kitchen_Scene" && InGame_Menu_Controller.instance.currentCamera ==0 && !Dialogue_System_Controller.instance.dialogueOnGoing && !inventoryTemp.gameObject.activeSelf)
         {
+            
             if (InGameMenu.instance.baseMenu.activeSelf)
             {
                 Debug.Log("hola");

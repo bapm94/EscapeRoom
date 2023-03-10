@@ -22,36 +22,46 @@ public class ArmAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            PlayInventoryItemAnimation(valueTest);
-        }
-        if (Keyboard.current.gKey.wasPressedThisFrame)
-        {
-            PlayArmAwayAnimation();
-        }
+    //private void Update()
+    //{
+    //    if (Keyboard.current.fKey.wasPressedThisFrame)
+    //    {
+    //        PlayInventoryItemAnimation(valueTest);
+    //    }
+    //    if (Keyboard.current.gKey.wasPressedThisFrame)
+    //    {
+    //        PlayArmAwayAnimation();
+    //    }
 
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            valueTest++;
-        }
-    }
+    //    if (Keyboard.current.hKey.wasPressedThisFrame)
+    //    {
+    //        valueTest++;
+    //    }
+    //}
 
     /// <summary>
     /// 0 Bottle, 1 Cherrapple, 2 Cherrapple seed, 3 Faucet, 4 Mandrake, 5 Pot, 6 Sugar
     /// </summary>
     /// <param name="item"></param>
-    public void PlayInventoryItemAnimation(int item)
+    public void PlayInventoryItemAnimation(string objectName)
     {
         for (int i = 0; i < objects.Length; i++)
-        { 
-            if (i != item) { objects[i].SetActive(false); }
-            else { objects[i].SetActive(true); }
+        {
+            if (objects[i].name == objectName)
+            {
+                objects[i].SetActive(true);
+                animator.Play(animationNames[i], 1);
+                animator.Play("ArmOut", 0);
+            }
         }
-        animator.Play(animationNames[item], 1);
-        animator.Play("ArmOut", 0);
+
+
+        //for (int i = 0; i < objects.Length; i++)
+        //{ 
+        //    if (i != item) { objects[i].SetActive(false); }
+        //    else { objects[i].SetActive(true); }
+        //}
+
     }
 
     public void PlayArmAwayAnimation()
