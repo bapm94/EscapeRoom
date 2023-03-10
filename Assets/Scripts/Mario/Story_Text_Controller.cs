@@ -23,7 +23,6 @@ public class Story_Text_Controller : MonoBehaviour
                 {
                     if (other.gameObject.layer == 14)
                     {
-                        Debug.Log("storyelement");
                         Dialogue_System_Controller.instance.GetDialogueInfo(dialogueStart, dialogueEnd);
                         Dialogue_System_Controller.instance.dialogueCheck = true;
                         if (activateDialogueOnce) { hasDialogue = false; this.gameObject.SetActive(false); }

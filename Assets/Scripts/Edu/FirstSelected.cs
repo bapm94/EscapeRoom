@@ -11,7 +11,6 @@ public class FirstSelected : MonoBehaviour
     {
         firstSelected = gameObject.GetComponent<Button>();
         firstSelected.Select();
-        Debug.Log("Seleccionando");
         
     }
 }

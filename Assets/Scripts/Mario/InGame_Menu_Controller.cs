@@ -16,6 +16,7 @@ public class InGame_Menu_Controller : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] int[] cameras;
     float canPress;
+    bool camBeingDelayed;
 
     public int currentCamera; //current camera being used
     public bool isInCam; //true if player is currently using any of the menu cameras
@@ -364,8 +365,10 @@ public class InGame_Menu_Controller : MonoBehaviour
     private void OnWalk(InputValue valueInput)
     {
         Vector2 value = valueInput.Get<Vector2>();
-        if (isInCam && currentCamera == 2)
+        if (isInCam && currentCamera != 5 && !camBeingDelayed)
         {
+            camBeingDelayed = true;
+            LeanTween.delayedCall(1, () => camBeingDelayed = false);
             if (value.x > 0)
             {
                 NavigateMenuRight();
