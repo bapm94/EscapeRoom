@@ -17,6 +17,8 @@ public class Collectable : MonoBehaviour
 
     public int collectableNumber { get; set; }
 
+    public string collectableText { get; set; }
+
     public void Start()
     {
         position = GameobjectData.initialPosition;
@@ -27,11 +29,11 @@ public class Collectable : MonoBehaviour
         dialogBeginning = GameobjectData.dialogBeginning;
         dialogEnd = GameobjectData.dialogEnd;
         collectableNumber = GameobjectData.collectableNumber;
+        collectableText = GameobjectData.collectableText;
     }
 
     public void GrabIt()
     {
         isSprite = true;
-
     }
 }

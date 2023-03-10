@@ -13,4 +13,5 @@ public class Collectable_Data : ScriptableObject
     public int dialogBeginning;
     public int dialogEnd;
     public int collectableNumber;
+    public string collectableText;
 }

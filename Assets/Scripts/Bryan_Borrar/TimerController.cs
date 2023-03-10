@@ -10,6 +10,9 @@ public class TimerController : MonoBehaviour
     [SerializeField] float totalTime = 10*60;
     float timer;
     bool timerOn;
+    public GameObject resultScreen;
+    public TextMeshProUGUI finalTime;
+    public TextMeshProUGUI finalInsight;
 
     private void Start()
     {
@@ -31,5 +34,15 @@ public class TimerController : MonoBehaviour
             float secondsLeft = Mathf.FloorToInt(timer % 60);
             timeInScreen.text = string.Format("{0:00} : {1:00}", minutesLeft, secondsLeft);
         }
+        if(resultScreen.activeSelf == true)
+        {
+            SetFinalTime();
+        }
+    }
+
+    public void SetFinalTime()
+    {
+        finalTime.text = timeInScreen.text;
+        finalInsight.text = CluesController.instance.insigth.ToString();
     }
 }
