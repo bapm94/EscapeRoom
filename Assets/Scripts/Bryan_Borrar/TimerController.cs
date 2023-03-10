@@ -26,7 +26,7 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerOn && !paused && timer > 0)
+        if (timerOn && !paused && timer > 0 && resultScreen.activeSelf == false)
         {
         
             timer -= Time.deltaTime;

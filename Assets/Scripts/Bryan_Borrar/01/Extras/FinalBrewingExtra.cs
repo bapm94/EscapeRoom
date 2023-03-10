@@ -19,6 +19,7 @@ public class FinalBrewingExtra : ExtraActionsTemplate
 
     public override void ExtraActionOnVictory()
     {
+        Main_Camera_Controller.instance.ChangeFollowStatus(false);
         victory.SetActive(true);
     }
 }
