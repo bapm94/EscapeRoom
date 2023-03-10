@@ -33,19 +33,22 @@ public class InventoryButtonAction : MonoBehaviour
                 goToHold.transform.SetParent(holdingPlace.transform);
                 goToHold.transform.localScale = Vector3.zero;
                 ArmAnimation.instance.PlayInventoryItemAnimation(goToHold.name);
+                Inventory_Temp.instance.propsGrabbed.Remove(goToHold);
+                Inventory_Temp.instance.ElementRemoved();
             }            
         }
-        else if (holdingPlace != null && holdingPlace.transform.childCount == 1)
-        {
-            if (transform.childCount > 1)
-            {
-                ArmAnimation.instance.PlayArmAwayAnimation();
-                holdingPlace.transform.GetChild(0).GetComponent<PropGrabable>().PutInTempInventory();
-                GameObject goToHold = transform.GetChild(1).gameObject;
-                goToHold.transform.SetParent(holdingPlace.transform);
-                goToHold.transform.localScale = Vector3.zero;
-                ArmAnimation.instance.PlayInventoryItemAnimation(goToHold.name);
-            }
-        }
+        //else if (holdingPlace != null && holdingPlace.transform.childCount == 1)
+        //{
+        //    if (transform.childCount > 1)
+        //    {
+        //        ArmAnimation.instance.PlayArmAwayAnimation();
+        //        holdingPlace.transform.GetChild(0).GetComponent<PropGrabable>().PutInTempInventory();
+        //        GameObject goToHold = transform.GetChild(1).gameObject;
+        //        goToHold.transform.SetParent(holdingPlace.transform);
+        //        goToHold.transform.localScale = Vector3.zero;
+        //        ArmAnimation.instance.PlayInventoryItemAnimation(goToHold.name);
+        //        Inventory_Temp.instance.ElementRemoved();
+        //    }
+        //}
     }
 }
