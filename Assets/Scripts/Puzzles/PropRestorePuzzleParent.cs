@@ -13,6 +13,8 @@ public class PropRestorePuzzleParent : Prop
     public int count = 0;
     ExtraActionsTemplate extra;
 
+    public GameObject grabedObjectParent;
+    GameObject grabedObject;
     void Start()
     {
         Initialized();
@@ -45,14 +47,16 @@ public class PropRestorePuzzleParent : Prop
 
     public void TryToRestore()
     {
-        for (int i = 0; i < VictoryConditions.Count; i++)
+        if (Inventory_Temp.instance != null)
         {
-            for (int x = 0; x < Inventory_Temp.instance.propsGrabbed.Count; x++)
+            grabedObjectParent = Inventory_Temp.instance.gameObject.transform.GetChild(1).gameObject;
+            if (grabedObjectParent.transform.childCount > 0) { grabedObject = grabedObjectParent.transform.GetChild(0).gameObject; }
+            for (int i = 0; i < VictoryConditions.Count; i++)
             {
-                if (VictoryConditions[i] == Inventory_Temp.instance.propsGrabbed[x])
+                if (VictoryConditions[i] == grabedObject)
                 {
                     conditionAchived[i] = true;
-                    GameObject part = Inventory_Temp.instance.propsGrabbed[x];
+                    GameObject part = grabedObject; /*Inventory_Temp.instance.propsGrabbed[x];*/
                     PropGrabable script = part.GetComponent<PropGrabable>();
                     part.TryGetComponent<ExtraActionsTemplate>(out ExtraActionsTemplate extra);
                     if (!script.restored)
@@ -65,14 +69,24 @@ public class PropRestorePuzzleParent : Prop
                         script.restored = true;
                         Inventory_Temp.instance.propsGrabbed.Remove(part);
                         count++;
-                        if (extra != null)  extra.ExtraActionOnRestoring();
+                        if (extra != null) extra.ExtraActionOnRestoring();
                         Inventory_Temp.instance.ElementRemoved();
+
+
+                        ArmAnimation.instance.PlayArmAwayAnimation();
+
                     }
                     if (extra != null) { extra.ExtraActionOnPositioning(); }
-                    
+
                 }
-                //else break;
             }
+        
+
+            //for (int x = 0; x < Inventory_Temp.instance.propsGrabbed.Count; x++)
+            //{
+                
+            //    //else break;
+            //}
         }
     }
 
