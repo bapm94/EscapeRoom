@@ -257,6 +257,12 @@ public class Main_Character_Controller_v2 : MonoBehaviour
                 Main_Camera_Controller.instance.ChangeFollowStatus(true);
                 inventoryTemp.CloseInventory();
             }
+            else if (inventoryTemp != null && Camera.main.GetComponent<Volume>().isActiveAndEnabled && !inventoryTemp.gameObject.activeSelf)
+            {
+                inventoryTemp.openByPlayer = false;
+                Camera.main.GetComponent<Volume>().enabled = false;
+                Main_Camera_Controller.instance.ChangeFollowStatus(true);
+            }
         }
         
     }
