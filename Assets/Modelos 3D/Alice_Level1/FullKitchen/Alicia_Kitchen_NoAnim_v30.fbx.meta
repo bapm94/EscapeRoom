@@ -54,6 +54,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Tubitos
     second: {fileID: 2100000, guid: 6e26e90ec1ccd9749b273c03fb979fa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u0431\u0435\u043B\u044B\u0439 \u043C\u0435\u0442\u0430\u043B\u043B"
+    second: {fileID: 2100000, guid: dd6ac86cf6029f140a37fca5cd14951f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
