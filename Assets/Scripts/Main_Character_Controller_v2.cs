@@ -233,7 +233,7 @@ public class Main_Character_Controller_v2 : MonoBehaviour
         }
     }
 
-    private void OnY_Button()
+    public void OnY_Button()
     {
         Main_Interacction_Controller.instance.YButton();
         if (!Dialogue_System_Controller.instance.dialogueOnGoing && SceneManager.GetActiveScene().name != "LobbyScene")

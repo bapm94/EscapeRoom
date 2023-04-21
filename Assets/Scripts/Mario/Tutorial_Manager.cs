@@ -50,7 +50,7 @@ public class Tutorial_Manager : MonoBehaviour
                 Main_Game_Manager.instance.objectsChecked = false;
                 Main_Game_Manager.instance.tutorialActive3 = true;
                 tempVect1 = new Vector3(0, 0.175f, 0);
-                tutorialText.text = "Interact with this object!"; ;
+                tutorialText.text = "¡Interactúa con este objeto!"; ;
                 RotateSprites();
                 arrows.SetActive(true);
                 wasd.SetActive(false);
@@ -130,17 +130,17 @@ public class Tutorial_Manager : MonoBehaviour
 
     IEnumerator WasdCompleted()
     {
-        tuto2Text.text = "Great!";
+        tuto2Text.text = "¡Genial!";
         yield return new WaitForSeconds(1.0f);
         Main_Character_Controller_v2.instance.canMove = true;
-        tuto2Text.text = "To Move!";
+        tuto2Text.text = "¡Muevete!";
         arrows.SetActive(false);
         wasd.SetActive(true);
     }
 
     IEnumerator ArrowsCompleted()
     {
-        tuto2Text.text = "Awesome!";
+        tuto2Text.text = "¡Maravilloso!";
         yield return new WaitForSeconds(1.0f);
         wasd.SetActive(false);
         tutorialCanvas[1].SetActive(false);

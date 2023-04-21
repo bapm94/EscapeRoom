@@ -66,5 +66,8 @@ public class InventoryButtonAction : MonoBehaviour
                 Inventory_Temp.instance.ElementRemoved();
             }
         }
+
+        Main_Character_Controller_v2.instance.OnY_Button();
+
     }
 }

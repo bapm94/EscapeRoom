@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: reset rotation
+  m_text: "Resetear Rotaci\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -2201,6 +2201,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 346380575}
     m_Modifications:
+    - target: {fileID: 4826324762868796156, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762868796159, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762868796159, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762868796159, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762868796159, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
       propertyPath: m_Type
@@ -2210,12 +2235,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5471698
       objectReference: {fileID: 0}
     - target: {fileID: 4826324762978579529, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
@@ -2317,10 +2356,160 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 79.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 37.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -443.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324762978579535, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -308.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171252, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.7000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171252, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.7000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171252, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.7000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171252, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 332.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171252, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -293.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763054171253, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324763202464008, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764056208641, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764056208641, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764056208641, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764056208641, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 4826324764056208644, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764314870445, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_text
+      value: Tiempo de sobra ..............
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764393823670, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764393823670, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764393823670, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764393823670, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 148.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764393823670, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764399491034, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_text
+      value: Resultados
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764505705428, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764505705428, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764505705428, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764505705428, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826324764505705431, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 7856465507819029725, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
@@ -2345,12 +2534,40 @@ PrefabInstance:
     - target: {fileID: 7856465508579437082, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465508579437082, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1724001006504669088, guid: 0a40affb66e34d54caf31bf36040dd60,
+        type: 3}
+    - target: {fileID: 7856465508579437082, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465508579437082, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Main_Game_Manager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465508579437082, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7856465508579437084, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465508917995764, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_text
+      value: "\xA1\xA1Felicidades!! Has resuelto el nivel demo de nuestro juego \"Escapa,
+        literariamente\". Esperamos que hayan disfrutado tanto como nosotros mientras
+        lo hac\xEDamos. Est\xE9n atentos para m\xE1s por venir..."
       objectReference: {fileID: 0}
     - target: {fileID: 7856465508991460009, guid: 4c6e0784d18c07e4293de4189440169e,
         type: 3}
@@ -2421,6 +2638,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509764035570, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509764035570, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509774562926, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509774562926, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509774562926, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509774562926, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 434
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509806776147, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509806776147, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509806776147, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856465509806776147, guid: 4c6e0784d18c07e4293de4189440169e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6e0784d18c07e4293de4189440169e, type: 3}
@@ -4532,7 +4799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventory
+  m_text: Inventario
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -6705,7 +6972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Low
+  m_text: Bajo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7523,20 +7790,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Srick Potion:
-
-
-    - Bottle with Water
-
-
-    - Sugar
-
-
-    - Mandrake
-    Root
-
-
-    - Cherrapple'
+  m_text: "Poci\xF3n reductora:\n\n- Botella con agua\n\n- Az\xFAcar\n\n- Raiz de
+    Mandragora\n\n- Ceranzana [mini manzana]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8227,11 +8482,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Oven Cocked Mandrake
-
-
-    Marinate the root over the night. Then put
-    it without taking it from its pot in the oven and cook fo         '
+  m_text: "Mandragora al horno\n\nMarina la raiz durante la noche. Entocnes ponla
+    en el horno sin sacarla de su maceta que sigue siendo f\xE9rtil. Mentenerla a
+    la temperatura y el tiempo indicad"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8636,7 +8889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: High
+  m_text: Alto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8921,54 +9174,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 701061049}
   sentences:
-  - 1What a strange room. It looks like a kitchen of some sorts, but everything's
-    a mess.
-  - 0I don't know, I find it very sweet! I'll take a look around and see what I can
-    find.
-  - 1Alice, look, there is a note on the fridge, we should check it out.
-  - 0Hmm... This cupboard has a lock, I wonder what the combination is?
-  - 1Take a closer look at the numbers, they have all have a different symbol. I
-    bet that's the key to finding the combination.
-  - 0What's this?
-  - 1Looks like an empty bottle
-  - 0No handle, no water...
-  - 0Yes! I bet this fits perfectly in the faucet.
-  - 1It seems like something could be put on top and fit below the faucet.
-  - 0I see- some kind of recipient maybe?
-  - 1It looks like some sort of brewing device.
-  - 0This here looks like somewhere a bottle should go!
-  - 0So many different chairs!
-  - 1Yes, they are very unique, but we shouldn't be wasting time admiring the furniture.
-  - 0This chair doesn't look too comfortable...
-  - 1The door won't budge... Maybe we need the right temperature and time?
-  - 0Look, Doctor! A recipe!
-  - 1The paper looks like it was torn apart. Maybe it's important? We should look
-    around and see if we find the rest.
-  - 1Life gets sweeter!
-  - 0Yes! This is perfect.
-  - 1Wow, that was certainly magical... I'm guessing this little one is a Cherrapple.
-  - 0I bet it is!
-  - 1I doubt we'd find anything of use here.
-  - 0It never hurts to check!
-  - 0This looks... Too good...
-  - 1Focus, Alice!
-  - 0Who cooks a melon?
-  - 0There's a lot of knives here.
-  - 1Leave them be, we don't want you cutting yourself now, do we?
-  - 0I know, I know, I was just pointing it out.
-  - 0Sharp!
-  - 0Too high up- I'm not that tall!
-  - 1I don't think we'll have much use for a cleaver anyway.
-  - 0What even is this...?
-  - 0Nothing around... Nothing inside...
-  - 1Check elsewhere, I bet.
-  - 0Someone's been cleaning.
-  - 0This is a lot of fruit- it's making me hungry.
-  - 1We can eat later, focus on what's important!
-  - 0A triple kettle for three little cups!
-  - 1Seems very... impractical.
-  - 0It's adorable.
-  - 0It is sooooo small... It's adorable!
+  - "1Qu\xE9 habitaci\xF3n tan extra\xF1a. Parece una especie de cocina, pero todo
+    es un desastre."
+  - "0No s\xE9, me parece muy dulce! Echar\xE9 un vistazo a ver qu\xE9 encuentro."
+  - "1Alice, mira, hay una nota en el refrigerador, deber\xEDamos revisarla."
+  - "0Hmm... Este armario tiene cerradura, me pregunto cu\xE1l es la combinaci\xF3n."
+  - "1Echa un vistazo m\xE1s de cerca a los n\xFAmeros, todos tienen un s\xEDmbolo
+    diferente. Apuesto a que esa es la clave para encontrar la combinaci\xF3n."
+  - "0\xBFQu\xE9 es esto?"
+  - "1Parece una botella vac\xEDa"
+  - 0No llave, no agua...
+  - "0 \xA1S\xED! Apuesto a que esto encaja perfectamente en el grifo."
+  - "1Parece que se podr\xEDa poner algo debajo del grifo."
+  - "0Ya veo, \xBFalg\xFAn tipo de recipiente tal vez?"
+  - "1Parece una especie de dispositivo de elaboraci\xF3n de pociones."
+  - "0\xA1Esto de aqu\xED parece un lugar al que deber\xEDa ir una botella!"
+  - "0\xA1Tantas sillas diferentes!"
+  - "1S\xED, son muy singulares, pero no deber\xEDamos perder el tiempo admirando
+    los muebles."
+  - "0Esta silla no parece muy c\xF3moda..."
+  - "1La puerta no se mueve... \xBFTal vez necesitamos la temperatura y el tiempo
+    correctos?"
+  - "0\xA1Mire, doctor! \xA1Una receta!"
+  - "1Parece que el papel se ha desgarrado. \xBFQuiz\xE1s es importante? Deber\xEDamos
+    mirar alrededor y ver si encontramos el resto."
+  - "1\xA1La vida se vuelve m\xE1s dulce!"
+  - "0 \xA1S\xED! Esto es perfecto."
+  - "1Wow, eso fue ciertamente m\xE1gico... Supongo que este peque\xF1o es un Cherrapple."
+  - "0\xA1Apuesto a que lo es!"
+  - "1Dudo que encontremos algo \xFAtil aqu\xED."
+  - "0\xA1Nunca est\xE1 de m\xE1s comprobarlo!"
+  - 0Esto se ve... Demasiado bueno...
+  - "1\xA1Conc\xE9ntrate, Alicia!"
+  - "0\xBFQui\xE9n cocina un mel\xF3n?"
+  - "0Aqu\xED hay muchos cuchillos."
+  - "1D\xE9jalos en paz, no queremos que te cortes ahora, \xBFverdad?"
+  - "0 Lo s\xE9, lo s\xE9, solo lo estaba se\xF1alando."
+  - "0\xA1Afilado!"
+  - "0Demasiado alto- \xA1No soy tan alta!"
+  - 1No creo que tengamos mucho uso para un cuchillo de todos modos.
+  - "0\xBFQu\xE9 es esto...?"
+  - 0Nada alrededor... Nada dentro...
+  - 1Compruebe en otro lado.
+  - 0Alguien ha estado limpiando.
+  - "0Esto es mucha fruta, me est\xE1 dando hambre."
+  - "1Podemos comer m\xE1s tarde, \xA1conc\xE9ntrate en lo importante!"
+  - "0\xA1Una tetera triple para tres tacitas!"
+  - "1Parece muy... poco pr\xE1ctico."
+  - 0Es adorable.
+  - "0Es tan peque\xF1o... \xA1Es adorable!"
   Index: 0
   dialogueSpeed: 0.05
   dialogueOnGoing: 0
@@ -10330,7 +10584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clues
+  m_text: Pistas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -11785,7 +12039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventory
+  m_text: Inventario
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -12150,7 +12404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select item
+  m_text: Seleccionar objeto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -13528,7 +13782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sensibility
+  m_text: Sensibilidad [no activo]
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14998,7 +15252,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560080470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff7f18de1a2751640a555483aa6d959d, type: 3}
   m_Name: 
@@ -15954,7 +16208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clues
+  m_text: Pistas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -16992,7 +17246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Movement
+  m_text: Movimiento
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18228,7 +18482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save item
+  m_text: Guardar objeto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -21068,7 +21322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: "Atr\xE1s"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23413,7 +23667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sound
+  m_text: General
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26921,7 +27175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save item
+  m_text: Guardar objeto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -28619,7 +28873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: "M\xFAsica"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31690,7 +31944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: High
+  m_text: Alto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -32657,7 +32911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Interact
+  m_text: "Interacci\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -37867,7 +38121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: Cerrar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -38480,7 +38734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Interact
+  m_text: "Interacci\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -45616,7 +45870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select Item
+  m_text: Seleccionar objeto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -46625,7 +46879,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: Cerrar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -48127,7 +48381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Camera
+  m_text: "C\xE1mara"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -48260,7 +48514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a005e7b1f23362346a0e4e1ab56eefa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForAndroid: 0
+  isForAndroid: 1
 --- !u!114 &1911463611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49219,7 +49473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Effects
+  m_text: Efectos
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -51178,7 +51432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Ajustes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -51990,7 +52244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset Rotation
+  m_text: "Resetear Rotaci\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dcc763064da4ce408b3603bc7cb4789, type: 2}
   m_sharedMaterial: {fileID: 5216100983460559039, guid: 1dcc763064da4ce408b3603bc7cb4789,
@@ -53487,7 +53741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Low
+  m_text: Bajo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

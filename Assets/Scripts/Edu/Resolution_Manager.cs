@@ -22,11 +22,11 @@ public class Resolution_Manager : MonoBehaviour
         resolutionDropdown.ClearOptions();
         currentRefreshRate = Screen.currentResolution.refreshRate;
 
-        Debug.Log("RefreshRate " + currentRefreshRate); //PRUEBA SIN BUILD
+        //Debug.Log("RefreshRate " + currentRefreshRate); //PRUEBA SIN BUILD
         
         for(int i = 0; i < resolutions.Length; i++)
         {
-            Debug.Log("Resolution: " + resolutions[i]); //PRUEBA SIN BUILD
+            //Debug.Log("Resolution: " + resolutions[i]); //PRUEBA SIN BUILD
 
             if (resolutions[i].refreshRate == currentRefreshRate)
             {

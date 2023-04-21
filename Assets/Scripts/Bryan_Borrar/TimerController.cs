@@ -28,6 +28,10 @@ public class TimerController : MonoBehaviour
     {
         if (timerOn && !paused && timer > 0 && resultScreen.activeSelf == false)
         {
+            if (timer <= 5)
+            {
+                timeInScreen.material.color = Color.red;
+            }
         
             timer -= Time.deltaTime;
             float minutesLeft = Mathf.FloorToInt(timer / 60);

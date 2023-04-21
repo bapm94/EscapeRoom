@@ -27,7 +27,7 @@ public class Controls_Manager : MonoBehaviour
 
             if (conditionNumber == 1) 
             {
-                if (Main_Character_Controller_v2.instance.canMove) { Debug.Log("AAAAA"); gameObject.transform.GetChild(0).gameObject.SetActive(true); } 
+                if (Main_Character_Controller_v2.instance.canMove) {  gameObject.transform.GetChild(0).gameObject.SetActive(true); } 
                 else { gameObject.transform.GetChild(0).gameObject.SetActive(false); }
             }
 

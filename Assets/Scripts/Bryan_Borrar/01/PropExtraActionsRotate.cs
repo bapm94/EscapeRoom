@@ -37,7 +37,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
     public override void ExtraAction()
     {
         originalAngle = GetDefaultPos();
-        if (rotationAxisY)
+        if (rotationAxisY && water != null)
         {
             
             float angle = angleAmount + transform.localEulerAngles.y;
@@ -49,7 +49,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
             else { water.SetActive(true); OnActivatingWater(); }
             LeanTween.rotateLocal(gameObject, Vector3.up * angle, 1);
         }
-        else if (rotationAxisX)
+        else if (rotationAxisX && water != null)
         {
             float angle = angleAmount + transform.localEulerAngles.x;
             if (angle > originalAngle.x + angleAmount)
@@ -61,7 +61,7 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
             LeanTween.rotateLocal(gameObject, Vector3.right * angle, 1);
             
         }
-        else if (rotationAxisZ)
+        else if (rotationAxisZ && water != null)
         {
             float angle = angleAmount + transform.localEulerAngles.z;
             if (angle > originalAngle.z + angleAmount)
@@ -76,22 +76,37 @@ public  class PropExtraActionsRotate : ExtraActionsTemplate
         
         void OnActivatingWater()
         {
-            if (drinkMeBottle != null && drinkMeBottle.GetComponent<PropGrabable>().restored)
+            if (cherrappleSeeds != null && cherrappleSeeds.GetComponent<PropGrabable>().restored)
+            {
+                tree.gameObject.SetActive(true);
+                LeanTween.delayedCall(2, ()=> tree.StartGrowingTree());
+                Destroy(water, 2);
+                GetComponent<PropGrabable>().enabled = false;
+                gameObject.layer = 0;
+                gameObject.tag = "111";
+            }
+            else if (drinkMeBottle != null && drinkMeBottle.GetComponent<PropGrabable>().restored)
             {
                 drinkMeBottle.TryGetComponent<TakeOffCap>(out TakeOffCap script);
                 drinkMeBottle.transform.parent.parent.gameObject.GetComponent<Collider>().enabled = false;
+                //Change visualy the bottle so the player knows is filled
+
+                LeanTween.delayedCall(2, () => FilledBottle(script));
+
                 
+                //Debug.Log("You've filled the botlle");
+            }
+
+
+            void FilledBottle(TakeOffCap script)
+            {
+                drinkMeBottle.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1, 1);
                 script.isFilled = true;
                 drinkMeBottle.GetComponent<PropGrabable>().canBeCollectedAgain = true;
                 potMision.SetActive(true);
                 finalBrewMision.SetActive(true);
                 drinkMeBottle.GetComponent<PropGrabable>().restored = false;
-                Debug.Log("You've filled the botlle");
-            }
-            if (cherrappleSeeds != null && cherrappleSeeds.GetComponent<PropGrabable>().restored)
-            {
-                tree.gameObject.SetActive(true);
-                tree.StartGrowingTree();
+                water.SetActive(false);
             }
         }
 

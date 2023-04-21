@@ -9,7 +9,7 @@ public class Platform_Check : MonoBehaviour
     {
         if (isForAndroid) 
         {
-            if (Application.platform != RuntimePlatform.Android) { this.gameObject.SetActive(false); }
+            //if (Application.platform != RuntimePlatform.Android) { this.gameObject.SetActive(false); }
         }
         else if (!isForAndroid)
         {
